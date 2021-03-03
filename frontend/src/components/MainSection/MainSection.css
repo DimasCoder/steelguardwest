@@ -1,0 +1,29 @@
+.main-container{
+    margin: 65px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.side-container{
+    width: 20%;
+}
+
+.center-container{
+    width: 75%;
+}
+
+@media screen and (max-width: 700px) {
+    .main-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .side-container{
+        width: 100%;
+    }
+
+    .center-container{
+        width: 100%;
+    }
+    
+}

@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+*::selection{
+  background-color:  #3282b8;
+}
+
+body{
+  font-family: "Oswald", sans-serif;
+}
+
+.container{
+  width: 80%;
+  margin: 0 auto;
+}
+@media all and (max-width: 1300px){
+  .container{
+    width: 90%;
+  }
+}
+@media all and (max-width: 1150px) {
+  .container{
+    width: 95%;
+  }
+}
+
+@media all and (max-width: 700px){
+  .container{
+    width: 95%;
+  }
+}
