@@ -48,7 +48,7 @@ class BrandForm extends Component {
         let data = new FormData();
         data.append('model', this.state.model);
         data.append('brand', this.state.brandID);
-        axios.post("http://localhost:8080/api/model",
+        axios.post("/api/model",
             data
         )
     }
