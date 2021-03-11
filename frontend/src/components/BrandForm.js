@@ -39,7 +39,7 @@ class BrandForm extends Component {
         let data = new FormData();
         data.append('file', this.state.file);
         data.append('brand', this.state.brand);
-        axios.post("api/brand",
+        axios.post("/api/brand",
             data, {headers: {"Content-type": "multipart/form-data"}}
         )
     }
@@ -78,7 +78,7 @@ class BrandForm extends Component {
                 <label>Upload Your File </label>
                 <input type="file" name="file" onChange={this.onFileChangeHandler}/>
                 <button type="submit" onClick={this.postAutoBrand}><a
-                    href="/">Добавити машину</a></button>
+                    >Добавити машину</a></button>
                 </div>
                 <div style={{display: "block"}}>
                     <p>Модель машини</p>

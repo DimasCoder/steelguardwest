@@ -1,12 +1,14 @@
 package com.dimasblack.remkuzovchasti.service;
 
 import com.dimasblack.remkuzovchasti.model.AutoBrand;
+import com.dimasblack.remkuzovchasti.model.FileEntity;
 import com.dimasblack.remkuzovchasti.repo.AutoBrandRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,16 +37,13 @@ public class AutoBrandService {
         }else{
             return null;
         }
-        if(file != null && !file.getOriginalFilename().isEmpty()){
-            File fileDir = new File(uploadPath);
-            if(!fileDir.exists()){
-                fileDir.mkdir();
-            }
-
-            file.transferTo(new File(uploadPath + "/" + brand.toLowerCase().replace(" ", "_") + "_logo.png"));
-            String fileUrl = brand.toLowerCase().replace(" ", "_") + "_logo.png";
-            autoBrand.setImage(fileUrl);
-        }
+        FileEntity fileEntity = new FileEntity();
+        fileEntity.setName(StringUtils.cleanPath(file.getOriginalFilename()));
+        fileEntity.setContentType(file.getContentType());
+        fileEntity.setData(file.getBytes());
+        fileEntity.setSize(file.getSize());
+        autoBrand.setFile(fileEntity);
+        autoBrand.setImage(file.getOriginalFilename());
 
         return autoBrandRepo.save(autoBrand);
     }

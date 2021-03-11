@@ -26,7 +26,7 @@ const Header = props => {
                         alt="Logo"
                     />
                     <nav className="header-navigation">
-                        <NavLink exact to="/" className="header__navigation-link">Головна</NavLink>
+                        <NavLink exact to="/" className="header__navigation-link">Головна!!!</NavLink>
                         <NavLink exact to="/katalog" className="header__navigation-link">Каталог</NavLink>
                         <NavLink exact to="/reviews" className="header__navigation-link">Відгуки</NavLink>
                         <NavLink exact to="/contact" className="header__navigation-link">Контакти</NavLink>

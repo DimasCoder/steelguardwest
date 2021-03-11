@@ -22,7 +22,11 @@ public class AutoBrand {
     private Long id;
 
     private String brandName;
+
     private String image;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private FileEntity file;
 
     @OneToMany(mappedBy = "brand")
     private List<AutoModel> models = new ArrayList<>();
