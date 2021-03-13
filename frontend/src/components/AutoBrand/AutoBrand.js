@@ -27,10 +27,10 @@ const AutoBrand = props => {
 
     return (
         <div className="auto-brand-container">
-            <img
-                src={require(props.brand.file.url).default}
+            {/*<img
+                src={require(props.bra).default}
                 alt="Auto"
-                className="auto-brand-logo"/>
+                className="auto-brand-logo"/>*/}
             <p>Запчастини на {props.brand.brandName}</p>
             <span><FontAwesomeIcon icon={faChevronRight}/></span>
             <div className="dropdown-content">
