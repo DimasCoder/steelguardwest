@@ -24,13 +24,14 @@ const AutoBrand = props => {
 
     let adaptive = */
     }
-
+    let base64Image = 'data:image/png;base64,' + props.brand.file.data;
+    console.log(base64Image, props.brand.file.data)
     return (
         <div className="auto-brand-container">
-            {/*<img
-                src={require(props.bra).default}
+            <img
+                src={base64Image}
                 alt="Auto"
-                className="auto-brand-logo"/>*/}
+                className="auto-brand-logo"/>
             <p>Запчастини на {props.brand.brandName}</p>
             <span><FontAwesomeIcon icon={faChevronRight}/></span>
             <div className="dropdown-content">
