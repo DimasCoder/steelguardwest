@@ -53,8 +53,8 @@
 }
 
 .mercedes-image{
-    position: absolute;
-    right: 140px;
+    position: fixed;
+    right: 9%;
     top: 85px;
     width: 330px;
     transform: scaleX(-1);

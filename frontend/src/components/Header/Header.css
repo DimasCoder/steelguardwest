@@ -26,9 +26,9 @@
 
 .header-navigation{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto 10px;
-    width: 30%;
+    width: 40%;
 }
 
 .header__navigation-link{

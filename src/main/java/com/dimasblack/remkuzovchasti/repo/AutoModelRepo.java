@@ -10,4 +10,5 @@ import java.util.List;
 public interface AutoModelRepo extends JpaRepository<AutoModel, Long> {
 
     AutoModel getById(Long id);
+
 }

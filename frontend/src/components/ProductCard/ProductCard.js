@@ -1,10 +1,10 @@
 import React from 'react'
-import './AutoBrandCard.css'
+import './ProductCard.css'
 import logo from '../../assets/rem-komplect.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 
-const AutoBrandCard = props => {
+const ProductCard = props => {
     let avalaibility = true
     let available
     if(avalaibility){
@@ -31,4 +31,4 @@ const AutoBrandCard = props => {
 
         </div>
     )}
-export default AutoBrandCard;
+export default ProductCard;

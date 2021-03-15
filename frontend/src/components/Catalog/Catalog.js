@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Catalog.css"
 import Line from "../Line/Line";
-import AutoBrandCard from '../AutoBrandCard/AutoBrandCard'
+import ProductCard from '../ProductCard/ProductCard'
 
 
 const Catalog = props => (
@@ -9,27 +9,27 @@ const Catalog = props => (
             <h2>Популярні товари</h2>
             <Line/>
             <div className="catalog-brands">
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
-                <AutoBrandCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
             </div>
     </div>
 )

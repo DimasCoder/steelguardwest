@@ -35,8 +35,8 @@ public class FileController {
     }
 
     @PostMapping
-    public FileEntity upload(@RequestParam("file") MultipartFile file) throws IOException {
-        return fileService.save(file);
+    public FileEntity upload(@RequestParam("file") MultipartFile file, @RequestParam("brand") String brandName) throws IOException {
+        return fileService.save(file, brandName);
     }
 
     @GetMapping

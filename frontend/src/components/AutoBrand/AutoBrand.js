@@ -24,12 +24,11 @@ const AutoBrand = props => {
 
     let adaptive = */
     }
-    let base64Image = 'data:image/png;base64,' + props.brand.file.data;
-    console.log(base64Image, props.brand.file.data)
+    let image = 'data:image/png;base64,' + props.brand.file.data;
     return (
         <div className="auto-brand-container">
             <img
-                src={base64Image}
+                src={image}
                 alt="Auto"
                 className="auto-brand-logo"/>
             <p>Запчастини на {props.brand.brandName}</p>

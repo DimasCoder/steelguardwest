@@ -1,8 +1,10 @@
 package com.dimasblack.remkuzovchasti.service;
 
 import com.dimasblack.remkuzovchasti.model.AutoBrand;
+import com.dimasblack.remkuzovchasti.model.AutoModel;
 import com.dimasblack.remkuzovchasti.model.FileEntity;
 import com.dimasblack.remkuzovchasti.repo.AutoBrandRepo;
+import com.dimasblack.remkuzovchasti.repo.AutoModelRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +24,9 @@ import java.util.UUID;
 public class AutoBrandService {
     @Autowired
     AutoBrandRepo autoBrandRepo;
+
+    @Autowired
+    AutoModelRepo autoModelRepo;
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -54,6 +59,7 @@ public class AutoBrandService {
     }
 
     public void deleteBrand(AutoBrand brand){
+        autoModelRepo.deleteAll(brand.getModels());
         autoBrandRepo.delete(brand);
     }
 }

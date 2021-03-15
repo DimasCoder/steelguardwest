@@ -1,0 +1,134 @@
+.admin-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.admin-category{
+    width: 300px;
+    border-radius: 3px;
+    background-color: #F9F9F9;
+}
+.admin-category-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-logout{
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    border: 3px;
+    border-radius: 5px;
+    padding: 4px 15px;
+    background-position: 100% 0;
+    background-size: 200% 200%;
+    font-size: 18px;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 500;
+    color: #fff !important;
+    background-color: #1f1f1d;
+    transition: .5s;
+}
+
+.admin-logout:hover{
+    box-shadow: 0 0 0 0 rgba(236, 143, 3, 0);
+    background-position: 0 0;
+    text-decoration: none !important;
+    color: #fff;
+    background-color: #545454;
+}
+
+.admin-category-container{
+    padding: 15px;
+}
+
+.admin-content{
+    width: 60%;
+    background-color: #F9F9F9;
+    padding: 15px;
+
+}
+
+.add-brand{
+    margin-bottom: 10px;
+}
+
+.add-brand h3{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.add-brand_inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.add-brand-group{
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+}
+
+.choose-image{
+    display: inline-block;
+    background-color: #1f1f1d;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 500;
+
+}
+
+.add-brand-group input{
+    width: 150px;
+}
+
+.add-brand-image{
+    width: 50px;
+    border: 1px solid #1f1f1d;
+    border-radius: 3px;
+    margin: auto 0;
+    padding: 2px;
+}
+
+.btn-add-brand{
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    border: 3px;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-position: 100% 0;
+    background-size: 200% 200%;
+    font-size: 16px;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 500;
+    color: #fff !important;
+    background-color: #1f1f1d;
+    transition: .5s;
+    margin: auto 0;
+}
+
+.admin-data-model{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.model-img{
+    width: 100px;
+    margin: 0 auto;
+}
+
+.admin-data-model p {
+    margin: 0 auto;
+}

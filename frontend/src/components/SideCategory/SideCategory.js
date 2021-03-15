@@ -6,6 +6,7 @@ import AutoBrandAdaptive from "../AutoBrand/AutoBrandAdaptive";
 import axios from "axios";
 import Backdrop from "../Backdrop/Backdrop";
 import Loader from "../Loader/Loader";
+import UserService from "../../services/user.service";
 
 export default class SideCategory extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ export default class SideCategory extends Component {
             brands: [],
         };
     }
+
 
     componentDidMount() {
         this.findAllBrands();
