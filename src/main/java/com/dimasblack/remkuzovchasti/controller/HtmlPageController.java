@@ -15,4 +15,13 @@ public class HtmlPageController {
     public String reviews(){
         return "index.html";
     }
+    @GetMapping("/admin")
+    public String admin(){
+        return "index.html";
+    }
+
+    @GetMapping("/admin-panel")
+    public String adminPage(){
+        return "index.html";
+    }
 }
