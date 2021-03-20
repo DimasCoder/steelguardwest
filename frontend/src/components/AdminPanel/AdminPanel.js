@@ -8,6 +8,7 @@ import AutoBrand from "../AutoBrand/AutoBrand";
 import Loader from "../Loader/Loader";
 import AdminLink from "./AdminLink/AdminLink";
 import AdminData from "./AdminData/AdminData";
+import ProductPanel from "./ProductPanel/ProductPanel";
 
 class AdminPanel extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class AdminPanel extends Component {
             file: '',
             brands: [],
             models: [],
+            products: [],
             model: '',
             brandID: 602,
             redirect: null,
@@ -24,13 +26,16 @@ class AdminPanel extends Component {
             currentUser: {username: ""},
             showBrands: true,
             showModels: false,
+            showProducts: false,
             image: "https://image.flaticon.com/icons/png/512/37/37543.png",
             isLoading: true
         }
+        console.log(this.props.currentUser)
         this.inputChange = this.inputChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.showBrand = this.showBrand.bind(this);
         this.showModel = this.showModel.bind(this);
+        this.showProduct = this.showProduct.bind(this);
         this.deleteBrand = this.deleteBrand.bind(this);
         this.deleteModel = this.deleteModel.bind(this);
     }
@@ -44,6 +49,8 @@ class AdminPanel extends Component {
         this.findAllModels();
 
     }
+
+    /*Inputs*/
 
     inputChange = (e) => {
         const {name, value} = e.target;
@@ -69,25 +76,9 @@ class AdminPanel extends Component {
         this.setState({brandID: e.target.value});
     }
 
-    postAutoBrand = () => {
-        let data = new FormData();
-        data.append('file', this.state.file);
-        data.append('brand', this.state.brand);
-        axios.post("/api/brand",
-            data, {headers: {"Content-type": "multipart/form-data"}}
-        )
-        window.location.reload(true);
-    }
+    /*End of inputs*/
 
-    postAutoModel = () => {
-        let data = new FormData();
-        data.append('model', this.state.model);
-        data.append('brand', this.state.brandID);
-        axios.post("/api/model",
-            data
-        )
-        window.location.reload(true);
-    }
+    /*AutoBrand*/
 
     findAllBrands() {
         axios.get("/api/brand/all")
@@ -97,20 +88,14 @@ class AdminPanel extends Component {
             });
     }
 
-    findAllModels() {
-        axios.get("/api/model/all")
-            .then(response => response.data)
-            .then((data) => {
-                this.setState({models: data, isLoading: false})
-            });
-    }
-
-    showBrand() {
-        this.setState({showBrands: true, showModels: false})
-    }
-
-    showModel() {
-        this.setState({showBrands: false, showModels: true})
+    postBrand = () => {
+        let data = new FormData();
+        data.append('file', this.state.file);
+        data.append('brand', this.state.brand);
+        axios.post("/api/brand",
+            data, {headers: {"Content-type": "multipart/form-data"}}
+        )
+        window.location.reload(true);
     }
 
     deleteBrand = (id) => {
@@ -122,6 +107,32 @@ class AdminPanel extends Component {
                     })
                 }
             })
+    }
+
+    showBrand() {
+        this.setState({showBrands: true, showModels: false, showProducts: false})
+    }
+
+    /*End of AutoBrand*/
+
+    /*AutoModel*/
+
+    findAllModels() {
+        axios.get("/api/model/all")
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({models: data, isLoading: false})
+            });
+    }
+
+    postModel = () => {
+        let data = new FormData();
+        data.append('model', this.state.model);
+        data.append('brand', this.state.brandID);
+        axios.post("/api/model",
+            data
+        )
+        window.location.reload(true);
     }
 
     deleteModel = (id) => {
@@ -136,13 +147,28 @@ class AdminPanel extends Component {
     }
 
 
+    showModel() {
+        this.setState({showBrands: false, showModels: true, showProducts: false})
+    }
+
+    /*End of AutoModel*/
+
+    /*Product*/
+
+
+    showProduct() {
+        this.setState({showBrands: false, showModels: false, showProducts: true})
+    }
+
+    /*End of Product*/
+
+
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect}/>
         }
-        const {currentUser} = this.state;
         const {model, brandID,} = this.state
-        const {isLoading, showBrands, showModels, brand, brands, models, image} = this.state
+        const {isLoading, showBrands, showModels, showProducts, brand, brands, models, image} = this.state
         console.log(showBrands)
         return (
             <div className="container">
@@ -175,6 +201,7 @@ class AdminPanel extends Component {
                                 <Line/>
                                 <AdminLink name="Марки" click={this.showBrand}/>
                                 <AdminLink name="Моделі" click={this.showModel}/>
+                                <AdminLink name="Товари" click={this.showProduct}/>
                             </div>
                         </div>
                         <div className="admin-content">
@@ -203,7 +230,7 @@ class AdminPanel extends Component {
                                                     />
                                                 </div>
                                                 <button className="btn-add-brand" type="submit"
-                                                        onClick={this.postAutoBrand}>
+                                                        onClick={this.postBrand}>
                                                     <a>Добавити</a>
                                                 </button>
                                             </div>
@@ -231,14 +258,15 @@ class AdminPanel extends Component {
                                                     </div>
                                                     <div className="add-brand-group">
                                                         <label>Модель машини</label>
-                                                        <input className="review-form-input" required={true} type="input"
+                                                        <input className="review-form-input" required={true}
+                                                               type="input"
                                                                value={model}
                                                                name="model"
                                                                onChange={this.inputChange} placeholder="Модель машини"/>
                                                     </div>
 
                                                     <button className="btn-add-brand" type="submit"
-                                                            onClick={this.postAutoModel}>
+                                                            onClick={this.postModel}>
                                                         <a>Добавити</a>
                                                     </button>
                                                 </div>
@@ -259,7 +287,11 @@ class AdminPanel extends Component {
                                             ))}
                                         </div>
                                     )
-                                    : (<Loader/>)
+                                    : showProducts && !isLoading ?
+                                        (
+                                            <ProductPanel/>
+                                        )
+                                        : (<Loader/>)
 
                             }
                         </div>

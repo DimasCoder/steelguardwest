@@ -38,6 +38,7 @@ export default class SideCategory extends Component {
                 <div className="side-category-container">
                     <h2>Марка авто</h2>
                     <Line/>
+                    <div className="notAdaptive">
                     {!isLoading ? (
 
                             brands.map((brand, index) => (
@@ -46,6 +47,18 @@ export default class SideCategory extends Component {
                         :
                         (<Loader/>)
                     }
+                    </div>
+                    <div className="adaptive">
+                        {!isLoading ? (
+
+                                brands.map((brand, index) => (
+                                    <AutoBrandAdaptive key={index} brand={brand}/>
+                                )))
+                            :
+                            (<Loader/>)
+                        }
+                    </div>
+
                 </div>
             </div>
         )

@@ -1,5 +1,5 @@
 .auto-card-container{
-    width: calc((100% - 4%)/4);
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,8 +20,9 @@
 
 .auto-logo{
     width: 90%;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 10px 0;
+    border: 1px solid #919191;
 }
 
 .auto-card-container p{
@@ -45,6 +46,7 @@
 
 @media all and (max-width: 450px) {
     .auto-card-container {
-        width: calc((100% - 4%) / 2.5);
+        width: 40%;
+        margin: 10px auto;
     }
 }

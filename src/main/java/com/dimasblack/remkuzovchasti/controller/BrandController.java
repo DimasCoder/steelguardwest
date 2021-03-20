@@ -19,9 +19,6 @@ public class BrandController {
     @Autowired
     AutoBrandService autoBrandService;
 
-    @Value("${upload.path}")
-    private String uploadPath;
-
     @GetMapping("/all")
     public Iterable<AutoBrand> allAutoBrands(){
         return autoBrandService.findAllBrands();

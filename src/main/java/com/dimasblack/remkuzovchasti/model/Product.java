@@ -1,21 +1,25 @@
-/*package com.dimasblack.remkuzovchasti.model;
+package com.dimasblack.remkuzovchasti.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue(generator="optimized-sequence")
+    @GeneratedValue(generator = "optimized-sequence")
     private Long id;
 
-    private String name;
+    private String productName;
+    private int price;
+    private int code;
+    private boolean isAvailable;
+    private int countOfSold;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private FileEntity file;
 
 }
-*/

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import "./Header.css";
 import "../..//App.css";
 import logo from '../../assets/rem7.png';
@@ -9,8 +9,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
-const Header = props => {
+class Header extends Component{
+    constructor() {
+        super();
+        this.state ={
+            search:''
+        }
+    }
 
+
+    handleChange = (e) =>{
+        this.setState({search: e.target.value});
+        this.props.search(e.target.value);
+    }
+
+    render(){
     return(
         <header className="header">
             <div className="container">
@@ -32,13 +45,17 @@ const Header = props => {
                         <NavLink exact to="/reviews" className="header__navigation-link">Відгуки</NavLink>
 
                         <NavLink exact to="/contact" className="header__navigation-link">Контакти</NavLink>
-                        {props.role && (
+                        {this.props.role && (
                             <NavLink exact to="/admin-panel" className="header__navigation-link">Адмін панель</NavLink>
                         )}
                     </nav>
                     <div className="search-container">
                         <FontAwesomeIcon className="search-icon" icon={faSearch} />
-                        <input className="input-search" type="text" placeholder="Пошук по номеру"/>
+                        <input className="input-search"
+                               value={this.search}
+                               onChange={this.handleChange}
+                               type="text"
+                               placeholder="Пошук по номеру"/>
 
                     </div>
                     <div className="header__inner-contact">
@@ -47,7 +64,7 @@ const Header = props => {
                         {/*<a className="contact-email" href="#">monovex.studio@gmail.com</a>*/}
                     </div>
                     <div className="header__inner-toggle">
-                        <ToggleButton click={props.drawerClickHandler} toggle={props.toggle}/>
+                        <ToggleButton click={this.props.drawerClickHandler} toggle={this.props.toggle}/>
                     </div>
                 </div>
             </div>
@@ -55,6 +72,7 @@ const Header = props => {
         </header>
 
     )
+    }
 }
 
 export default Header;

@@ -15,6 +15,7 @@ import BoardUser from "./components/Auth/board-user.component";
 import BoardAdmin from "./components/Auth/board-admin.component";
 import AuthService from './services/auth.service'
 import AdminPanel from "./components/AdminPanel/AdminPanel";
+import SearchSection from "./components/SearchSection/SearchSection";
 
 class App extends Component {
     constructor(props) {
@@ -25,12 +26,10 @@ class App extends Component {
             showModeratorBoard: false,
             showAdminBoard: false,
             currentUser: undefined,
+            sideDrawerOpen: false,
+            q: ''
         };
     }
-
-    state = {
-        sideDrawerOpen: false
-    };
 
     componentDidMount() {
         const user = AuthService.getCurrentUser();
@@ -57,23 +56,33 @@ class App extends Component {
         this.setState({sideDrawerOpen: false})
     }
 
+    inputSearch = (e) => {
+        this.setState({q: e})
+    }
+
     render() {
         let backdrop;
 
         if (this.state.sideDrawerOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler}/>
         }
-        const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+        const { currentUser, showModeratorBoard,q, showAdminBoard } = this.state;
 
         return (
             <div>
                 <Router>
-                    <Header logOut={this.logOut} currentUser={currentUser} role={showAdminBoard} drawerClickHandler={this.drawerToggleClickHandler} toggle={this.state.sideDrawerOpen}/>
+                    <Header logOut={this.logOut}
+                            currentUser={currentUser}
+                            role={showAdminBoard}
+                            drawerClickHandler={this.drawerToggleClickHandler}
+                            toggle={this.state.sideDrawerOpen}
+                            search={this.inputSearch}
+                    />
                     <SideDrawer show={this.state.sideDrawerOpen}/>
                     {backdrop}
                     <Switch>
-                        <Route exact path="/" component={MainSection}/>
-                        <Route exact path="/:brand/:model" name={"asdasd"} component={AutoPage}/>
+                        <Route exact path="/" component={() => <MainSection search={this.inputSearch} q={q}/>}/>
+                        <Route exact path="/:brand/:model" component={AutoPage}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/register" component={Register}/>
