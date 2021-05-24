@@ -3,34 +3,37 @@ import './ProductCard.css'
 import logo from '../../assets/rem-komplect.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import {NavLink} from "react-router-dom";
 
 const ProductCard = props => {
-    let avalaibility = props.product.productName
-    let available
+    let avalaibility = props.product.available
+    let available;
     if(avalaibility){
-        available = <div>В наявності <FontAwesomeIcon style={{ color: "green" }} icon={faCheckCircle} /></div>
+        available = <span className="span-available"><p>В наявності</p> <FontAwesomeIcon style={{ color: "green" }} icon={faCheckCircle} /></span>
     }else{
-        available = <div>Нема в наявності <FontAwesomeIcon style={{ color: "red" }} icon={faTimesCircle} /></div>
+        available = <span className="span-available"><p>Нема в наявності</p> <FontAwesomeIcon style={{ color: "red" }} icon={faTimesCircle} /></span>
     }
 
-    //let image = 'data:image/png;base64,' + props.product.file.data;
+    let image = 'data:image/png;base64,' + props.product.file.data;
 
     return (
 
-        <div className="auto-card-container">
-            <p>{props.product.productName}</p>
+        <div className="door-card-container">
             <img
-                src={logo}
+                src={image}
                 alt="Auto"
-                className="auto-logo"/>
-            <div className="auto-brand-card-footer">
-                <div>
-                    <p className="price">Ціна</p>
-                    <span>{props.product.price} грн</span>
-                </div>
-                <div className="availability">
-                    {available}
-                </div>
+                className="door-logo"/>
+            <p>Двері {props.product.productName}</p>
+
+            {/*<div>*/}
+            {/*    <div className="availability">*/}
+            {/*        {available}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+
+            <div className="door-card-footer">
+                    <span>{props.product.price} грн.</span>
+                    <NavLink to={`/${props.product.id}`.toLowerCase()} className="to-cart">Детальніше</NavLink>
             </div>
 
         </div>

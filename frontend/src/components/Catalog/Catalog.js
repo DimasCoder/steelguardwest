@@ -39,38 +39,21 @@ class Catalog extends Component {
         const {products} = this.state;
         let filteredProducts = products.filter(
             (product) => {
-                if(this.state.search !== '')
-                    return product.productName.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-                else if(this.props.q !== '')
-                    return product.code.toString().indexOf(this.props.q) !== -1;
-                else
-                    return product
+                if(this.props.q !== '' )
+                    return product.productName.toLowerCase().indexOf(this.props.q.toLowerCase()) !== -1;
+                return product
             }
         )
         return (
             <div className="catalog-container">
-                <div className="search-section-container">
-                    <div className="search-container">
-                        <FontAwesomeIcon className="search-icon" icon={faSearch}/>
-                        <input className="input-search"
-                               value={this.search}
-                               onChange={this.inputSearch}
-                               type="text"
-                               placeholder="Пошук по номеру"/>
-                    </div>
-                    <img
-                        src={mercedes}
-                        className="mercedes-image"
-                        alt="Mercedes"/>
-                </div>
-                <h2>Популярні товари</h2>
-                <Line/>
-                {/*<input className="input-search" value={this.search} type="text" placeholder="Пошук, підбір" onChange={this.inputSearch}/>*/}
-
+                <h2>Вхідні двері</h2>
                 <div className="catalog-brands">
                     {filteredProducts.map((product, index) => (
-                        <ProductCard product={product}/>
+                        <ProductCard cartItems={this.props.cartItems} addToCart={this.props.addToCart} product={product}/>
                     ))}
+                </div>
+                <div>
+
                 </div>
             </div>
         )

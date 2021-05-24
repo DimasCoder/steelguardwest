@@ -1,7 +1,7 @@
 import React from 'react'
 import "./MainSection.css"
 import Catalog from "../Catalog/Catalog";
-import SideCategory from "../SideCategory/SideCategory";
+import TopMenu from "../TopMenu/TopMenu";
 import SearchSection from "../SearchSection/SearchSection";
 
 const MainSection = props => {
@@ -11,12 +11,12 @@ const MainSection = props => {
     return (
         <div className="container">
             <div className="main-container">
-                <div className="side-container">
-                    <SideCategory/>
+                <div className="top-container">
+                    <TopMenu/>
                 </div>
-                <div className="center-container">
+                <div className="bottom-container">
                     {/*<SearchSection search={handleChange}/>*/}
-                    <Catalog q={props.q}/>
+                    <Catalog cartItems={props.cartItems} addToCart={props.addToCart} q={props.q}/>
                 </div>
             </div>
         </div>

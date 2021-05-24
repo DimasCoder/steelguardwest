@@ -1,12 +1,11 @@
 import React, {useState, useEffect, Component} from 'react';
 import "./Header.css";
 import "../..//App.css";
-import logo from '../../assets/rem7.png';
-import logoAdaptive from '../../assets/rem8.png';
+import logo from '../../assets/logodoor.png';
 import ToggleButton from '../ToggleButton/ToggleButton'
 import {NavLink, Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import {faSearch, faExclamationCircle, faExclamation} from '@fortawesome/free-solid-svg-icons'
 
 
 class Header extends Component{
@@ -23,45 +22,56 @@ class Header extends Component{
         this.props.search(e.target.value);
     }
 
+
     render(){
+        console.log(this.props.role)
+        const {cartItems} = this.props
     return(
         <header className="header">
             <div className="container">
                 <div className="header__inner">
+                    {/*<div className="header-logo">*/}
+                    <a className="logo-link" href="/">
                     <img
                         src={logo}
                         className="header__inner-logo"
                         alt="Logo"
                     />
+                    </a>
+                    <a className="logo-link-adaptive" href="/">
                     <img
-                        src={logoAdaptive}
+                        src={logo}
                         className="header__inner-logo-adaptive"
                         alt="Logo"
                     />
-                    <nav className="header-navigation">
-                        <NavLink exact to="/" className="header__navigation-link">Головна</NavLink>
-                        <NavLink exact to="/katalog" className="header__navigation-link">Каталог</NavLink>
+                    </a>
 
-                        <NavLink exact to="/reviews" className="header__navigation-link">Відгуки</NavLink>
-
-                        <NavLink exact to="/contact" className="header__navigation-link">Контакти</NavLink>
-                        {this.props.role && (
-                            <NavLink exact to="/admin-panel" className="header__navigation-link">Адмін панель</NavLink>
-                        )}
-                    </nav>
+                    {/*</div>*/}
                     <div className="search-container">
-                        <FontAwesomeIcon className="search-icon" icon={faSearch} />
                         <input className="input-search"
                                value={this.search}
                                onChange={this.handleChange}
                                type="text"
-                               placeholder="Пошук по номеру"/>
-
+                               placeholder="Я шукаю"/>
+                        <FontAwesomeIcon className="search-icon" icon={faSearch} />
                     </div>
-                    <div className="header__inner-contact">
-                        <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99</a>
-                        <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99</a>
-                        {/*<a className="contact-email" href="#">monovex.studio@gmail.com</a>*/}
+                    {/*<div className="shopping-cart-icon" onClick={this.props.shoppingCartClickHandler}>*/}
+                    {/*    <p>Кошик {cartItems.reduce((a, c) => a + c.count, 0)}</p>*/}
+                    {/*</div>*/}
+                    {/*<div className="header__inner-contact">*/}
+                    {/*    <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99</a>*/}
+                    {/*    <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99</a>*/}
+                    {/*    /!*<a className="contact-email" href="#">monovex.studio@gmail.com</a>*!/*/}
+                    {/*</div>*/}
+                    <div className="header-info">
+                        <div className="time-table">
+                            <span>ПН-ПТ - 10:00 - 19:00</span>
+                            <span>СБ - 10:00 - 16:00</span>
+                            <span>НД - вихідний</span>
+                        </div>
+                        <div className="novelty-container">
+                        <NavLink exact to="/novelty" className="novelty-link">Новинки</NavLink>
+                        </div>
                     </div>
                     <div className="header__inner-toggle">
                         <ToggleButton click={this.props.drawerClickHandler} toggle={this.props.toggle}/>

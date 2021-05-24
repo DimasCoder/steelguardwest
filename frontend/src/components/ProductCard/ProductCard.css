@@ -1,52 +1,96 @@
-.auto-card-container{
-    width: 40%;
+.door-card-container{
+    width: 186px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 4px;
-    padding: 15px;
+    justify-content: space-between;
+    margin: 4px 4px 10px 4px;
+    padding: 5px;
     transition: all 0.3s;
-    background: linear-gradient(
-            0deg
-            ,rgba(88,88,88,.1) 0%,transparent 46.76%),#fff;
+    border: 1px solid rgba(0,0,0,.1);
 }
 
-.auto-card-container:hover{
+.door-card-container:hover{
     transform: scale(1.05);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.3s;
 }
 
-.auto-logo{
-    width: 90%;
-    margin: 10px auto;
-    padding: 10px 0;
-    border: 1px solid #919191;
+.door-logo{
+    width: 100%;
+    height: 180px;
+    padding: 1px;
 }
 
-.auto-card-container p{
-    font-size: 14px;
-    margin: 0 auto;
-    font-family: "Roboto", sans-serif;
+.door-card-container p{
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 400;
+    color: #959595;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 10px;
 }
 
-.auto-card-container span{
-    font-size: 18px;
+.door-card-container span{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #4bb0f5;
+    font-family: Arial, sans-serif;
+    margin: auto 0;
 }
 
-.auto-brand-card-footer{
+.door-card-footer{
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .availability{
     margin: auto 0;
+    font-weight: 100;
+}
+
+.span-available{
+    display: flex;
+    padding-top: 20px;
+}
+
+.span-available p{
+    font-size: 14px;
+    margin: auto 5px auto 0;
+    padding-top: 0;
+    color: #80d1ff;
+}
+
+.to-cart{
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    border: 0;
+    padding: 6px 8px;
+    background-position: 100% 0;
+    background-size: 200% 200%;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    color: #fff !important;
+    background-color: #4bb0f5;
+    transition: .5s;
+}
+
+.to-cart:hover{
+    box-shadow: 0 0 0 0 rgba(236, 143, 3, 0);
+    background-position: 0 0;
+    text-decoration: none !important;
+    color: #fff;
+    background-color: #545454;
 }
 
 @media all and (max-width: 450px) {
-    .auto-card-container {
-        width: 40%;
+    .door-card-container {
         margin: 10px auto;
     }
 }

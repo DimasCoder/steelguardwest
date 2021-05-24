@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import './ProductPanel.css'
 import AuthService from "../../../services/auth.service";
 import AdminData from "../AdminData/AdminData";
 
@@ -7,6 +8,7 @@ class ProductPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            product: '',
             products: [],
             productName: '',
             price: 0,
@@ -16,7 +18,6 @@ class ProductPanel extends Component {
             isLoading: true
         }
         this.inputChange = this.inputChange.bind(this);
-
     }
 
     componentDidMount() {
@@ -68,19 +69,21 @@ class ProductPanel extends Component {
             .then(respone => {
                 if (respone.data != null) {
                     this.setState({
-                        products: this.state.models.filter(product => product.id !== id)
+                        products: this.state.products.filter(product => product.id !== id)
                     })
                 }
             })
     }
 
     render() {
-        const {products, productName, price, code, image} = this.state;
+        const {products, product, productName, price, code, image} = this.state;
+        let img = 'data:image/png;base64,';
         return (
-                <div>
-                    <div className="add-brand">
-                        <h3>Добавити товар</h3>
-                        <div className="add-brand_inner">
+            <div>
+                <div className="add-brand">
+                    <h3>Добавити товар</h3>
+                    <div className="add-brand_inner">
+                        <div>
                             <div className="add-brand-group">
                                 <label>Назва товару</label>
                                 <input className="review-form-input" required={true} type="input"
@@ -102,26 +105,57 @@ class ProductPanel extends Component {
                                        name="code"
                                        onChange={this.inputChange} placeholder="Код товару"/>
                             </div>
-                            <div className="add-brand-group">
-                                <label className="choose-image" htmlFor="file">Вибрати фото</label>
-                                <input type="file" name="file" id="file" hidden
-                                       onChange={this.onFileChangeHandler}/>
-                            </div>
-                            <div className="add-brand-group">
-                                <img
-                                    className="add-brand-image"
-                                    src={image}
-                                />
-                            </div>
-                            <button className="btn-add-brand" type="submit"
-                                    onClick={this.postProduct}>
-                                <a>Добавити</a>
-                            </button>
                         </div>
+                        <div className="add-brand-group">
+                            <label className="choose-image" htmlFor="file">Вибрати фото</label>
+                            <input type="file" name="file" id="file" hidden
+                                   onChange={this.onFileChangeHandler}/>
+                        </div>
+                        <div className="add-brand-group">
+                            <img
+                                className="add-brand-image"
+                                src={image}
+                            />
+                        </div>
+                        <button className="btn-add-brand" type="submit"
+                                onClick={this.postProduct}>
+                            <a>Добавити</a>
+                        </button>
                     </div>
+                </div>
+                <table className="data-table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Зображення</th>
+                        <th>Назва</th>
+                        <th>Ціна</th>
+                        <th>Код</th>
+                        <th>Наявність</th>
+                        <th>Продано</th>
+                        <th>Видалити</th>
+                    </tr>
                     {products.map((product, index) => (
-                        <AdminData key={index} data={product} remove={this.deleteProduct}/>
+                        <tr key={index}>
+                            {console.log(product)}
+                            <td>{product.id}</td>
+                            <td><img
+                                className="data-image"
+                                src={`data:image/png;base64,${product.file.data}`}
+                                alt="Admin data"
+                            /></td>
+                            <td>{product.productName}</td>
+                            <td>{product.price}</td>
+                            <td>{product.code}</td>
+                            <td>{product.available ? "Наявно" : "Відсутньо"}</td>
+                            <td>{product.countOfSold}</td>
+                            <td><input type="button" value="X"
+                                       onClick={this.deleteProduct.bind(this, product.id)}
+                                       className="btn-cancel"/>
+                            </td>
+                        </tr>
                     ))}
+                </table>
+
             </div>
         );
     }

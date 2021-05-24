@@ -7,7 +7,7 @@ import Catalog from "./components/Catalog/Catalog";
 import MainSection from "./components/MainSection/MainSection";
 import AutoPage from "./components/AutoPage/AutoPage";
 import Home from "./components/Auth/home.component";
-import Register from "./components/Auth/register.component";
+import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Profile from "./components/Auth/profile.component";
 import BoardModerator from "./components/Auth/board-moderator.component";
@@ -16,6 +16,9 @@ import BoardAdmin from "./components/Auth/board-admin.component";
 import AuthService from './services/auth.service'
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import SearchSection from "./components/SearchSection/SearchSection";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import Checkout from "./components/Checkout/Checkout";
+import Navigation from "./components/Navigation/Navigation";
 
 class App extends Component {
     constructor(props) {
@@ -27,7 +30,10 @@ class App extends Component {
             showAdminBoard: false,
             currentUser: undefined,
             sideDrawerOpen: false,
-            q: ''
+            shoppingCartOpen: false,
+            q: '',
+            cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+
         };
     }
 
@@ -42,6 +48,48 @@ class App extends Component {
         }
     }
 
+    addToCart = (product) => {
+        const cartItems = this.state.cartItems.slice();
+        let alreadyInCart = false;
+        cartItems.forEach((item) => {
+            if (item.id === product.id) {
+                item.count++;
+                alreadyInCart = true
+            }
+        });
+        if (!alreadyInCart) {
+            cartItems.push({...product, count: 1});
+        }
+        this.setState({cartItems});
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        console.log(cartItems.length)
+    }
+
+    removeFromCart = (product) => {
+        const cartItems = this.state.cartItems.slice();
+        if(cartItems.length !== 1){
+            cartItems.forEach((item) => {
+                if(product.id === item.id){
+                    console.log(item.id)
+                    cartItems.splice(cartItems.indexOf(item), 1)
+                }
+            })
+            this.setState({cartItems})
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        }else if(cartItems.length === 1){
+            cartItems.forEach((item) => {
+                if(product.id === item.id){
+                    console.log(item.id)
+                    cartItems.splice(cartItems.indexOf(item), 1)
+                }
+            })
+            localStorage.clear()
+            this.setState({cartItems})
+
+        }
+
+    };
+
     logOut() {
         AuthService.logout();
     }
@@ -52,8 +100,14 @@ class App extends Component {
         });
     };
 
+    shoppingCartClickHandler = () => {
+        this.setState((prevState) => {
+            return {shoppingCartOpen: !prevState.sideDrawerOpen}
+        });
+    };
+
     backdropClickHandler = () => {
-        this.setState({sideDrawerOpen: false})
+        this.setState({sideDrawerOpen: false, shoppingCartOpen: false})
     }
 
     inputSearch = (e) => {
@@ -66,28 +120,39 @@ class App extends Component {
         if (this.state.sideDrawerOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler}/>
         }
+
+        if (this.state.shoppingCartOpen) {
+            backdrop = <Backdrop click={this.backdropClickHandler}/>
+        }
         const { currentUser, showModeratorBoard,q, showAdminBoard } = this.state;
 
         return (
             <div>
                 <Router>
+                    <Navigation/>
                     <Header logOut={this.logOut}
                             currentUser={currentUser}
                             role={showAdminBoard}
                             drawerClickHandler={this.drawerToggleClickHandler}
+                            shoppingCartClickHandler={this.shoppingCartClickHandler}
                             toggle={this.state.sideDrawerOpen}
                             search={this.inputSearch}
+                            cartItems={this.state.cartItems}
                     />
                     <SideDrawer show={this.state.sideDrawerOpen}/>
+                    <ShoppingCart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} click={this.backdropClickHandler} show={this.state.shoppingCartOpen}/>
                     {backdrop}
                     <Switch>
-                        <Route exact path="/" component={() => <MainSection search={this.inputSearch} q={q}/>}/>
+                        <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} addToCart={this.addToCart} q={q}/>}/>
+                        {/*<Router exact path="/" component={MainSection}/>*/}
                         <Route exact path="/:brand/:model" component={AutoPage}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         <Route exact path="/admin" component={Login}/>
+                        <Route exact path="/signup" component={Register}/>
                         <Route exact path="/register" component={Register}/>
+                        <Route exact path="/checkout" render={() => <Checkout cartItems={this.state.cartItems} removeFromCart={this.removeFromCart}/>}/>
                         <Route exact path="/profile" component={Profile}/>
-                        <Route path="/admin-panel" logOut={this.logOut} user={currentUser} component={AdminPanel}/>
+                        <Route exact path="/admin-panel" render={() => <AdminPanel logOut={this.logOut} user={currentUser} />}/>
                     </Switch>
                 </Router>
             </div>

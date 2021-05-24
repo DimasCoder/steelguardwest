@@ -2,6 +2,8 @@ package com.dimasblack.remkuzovchasti.model;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -17,8 +19,9 @@ public class AutoModel {
 
     private String modelName;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonIgnoreProperties("models")
     private AutoBrand brand;
 
     public String getModelName() {

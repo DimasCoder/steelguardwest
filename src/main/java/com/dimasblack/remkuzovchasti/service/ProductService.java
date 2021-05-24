@@ -19,7 +19,7 @@ public class ProductService {
     ProductRepo productRepo;
 
     public Iterable<Product> findAllProducts(){
-        return productRepo.findAll(Sort.by(Sort.Direction.ASC, "productName"));
+        return productRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Product createProduct(String productName, int price, int code, MultipartFile file) throws IOException {

@@ -1,16 +1,17 @@
 .main-container{
-    margin: 65px auto;
+    margin: 25px 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 
-.side-container{
-    width: 20%;
+.top-container{
+    width: 100%;
 }
 
-.center-container{
-    width: 75%;
+.bottom-container{
+    width: 100%;
+    margin-top: 40px;
 }
 
 @media screen and (max-width: 700px) {
@@ -25,5 +26,5 @@
     .center-container{
         width: 100%;
     }
-    
+
 }
