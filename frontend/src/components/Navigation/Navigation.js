@@ -3,7 +3,7 @@ import "./Navigation.css"
 import {NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments, faPaperPlane, faCreditCard, faAddressCard, faIdBadge, faMoneyBillAlt } from '@fortawesome/free-regular-svg-icons'
-import { faChevronDown, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import {faChevronDown, faCaretDown, faUserCog} from '@fortawesome/free-solid-svg-icons'
 import {faFacebookF, faInstagram, faYoutube} from "@fortawesome/free-brands-svg-icons";
 
 class Navigation extends Component {
@@ -36,10 +36,12 @@ class Navigation extends Component {
                             <NavLink exact to="/partners" className="navigation-link">
                                 <FontAwesomeIcon icon={faIdBadge} /> Наші партнери
                             </NavLink>
-                            {this.props.role && (
-                                <NavLink exact to="/admin-panel" className="navigation-link">Адмін панель</NavLink>
-                            )}
                         </nav>
+                        {this.props.role && (
+                            <NavLink exact to="/admin-panel" className="navigation-link">
+                                <FontAwesomeIcon icon={faUserCog} /> Адмін-панель
+                            </NavLink>
+                        )}
                         <div className="nav-social">
                             <a target="_blank" href="http://instagram.com"> <FontAwesomeIcon icon={faInstagram} /></a>
                             <a target="_blank" href="http://facebook.com"> <FontAwesomeIcon icon={faFacebookF} /></a>

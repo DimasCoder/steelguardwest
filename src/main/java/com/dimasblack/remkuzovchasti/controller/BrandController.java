@@ -3,11 +3,8 @@ package com.dimasblack.remkuzovchasti.controller;
 import com.dimasblack.remkuzovchasti.model.AutoBrand;
 import com.dimasblack.remkuzovchasti.service.AutoBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sun.misc.IOUtils;
 
 import java.io.IOException;
 

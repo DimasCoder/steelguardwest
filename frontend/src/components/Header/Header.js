@@ -45,8 +45,6 @@ class Header extends Component{
                         alt="Logo"
                     />
                     </a>
-
-                    {/*</div>*/}
                     <div className="search-container">
                         <input className="input-search"
                                value={this.search}
@@ -65,12 +63,12 @@ class Header extends Component{
                     {/*</div>*/}
                     <div className="header-info">
                         <div className="time-table">
-                            <span>ПН-ПТ - 10:00 - 19:00</span>
-                            <span>СБ - 10:00 - 16:00</span>
+                            <span>ПН-ПТ - 10:00 - 18:00</span>
+                            <span>СБ - вихідний</span>
                             <span>НД - вихідний</span>
                         </div>
                         <div className="novelty-container">
-                        <NavLink exact to="/novelty" className="novelty-link">Новинки</NavLink>
+                        <NavLink exact to="/novelty" className="novelty-link">Новини</NavLink>
                         </div>
                     </div>
                     <div className="header__inner-toggle">

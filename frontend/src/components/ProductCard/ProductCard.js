@@ -16,14 +16,25 @@ const ProductCard = props => {
 
     let image = 'data:image/png;base64,' + props.product.file.data;
 
-    return (
+    let url = ''
 
+    if(props.product.doorType === 'Квартирні'){
+        url = 'flat-door'
+    }else if(props.product.doorType === 'Вуличні') {
+        url = 'street-door'
+    }else if(props.product.doorType === 'Технічні'){
+        url = 'tech-door'
+    }else if(props.product.doorType === 'Протипожежні'){
+        url = 'fire-door'
+    }
+
+    return (
         <div className="door-card-container">
             <img
                 src={image}
                 alt="Auto"
                 className="door-logo"/>
-            <p>Двері {props.product.productName}</p>
+            <p>Двері {props.product.doorName}</p>
 
             {/*<div>*/}
             {/*    <div className="availability">*/}
@@ -32,8 +43,8 @@ const ProductCard = props => {
             {/*</div>*/}
 
             <div className="door-card-footer">
-                    <span>{props.product.price} грн.</span>
-                    <NavLink to={`/${props.product.id}`.toLowerCase()} className="to-cart">Детальніше</NavLink>
+                    <span>{props.product.price} грн.</span>{console.log(props.product)}
+                <NavLink to={`/${url}/${props.product.doorName.replace(' ', '-')}`.toLowerCase()} className="to-cart" product={props.product.doorName}>Детальніше</NavLink>
             </div>
 
         </div>

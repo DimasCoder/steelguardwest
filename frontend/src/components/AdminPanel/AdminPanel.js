@@ -40,7 +40,7 @@ class AdminPanel extends Component {
 
     componentDidMount() {
         const currentUser = AuthService.getCurrentUser();
-        if (!currentUser) this.setState({redirect: "/"});
+        if (!currentUser || !currentUser.roles.includes("ROLE_ADMIN")) this.setState({redirect: "/"});
         this.setState({currentUser: currentUser, userReady: true})
     }
 

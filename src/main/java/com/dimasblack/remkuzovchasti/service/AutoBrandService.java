@@ -1,7 +1,6 @@
 package com.dimasblack.remkuzovchasti.service;
 
 import com.dimasblack.remkuzovchasti.model.AutoBrand;
-import com.dimasblack.remkuzovchasti.model.AutoModel;
 import com.dimasblack.remkuzovchasti.model.FileEntity;
 import com.dimasblack.remkuzovchasti.repo.AutoBrandRepo;
 import com.dimasblack.remkuzovchasti.repo.AutoModelRepo;
@@ -11,14 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
 
 @Service
 public class AutoBrandService {

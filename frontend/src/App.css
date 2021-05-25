@@ -28,6 +28,13 @@ input:focus{
   width: 70%;
   margin: 0 auto;
 }
+
+@media all and (max-width: 1366px){
+  .container{
+    width: 80%;
+  }
+}
+
 @media all and (max-width: 1300px){
   .container{
     width: 90%;

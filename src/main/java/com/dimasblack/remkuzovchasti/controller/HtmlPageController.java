@@ -24,4 +24,9 @@ public class HtmlPageController {
     public String adminPage(){
         return "index.html";
     }
+
+    @GetMapping("/register")
+    public String register(){
+        return "index.html";
+    }
 }

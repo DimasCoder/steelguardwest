@@ -19,6 +19,7 @@ import SearchSection from "./components/SearchSection/SearchSection";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Checkout from "./components/Checkout/Checkout";
 import Navigation from "./components/Navigation/Navigation";
+import DoorInfoPage from "./components/DoorInfoPage/DoorInfoPage";
 
 class App extends Component {
     constructor(props) {
@@ -40,6 +41,7 @@ class App extends Component {
     componentDidMount() {
         const user = AuthService.getCurrentUser();
         if (user) {
+            console.log(user)
             this.setState({
                 currentUser: user,
                 showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
@@ -129,10 +131,9 @@ class App extends Component {
         return (
             <div>
                 <Router>
-                    <Navigation/>
+                    <Navigation role={showAdminBoard}/>
                     <Header logOut={this.logOut}
                             currentUser={currentUser}
-                            role={showAdminBoard}
                             drawerClickHandler={this.drawerToggleClickHandler}
                             shoppingCartClickHandler={this.shoppingCartClickHandler}
                             toggle={this.state.sideDrawerOpen}
@@ -145,7 +146,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} addToCart={this.addToCart} q={q}/>}/>
                         {/*<Router exact path="/" component={MainSection}/>*/}
-                        <Route exact path="/:brand/:model" component={AutoPage}/>
+                        <Route exact path="/:p1/:p2" component={DoorInfoPage}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/signup" component={Register}/>

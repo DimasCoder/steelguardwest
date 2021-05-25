@@ -12,7 +12,7 @@
 }
 
 .navigation-links{
-    width: 60%;
+    width: 70%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -103,9 +103,11 @@
 
 @media all and (max-width: 1000px) {
     .navigation-links{
-        width: 80%;
+        width: 75%;
     }
 }
+
+
 
 @media all and (max-width: 900px) {
     .navigation-link{

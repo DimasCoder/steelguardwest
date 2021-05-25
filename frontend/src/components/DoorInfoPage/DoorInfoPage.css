@@ -1,0 +1,48 @@
+.door-info-page{
+    margin-top: 30px;
+}
+
+.door-info-page__inner{
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 28px 18px;
+}
+
+.door-info-top{
+    display: flex;
+    flex-direction: row;
+}
+
+.door-image-container{
+    width: 35%
+}
+
+.door-image{
+    width: 100%;
+}
+
+.door-main-info{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.door-main-info h2{
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 34px;
+    font-family: Arial, sans-serif;
+    color: #707070;
+}
+
+.door-main-info p{
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13px;
+    font-family: Arial, sans-serif;
+    color: #959595;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 20px;
+    width: 50%;
+}

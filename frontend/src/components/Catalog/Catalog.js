@@ -22,7 +22,7 @@ class Catalog extends Component {
     }
 
     findAllProducts() {
-        axios.get("/api/product/all")
+        axios.get("/api/flatDoor/all")
             .then(response => response.data)
             .then((data) => {
                 this.setState({products: data, isLoading: false})
@@ -40,7 +40,7 @@ class Catalog extends Component {
         let filteredProducts = products.filter(
             (product) => {
                 if(this.props.q !== '' )
-                    return product.productName.toLowerCase().indexOf(this.props.q.toLowerCase()) !== -1;
+                    return product.doorName.toLowerCase().indexOf(this.props.q.toLowerCase()) !== -1;
                 return product
             }
         )
