@@ -292,10 +292,12 @@ class ProductPanel extends Component {
                                 <label>Тип дверей</label>
                                 <select value={doorType} onChange={this.handleChange}
                                         name="doorType">
-                                    <option value={'Вуличні'}>Вуличні</option>
-                                    <option value={'Квартирні'}>Квартирні</option>
-                                    <option value={'Технічні'}>Технічні</option>
-                                    <option value={'Протипожежні'}>Протипожежні</option>
+                                    <option value={'wareHouse'}>Складська програма</option>
+                                    <option value={'streetDoor'}>Вуличні</option>
+                                    <option value={'flatDoor'}>Квартирні</option>
+                                    <option value={'techDoor'}>Технічні</option>
+                                    <option value={'fireDoor'}>Протипожежні</option>
+                                    <option value={'interiorDoor'}>Міжкімнатні</option>
                                 </select>
                             </div>
 

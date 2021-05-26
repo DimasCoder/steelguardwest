@@ -1,6 +1,7 @@
 .catalog-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 28px 18px;
     border-radius: 2px;
     border: 1px solid rgba(0,0,0,.1);
@@ -14,10 +15,50 @@
     color: #707070;
 }
 
-.catalog-brands{
+.catalog{
+    width: 79%;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalog-doors{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 15px 0 0 0;
+}
+
+.additional-info{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.additional-info h3{
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 500;
+    font-family: Arial, sans-serif;
+    color: #838383;
+    padding-bottom: 10px;
+}
+
+.additional-info a{
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    font-family: Arial, sans-serif;
+    color: #838383;
+    padding: 10px 0;
+}
+
+.additional-info p{
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    font-family: Arial, sans-serif;
+    color: #838383;
+    padding-bottom: 15px;
+    padding-top: 5px;
 }

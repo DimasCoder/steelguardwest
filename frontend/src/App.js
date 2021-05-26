@@ -33,8 +33,9 @@ class App extends Component {
             sideDrawerOpen: false,
             shoppingCartOpen: false,
             q: '',
-            cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
-
+            cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
+            filter: undefined,
+            typeFilter : null
         };
     }
 
@@ -116,6 +117,11 @@ class App extends Component {
         this.setState({q: e})
     }
 
+    setFilter = (e, type) => {
+        this.setState({filter : e})
+        this.setState({typeFilter : type})
+    }
+
     render() {
         let backdrop;
 
@@ -126,7 +132,7 @@ class App extends Component {
         if (this.state.shoppingCartOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler}/>
         }
-        const { currentUser, showModeratorBoard,q, showAdminBoard } = this.state;
+        const { currentUser, showModeratorBoard,q, showAdminBoard, filter, typeFilter } = this.state;
 
         return (
             <div>
@@ -144,10 +150,12 @@ class App extends Component {
                     <ShoppingCart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} click={this.backdropClickHandler} show={this.state.shoppingCartOpen}/>
                     {backdrop}
                     <Switch>
-                        <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} addToCart={this.addToCart} q={q}/>}/>
+                        <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} setFilter={this.setFilter} addToCart={this.addToCart} q={q}/>}/>
                         {/*<Router exact path="/" component={MainSection}/>*/}
                         <Route exact path="/:p1/:p2" component={DoorInfoPage}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
+                        {console.log(filter)}
+                        <Route exact path={["/streetDoor", "/flatDoor", "/techDoor", "/fireDoor", "/interiorDoor" ]} render={() => <Catalog filter={filter} typeFilter={typeFilter}/>}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/signup" component={Register}/>
                         <Route exact path="/register" component={Register}/>

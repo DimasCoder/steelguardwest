@@ -57,7 +57,6 @@ public class FlatDoorService {
 
         door.setDoorType(doorType);
         door.setPrice(price);
-        door.setCode(code);
         door.setCount(count);
         door.setAvailable(count > 0);
         door.setDeviator(deviator.length() > 0 ? deviator : null);

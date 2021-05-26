@@ -10,7 +10,9 @@ import Loader from "../Loader/Loader";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCaretRight} from "@fortawesome/free-solid-svg-icons";
 
 export default class TopMenu extends Component {
     constructor(props) {
@@ -18,6 +20,15 @@ export default class TopMenu extends Component {
         this.state = {
             isLoading: true,
             brands: [],
+            streetDoor: [{subClass: "Преміум", filter: 30000, url : 'streetDoor'},
+                {subClass: "Стандарт", filter: 20000, url : 'streetDoor'},
+                {subClass: "Економ", filter: 10000, url : 'streetDoor'}],
+            flatDoor: [{subClass: "Преміум", filter: 30000, url : 'flatDoor'},
+                {subClass: "Стандарт", filter: 20000, url : 'flatDoor'},
+                {subClass: "Економ", filter: 10000, url : 'flatDoor'}],
+            techDoor: [{subClass: "Технічні", filter: 'Forte+', url : 'techDoor'},
+                {subClass: "Протипожежні", filter: 'Maxima', url : 'fireDoor'}],
+            interiorDoor: [{subClass: "TM «BRAMA» складська програма", filter: 'flatDoor', url:'interiorDoor'}]
         };
     }
 
@@ -36,7 +47,7 @@ export default class TopMenu extends Component {
     }
 
     render() {
-        const {isLoading, brands} = this.state
+        const {isLoading, brands, streetDoor, flatDoor, techDoor, interiorDoor} = this.state
         const settings = {
             dots: true,
             infinite: true,
@@ -55,14 +66,12 @@ export default class TopMenu extends Component {
                         <h2>Каталог дверей</h2>
                         <Line/>
                         <div className="notAdaptive">
-                            {!isLoading ? (
-
-                                    brands.map((brand, index) => (
-                                        <DoorCategory key={index} brand={brand}/>
-                                    )))
-                                :
-                                (<Loader/>)
-                            }
+                            <DoorCategory text={"Складська програма"} subClass={streetDoor} setFilter={this.props.setFilter}/>
+                            <DoorCategory text={"Двері на вулицю"} subClass={streetDoor} setFilter={this.props.setFilter}/>
+                            <DoorCategory text={"Двері в квартиру"} subClass={flatDoor} setFilter={this.props.setFilter}/>
+                            <DoorCategory text={"Технічні двері"} subClass={techDoor} setFilter={this.props.setFilter}/>
+                            <DoorCategory text={"Міжкімнатні двері"} subClass={interiorDoor} setFilter={this.props.setFilter}/>
+                            {/*<DoorCategory text={"Протипожежні двері"} setFilter={this.props.setFilter}/>*/}
                         </div>
                     </div>
                     <div className="carousel">

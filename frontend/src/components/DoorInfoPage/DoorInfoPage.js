@@ -24,6 +24,17 @@ class DoorInfoPage extends Component {
             });
     }
 
+    tranlsateDoor(door){
+        if(door === "Квартирні")
+            return "Двері в квартиру"
+        else if(door === "Вуличні")
+            return "Двері на вулицю"
+        else if(door === "Технічні")
+            return "Технічні двері"
+        else if(door === "Протипожежні")
+            return "Протипожежні двері"
+    }
+
 
     render() {
         let {doors, door1} = this.state
@@ -45,6 +56,7 @@ class DoorInfoPage extends Component {
                                         <h2>Двері {door.doorName}</h2>
                                         <p>Наявність: {door.available ? "На складі" : "Привеземо"}</p>
                                         <p>Код товару: {door.code}</p>
+                                        <p>Категорія: {this.tranlsateDoor(door.doorType)}</p>
                                     </div>
                                 </div>
                                 <div>

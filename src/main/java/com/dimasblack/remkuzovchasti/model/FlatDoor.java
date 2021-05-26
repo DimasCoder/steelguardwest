@@ -23,8 +23,6 @@ public class FlatDoor {
 
     private boolean isAvailable;
 
-    private String code;
-
     private int price;
 
     private String date;

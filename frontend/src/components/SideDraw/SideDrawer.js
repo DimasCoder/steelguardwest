@@ -11,7 +11,7 @@ import {
     faMoneyBillAlt,
     faPaperPlane
 } from "@fortawesome/free-regular-svg-icons";
-import {faCaretDown} from "@fortawesome/free-solid-svg-icons";
+import {faCaretDown, faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF, faInstagram, faYoutube} from "@fortawesome/free-brands-svg-icons";
 
 const SideDrawer = props => {
@@ -46,8 +46,10 @@ const SideDrawer = props => {
                     <NavLink exact to="/partners" className="side-drawer__navigation-link">
                         <FontAwesomeIcon icon={faIdBadge}/> Наші партнери
                     </NavLink>
-
-                    <NavLink exact to="/novelty" className="novelty-link">Новинки</NavLink>
+                    <NavLink exact to="/where-to-buy" className="side-drawer__navigation-link">
+                        <FontAwesomeIcon icon={faMapMarkerAlt} /> Де купити
+                    </NavLink>
+                    <NavLink exact to="/novelty" className="novelty-link">Новини</NavLink>
                 </nav>
                 <div className="side-drawer__contact">
                     <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99</a>

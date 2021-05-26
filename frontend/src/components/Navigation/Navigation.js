@@ -3,7 +3,7 @@ import "./Navigation.css"
 import {NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments, faPaperPlane, faCreditCard, faAddressCard, faIdBadge, faMoneyBillAlt } from '@fortawesome/free-regular-svg-icons'
-import {faChevronDown, faCaretDown, faUserCog} from '@fortawesome/free-solid-svg-icons'
+import {faChevronDown, faCaretDown, faUserCog, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
 import {faFacebookF, faInstagram, faYoutube} from "@fortawesome/free-brands-svg-icons";
 
 class Navigation extends Component {
@@ -35,6 +35,9 @@ class Navigation extends Component {
                             </NavLink>
                             <NavLink exact to="/partners" className="navigation-link">
                                 <FontAwesomeIcon icon={faIdBadge} /> Наші партнери
+                            </NavLink>
+                            <NavLink exact to="/where-to-buy" className="navigation-link">
+                                <FontAwesomeIcon icon={faMapMarkerAlt} /> Де купити
                             </NavLink>
                         </nav>
                         {this.props.role && (

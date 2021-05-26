@@ -53,6 +53,14 @@ class Header extends Component{
                                placeholder="Я шукаю"/>
                         <FontAwesomeIcon className="search-icon" icon={faSearch} />
                     </div>
+
+                    <a className="logo-link" href="/">
+                        <img
+                            src={logo}
+                            className="header__inner-logo"
+                            alt="Logo"
+                        />
+                    </a>
                     {/*<div className="shopping-cart-icon" onClick={this.props.shoppingCartClickHandler}>*/}
                     {/*    <p>Кошик {cartItems.reduce((a, c) => a + c.count, 0)}</p>*/}
                     {/*</div>*/}
