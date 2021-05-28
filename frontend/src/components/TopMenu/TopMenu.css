@@ -2,12 +2,14 @@
     width: 100%;
     border-radius: 2px;
     background-color: #FFFFFF;
-    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .top-menu-container{
     display: flex;
     flex-direction: row;
+    margin-top: 30px;
+    border: 1px solid rgba(0,0,0,0.1);
+
 }
 
 .door-categories{
@@ -27,6 +29,7 @@
 
 .carousel{
     width: 80%;
+    position: relative;
     padding: 0 2px;
 }
 
@@ -34,7 +37,7 @@
     width: 171px;
     display: inline-block;
     position: absolute;
-    right: 20%;
+    right: 80px;
     padding-right: 28px;
     z-index: 1;
     padding-top: 20px;
@@ -117,6 +120,31 @@
 }
 
 @media all and (max-width: 1000px) {
+
+}
+
+@media all and (max-width: 900px) {
+    /*.carousel-text{*/
+    /*    right: 8%;*/
+    /*}*/
+    .carousel-text article{
+        font-size: 22px;
+        line-height: 22px;
+    }
+
+    .carousel-text p{
+        font-size: 16px;
+        line-height: 16px;
+        padding-top: 8px;
+    }
+
+    .protected-door-link{
+        font-size: 16px;
+        margin-top: 11px;
+    }
+}
+
+@media all and (max-width: 850px) {
     .top-menu-container{
         flex-direction: column;
     }

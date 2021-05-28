@@ -62,3 +62,25 @@
     padding-bottom: 15px;
     padding-top: 5px;
 }
+
+@media all and (max-width: 650px) {
+    .catalog-container {
+        flex-direction: column;
+        padding: 28px 9px;
+    }
+
+    .catalog{
+        width: 100%;
+    }
+
+    .additional-info{
+        width: 100%;
+        margin-top: 30px;
+    }
+}
+
+@media all and (max-width: 420px) {
+    .catalog-container{
+        padding: 18px 5px;
+    }
+}

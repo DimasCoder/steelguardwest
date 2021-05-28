@@ -24,17 +24,22 @@ class DoorInfoPage extends Component {
             });
     }
 
-    tranlsateDoor(door){
-        if(door === "Квартирні")
+    tranlsateDoor(door) {
+        if (door === "flatDoor")
             return "Двері в квартиру"
-        else if(door === "Вуличні")
+        else if (door === "streetDoor")
             return "Двері на вулицю"
-        else if(door === "Технічні")
+        else if (door === "techDoor")
             return "Технічні двері"
-        else if(door === "Протипожежні")
+        else if (door === "fireDoor")
             return "Протипожежні двері"
     }
 
+    toPriceFormat(e){
+        e = e.toString()
+        e = e.substring(0,e.length - 3) + ' ' + e.substring(e.length - 3)
+        return e
+    }
 
     render() {
         let {doors, door1} = this.state
@@ -55,8 +60,26 @@ class DoorInfoPage extends Component {
                                     <div className="door-main-info">
                                         <h2>Двері {door.doorName}</h2>
                                         <p>Наявність: {door.available ? "На складі" : "Привеземо"}</p>
-                                        <p>Код товару: {door.code}</p>
+                                        {/*<p>Код товару: {door.code}</p>*/}
                                         <p>Категорія: {this.tranlsateDoor(door.doorType)}</p>
+                                        <label>Розмір:</label>
+                                        <div className="select">
+                                            <select value={123} onChange={this.handleChange}
+                                                    name="doorType">
+                                                <option value={'wareHouse'}>880x2050</option>
+                                                <option value={'streetDoor'}>960x250</option>
+                                            </select>
+                                        </div>
+                                        <label>Відкривання:</label>
+                                        <div className="select">
+                                            <select value={123} onChange={this.handleChange}
+                                                    name="doorType">
+                                                <option value={'wareHouse'}>Праве</option>
+                                                <option value={'streetDoor'}>Ліве</option>
+                                            </select>
+                                        </div>
+                                        <label>Ціна: </label>
+                                        <span>{this.toPriceFormat(door.price)} ГРН.</span>
                                     </div>
                                 </div>
                                 <div>

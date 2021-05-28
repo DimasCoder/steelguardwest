@@ -61,18 +61,19 @@ export default class TopMenu extends Component {
         };
         return (
             <div className="top-menu">
+                <div className="container">
                 <div className="top-menu-container">
                     <div className="door-categories">
                         <h2>Каталог дверей</h2>
                         <Line/>
-                        <div className="notAdaptive">
+                        <ul className="notAdaptive">
                             <DoorCategory text={"Складська програма"} subClass={streetDoor} setFilter={this.props.setFilter}/>
                             <DoorCategory text={"Двері на вулицю"} subClass={streetDoor} setFilter={this.props.setFilter}/>
                             <DoorCategory text={"Двері в квартиру"} subClass={flatDoor} setFilter={this.props.setFilter}/>
                             <DoorCategory text={"Технічні двері"} subClass={techDoor} setFilter={this.props.setFilter}/>
                             <DoorCategory text={"Міжкімнатні двері"} subClass={interiorDoor} setFilter={this.props.setFilter}/>
                             {/*<DoorCategory text={"Протипожежні двері"} setFilter={this.props.setFilter}/>*/}
-                        </div>
+                        </ul>
                     </div>
                     <div className="carousel">
                         <div className="carousel-text">
@@ -85,6 +86,7 @@ export default class TopMenu extends Component {
                             <img className="carousel-image" src={def1}/>
                         </Slider>
                     </div>
+                </div>
                 </div>
             </div>
         )

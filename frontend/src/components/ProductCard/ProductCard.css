@@ -109,4 +109,26 @@
     .door-card-container {
         margin: 10px auto;
     }
+
+    .door-card-container{
+        width: 170px;
+    }
+
+    .door-card-container h3{
+        font-size: 14px;
+    }
+
+    .door-card-footer span{
+        font-size: 16px;
+    }
+}
+
+@media all and (max-width: 420px){
+    .door-card-container{
+        width: 155px;
+    }
+
+    .door-card-footer span{
+        font-size: 14px;
+    }
 }

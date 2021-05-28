@@ -12,7 +12,6 @@ const MainSection = props => {
         <div className="container">
             <div className="main-container">
                 <div className="top-container">
-                    <TopMenu setFilter={props.setFilter}/>
                 </div>
                 <div className="bottom-container">
                     {/*<SearchSection search={handleChange}/>*/}

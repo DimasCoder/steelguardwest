@@ -20,6 +20,9 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Checkout from "./components/Checkout/Checkout";
 import Navigation from "./components/Navigation/Navigation";
 import DoorInfoPage from "./components/DoorInfoPage/DoorInfoPage";
+import DeliveryPage from "./pages/DeliveryPage/DeliveryPage";
+import TopMenu from "./components/TopMenu/TopMenu";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
 
 class App extends Component {
     constructor(props) {
@@ -146,6 +149,7 @@ class App extends Component {
                             search={this.inputSearch}
                             cartItems={this.state.cartItems}
                     />
+                    <TopMenu setFilter={this.setFilter}/>
                     <SideDrawer show={this.state.sideDrawerOpen}/>
                     <ShoppingCart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} click={this.backdropClickHandler} show={this.state.shoppingCartOpen}/>
                     {backdrop}
@@ -156,6 +160,8 @@ class App extends Component {
                         <Route exact path={["/", "/home"]} component={Home}/>
                         {console.log(filter)}
                         <Route exact path={["/streetDoor", "/flatDoor", "/techDoor", "/fireDoor", "/interiorDoor" ]} render={() => <Catalog filter={filter} typeFilter={typeFilter}/>}/>
+                        <Route exact path="/delivery" component={DeliveryPage}/>
+                        <Route exact path="/payment" component={PaymentPage}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/signup" component={Register}/>
                         <Route exact path="/register" component={Register}/>
