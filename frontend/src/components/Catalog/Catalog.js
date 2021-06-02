@@ -23,7 +23,7 @@ class Catalog extends Component {
     }
 
     findAllProducts() {
-        axios.get("http://localhost:8080/doors/all")
+        axios.get("/api/doors/all")
             .then(response => response.data)
             .then((data) => {
                 this.setState({products: data, isLoading: false})
