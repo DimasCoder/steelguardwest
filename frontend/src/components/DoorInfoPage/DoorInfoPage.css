@@ -3,8 +3,8 @@
 }
 
 .door-info-page__inner{
-    border: 1px solid rgba(0,0,0,0.1);
     padding: 28px 18px;
+    background-color: #FFFFFF;
 }
 
 .door-info-top{
@@ -59,7 +59,7 @@
 .select{
     position: relative;
     width: 60%;
-
+    display: flex;
 }
 
 .select select{

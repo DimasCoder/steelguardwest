@@ -15,7 +15,7 @@ const DoorCategory = props => {
             <ul className="dropdown-content">
                 {console.log("sclas " + props.subClass)}
                 {props.subClass.map((sClass) => (
-                    <li><Link to={`/` + sClass.url} onClick={() => {props.setFilter(sClass.filter, sClass.url)}}>{sClass.subClass}</Link></li>
+                    <li><Link to={`/doors/filter/${sClass.url}`} onClick={() => {props.setFilter(sClass.filter, sClass.url)}}>{sClass.subClass}</Link></li>
                 ) )}
             </ul>
             <ul className="dropdown-content-adaptive">

@@ -71,7 +71,7 @@ class ProductPanel extends Component {
     }
 
     findAllProducts() {
-        axios.get("/api/flatDoor/all")
+        axios.get("http://localhost:8080/doors/all")
             .then(response => response.data)
             .then((data) => {
                 this.setState({products: data, isLoading: false})

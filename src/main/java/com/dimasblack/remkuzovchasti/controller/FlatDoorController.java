@@ -26,8 +26,8 @@ public class FlatDoorController {
         return door;
     }
 
-    @GetMapping()
-    public Iterable<FlatDoor> flatDoors(@RequestParam(value = "doorType") String doorType){return flatDoorService.findFlatDoor(doorType);}
+    @GetMapping("/filter/{doorType}")
+    public Iterable<FlatDoor> flatDoors(@PathVariable("doorType") String doorType){return flatDoorService.findFlatDoor(doorType);}
 
 
     @PostMapping
