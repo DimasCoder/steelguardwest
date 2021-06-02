@@ -28,7 +28,7 @@
     display: flex;
 }
 .side-drawer__logo-image{
-    width: 70%;
+    width: 35%;
     margin: 0 auto;
 }
 
@@ -70,6 +70,9 @@
     text-decoration: none;
     padding: 5px 0;
     border-bottom: 1px solid #E6E6E6;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
 }
 
 .side-drawer-social{

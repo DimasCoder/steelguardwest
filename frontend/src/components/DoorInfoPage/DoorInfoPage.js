@@ -8,7 +8,9 @@ class DoorInfoPage extends Component {
         super(props);
         this.state = {
             doors: [],
-            door1: []
+            door: [],
+            door1: [],
+            image1 : ''
         }
     }
 
@@ -17,10 +19,10 @@ class DoorInfoPage extends Component {
     }
 
     findAllDoors() {
-        axios.get(`/api/flatDoor/all`)
+        axios.get(`http://localhost:8080/doors/${this.props.match.params.id}`)
             .then(response => response.data)
             .then((data) => {
-                this.setState({doors: data, isLoading: false})
+                this.setState({door: data, image1 : data.file, isLoading: false})
             });
     }
 
@@ -36,26 +38,25 @@ class DoorInfoPage extends Component {
     }
 
     toPriceFormat(e){
-        e = e.toString()
+        e = "" + e
         e = e.substring(0,e.length - 3) + ' ' + e.substring(e.length - 3)
         return e
     }
 
     render() {
-        let {doors, door1} = this.state
+        let {door, door1, image1} = this.state
         let image = 'data:image/png;base64,';
-
+        door1 = door
         return (
             <div className="door-info-page">
-                {doors.map((door) => (
-                    door.doorName.replace(' ', '-').toLowerCase() === this.props.match.params.p2 ?
+                {console.log(door)}
                         <div className="container">
                             <div className="door-info-page__inner">
                                 <div className="door-info-top">
                                     <div className="door-image-container">
                                         <img
                                             className="door-image"
-                                            src={image + door.file.data}/>
+                                            src={image + image1.data}/>
                                     </div>
                                     <div className="door-main-info">
                                         <h2>Двері {door.doorName}</h2>
@@ -79,6 +80,7 @@ class DoorInfoPage extends Component {
                                             </select>
                                         </div>
                                         <label>Ціна: </label>
+                                        {/*<span>{door1.price.toString()} ГРН.</span>*/}
                                         <span>{this.toPriceFormat(door.price)} ГРН.</span>
                                     </div>
                                 </div>
@@ -87,8 +89,6 @@ class DoorInfoPage extends Component {
                                 </div>
                             </div>
                         </div>
-                        : <div></div>
-                ))}
             </div>
         );
     }

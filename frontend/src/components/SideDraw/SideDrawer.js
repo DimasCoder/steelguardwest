@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-scroll";
 import './SideDrawer.css'
-import logo from "../../assets/logodoor.png";
+import logo from "../../assets/logo.png";
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -52,8 +52,10 @@ const SideDrawer = props => {
                     <NavLink exact to="/novelty" className="novelty-link">Новини</NavLink>
                 </nav>
                 <div className="side-drawer__contact">
-                    <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99</a>
-                    <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99</a>
+                    <a className="contact-phone" href="tel:0673824812">(067)-382-48-12 <span>Керівник представництва</span></a>
+                    <a className="contact-phone" href="tel:0672916350">(067)-291-63-50 <span>Приймання замовлень</span></a>
+                    <a className="contact-phone" href="tel:0968381053">(096)-838-10-53 <span>Наявність та логістика</span></a>
+                    <a className="contact-phone" href="tel:0978455159">(097)-845-51-59 <span>Регіональний менеджер</span></a>
                 </div>
                 <div className="side-drawer-social">
                     <a target="_blank" href="http://instagram.com"> <FontAwesomeIcon icon={faInstagram}/></a>

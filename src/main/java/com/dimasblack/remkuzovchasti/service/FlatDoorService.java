@@ -26,6 +26,10 @@ public class FlatDoorService {
         return flatDoorRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
+    public Iterable<FlatDoor> findFlatDoor(String doorType){
+        return flatDoorRepo.getFlatDoorByDoorType(doorType);
+    }
+
     public FlatDoor createDoor(String doorName,
                                   String doorType,
                                   int price,
@@ -49,7 +53,7 @@ public class FlatDoorService {
                                   String burglaryResistance,
                                   MultipartFile file) throws IOException {
         FlatDoor door = new FlatDoor();
-        if(flatDoorRepo.getProductByDoorName(doorName) == null ) {
+        if(flatDoorRepo.getDoorByDoorName(doorName) == null ) {
             door.setDoorName(doorName);
         }else{
             return null;
@@ -89,6 +93,7 @@ public class FlatDoorService {
         door.setFile(fileEntity);
         return flatDoorRepo.save(door);
     }
+
 
     public FlatDoor updateDoor(FlatDoor doorFromDb, FlatDoor door){
         BeanUtils.copyProperties(door, doorFromDb, "id");

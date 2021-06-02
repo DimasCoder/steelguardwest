@@ -20,15 +20,15 @@ export default class TopMenu extends Component {
         this.state = {
             isLoading: true,
             brands: [],
-            streetDoor: [{subClass: "Преміум", filter: 30000, url : 'streetDoor'},
-                {subClass: "Стандарт", filter: 20000, url : 'streetDoor'},
-                {subClass: "Економ", filter: 10000, url : 'streetDoor'}],
-            flatDoor: [{subClass: "Преміум", filter: 30000, url : 'flatDoor'},
-                {subClass: "Стандарт", filter: 20000, url : 'flatDoor'},
-                {subClass: "Економ", filter: 10000, url : 'flatDoor'}],
-            techDoor: [{subClass: "Технічні", filter: 'Forte+', url : 'techDoor'},
-                {subClass: "Протипожежні", filter: 'Maxima', url : 'fireDoor'}],
-            interiorDoor: [{subClass: "TM «BRAMA» складська програма", filter: 'flatDoor', url:'interiorDoor'}]
+            streetDoor: [{subClass: "Преміум", filter: 30000, url: 'streetDoor'},
+                {subClass: "Стандарт", filter: 20000, url: 'streetDoor'},
+                {subClass: "Економ", filter: 10000, url: 'streetDoor'}],
+            flatDoor: [{subClass: "Преміум", filter: 30000, url: 'flatDoor'},
+                {subClass: "Стандарт", filter: 20000, url: 'flatDoor'},
+                {subClass: "Економ", filter: 10000, url: 'flatDoor'}],
+            techDoor: [{subClass: "Технічні", filter: 'Forte+', url: 'techDoor'},
+                {subClass: "Протипожежні", filter: 'Maxima', url: 'fireDoor'}],
+            interiorDoor: [{subClass: "TM «BRAMA» складська програма", filter: 'flatDoor', url: 'interiorDoor'}]
         };
     }
 
@@ -61,32 +61,37 @@ export default class TopMenu extends Component {
         };
         return (
             <div className="top-menu">
-                <div className="container">
-                <div className="top-menu-container">
-                    <div className="door-categories">
-                        <h2>Каталог дверей</h2>
-                        <Line/>
-                        <ul className="notAdaptive">
-                            <DoorCategory text={"Складська програма"} subClass={streetDoor} setFilter={this.props.setFilter}/>
-                            <DoorCategory text={"Двері на вулицю"} subClass={streetDoor} setFilter={this.props.setFilter}/>
-                            <DoorCategory text={"Двері в квартиру"} subClass={flatDoor} setFilter={this.props.setFilter}/>
-                            <DoorCategory text={"Технічні двері"} subClass={techDoor} setFilter={this.props.setFilter}/>
-                            <DoorCategory text={"Міжкімнатні двері"} subClass={interiorDoor} setFilter={this.props.setFilter}/>
-                            {/*<DoorCategory text={"Протипожежні двері"} setFilter={this.props.setFilter}/>*/}
-                        </ul>
-                    </div>
-                    <div className="carousel">
-                        <div className="carousel-text">
-                            <article>Захисти свій дім</article>
-                            <p>вибирай сертифіковані зламостійкі вхідні двері</p>
-                            <NavLink exact to="/protected-door" className="protected-door-link">Детальніше</NavLink>
+                <div>
+                    <div className="top-menu-container">
+                        <div className="door-categories">
+                            <h2>Каталог дверей</h2>
+                            <Line/>
+                            <ul className="notAdaptive">
+                                <DoorCategory text={"Складська програма"} subClass={streetDoor}
+                                              setFilter={this.props.setFilter}/>
+                                <DoorCategory text={"Двері на вулицю"} subClass={streetDoor}
+                                              setFilter={this.props.setFilter}/>
+                                <DoorCategory text={"Двері в квартиру"} subClass={flatDoor}
+                                              setFilter={this.props.setFilter}/>
+                                <DoorCategory text={"Технічні двері"} subClass={techDoor}
+                                              setFilter={this.props.setFilter}/>
+                                <DoorCategory text={"Міжкімнатні двері"} subClass={interiorDoor}
+                                              setFilter={this.props.setFilter}/>
+                                {/*<DoorCategory text={"Протипожежні двері"} setFilter={this.props.setFilter}/>*/}
+                            </ul>
                         </div>
-                        <Slider {...settings}>
-                            <img className="carousel-image" src={def2}/>
-                            <img className="carousel-image" src={def1}/>
-                        </Slider>
+                        <div className="carousel">
+                            <div className="carousel-text">
+                                <article>Захисти свій дім</article>
+                                <p>вибирай сертифіковані зламостійкі вхідні двері</p>
+                                <NavLink exact to="/protected-door" className="protected-door-link">Детальніше</NavLink>
+                            </div>
+                            <Slider {...settings}>
+                                <img className="carousel-image" src={def2}/>
+                                <img className="carousel-image" src={def1}/>
+                            </Slider>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         )

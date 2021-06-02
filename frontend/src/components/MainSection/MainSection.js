@@ -12,10 +12,11 @@ const MainSection = props => {
         <div className="container">
             <div className="main-container">
                 <div className="top-container">
+                    <TopMenu setFilter={props.setFilter}/>
                 </div>
                 <div className="bottom-container">
                     {/*<SearchSection search={handleChange}/>*/}
-                    <Catalog cartItems={props.cartItems} addToCart={props.addToCart} q={props.q}/>
+                    <Catalog url={"all"} cartItems={props.cartItems} addToCart={props.addToCart} q={props.q}/>
                 </div>
             </div>
         </div>

@@ -16,9 +16,10 @@ class Navigation extends Component {
                             <div className="navigation-link nav-dropdown">
                                 <FontAwesomeIcon icon={faComments} /> Номер телефону <FontAwesomeIcon icon={faCaretDown} />
                                 <div className="dropdown-numbers">
-                                    <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99 Рівне</a>
-                                    <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99 Рівне</a>
-                                    <a className="contact-phone" href="tel:0999990999"><span>(</span>+380<span>)</span>-999-09-99 Діма</a>
+                                    <a className="contact-phone" href="tel:0673824812"><span>(</span>067<span>)</span>-382-48-12 Керівник представництва</a>
+                                    <a className="contact-phone" href="tel:0672916350"><span>(</span>067<span>)</span>-291-63-50 Приймання замовлень</a>
+                                    <a className="contact-phone" href="tel:0968381053"><span>(</span>096<span>)</span>-838-10-53 Наявність та логістика</a>
+                                    <a className="contact-phone" href="tel:0978455159"><span>(</span>097<span>)</span>-845-51-59 Регіональний менеджер</a>
                                 </div>
                             </div>
                             <NavLink exact to="/delivery" className="navigation-link">

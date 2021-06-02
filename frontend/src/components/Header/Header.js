@@ -1,7 +1,7 @@
 import React, {useState, useEffect, Component} from 'react';
 import "./Header.css";
 import "../..//App.css";
-import logo from '../../assets/logodoor.png';
+import logo from '../../assets/logo.png';
 import ToggleButton from '../ToggleButton/ToggleButton'
 import {NavLink, Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -54,13 +54,13 @@ class Header extends Component{
                         <FontAwesomeIcon className="search-icon" icon={faSearch} />
                     </div>
 
-                    <a className="logo-link" href="/">
-                        <img
-                            src={logo}
-                            className="header__inner-logo"
-                            alt="Logo"
-                        />
-                    </a>
+                    {/*<a className="logo-link" href="/">*/}
+                    {/*    <img*/}
+                    {/*        src={logo}*/}
+                    {/*        className="header__inner-logo"*/}
+                    {/*        alt="Logo"*/}
+                    {/*    />*/}
+                    {/*</a>*/}
                     {/*<div className="shopping-cart-icon" onClick={this.props.shoppingCartClickHandler}>*/}
                     {/*    <p>Кошик {cartItems.reduce((a, c) => a + c.count, 0)}</p>*/}
                     {/*</div>*/}

@@ -18,7 +18,7 @@
 }
 
 .logo-link{
-    width: 14%;
+    width: 7%;
 }
 
 .logo-link-adaptive{
@@ -239,7 +239,7 @@
     }
     .header__inner-logo-adaptive{
         display: block;
-        width: 85px;
+        width: 45px;
     }
 
     .search-container{

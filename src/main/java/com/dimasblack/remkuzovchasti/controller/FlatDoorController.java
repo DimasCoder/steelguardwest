@@ -1,7 +1,6 @@
 package com.dimasblack.remkuzovchasti.controller;
 
 import com.dimasblack.remkuzovchasti.model.FlatDoor;
-import com.dimasblack.remkuzovchasti.model.Product;
 import com.dimasblack.remkuzovchasti.service.FlatDoorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/flatDoor")
+@RequestMapping("/doors/")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class FlatDoorController {
 
@@ -26,6 +25,9 @@ public class FlatDoorController {
     public FlatDoor oneDoor(@PathVariable("id") FlatDoor door){
         return door;
     }
+
+    @GetMapping()
+    public Iterable<FlatDoor> flatDoors(@RequestParam(value = "doorType") String doorType){return flatDoorService.findFlatDoor(doorType);}
 
 
     @PostMapping

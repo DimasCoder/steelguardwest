@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FlatDoorRepo extends JpaRepository<FlatDoor, Long> {
 
-    FlatDoor getProductByDoorName(String doorName);
+    FlatDoor getDoorByDoorName(String doorName);
 
+    Iterable<FlatDoor> getFlatDoorByDoorType(String doorType);
 }

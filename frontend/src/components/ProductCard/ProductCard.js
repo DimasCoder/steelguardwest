@@ -16,15 +16,6 @@ const ProductCard = props => {
 
     let image = 'data:image/png;base64,' + props.product.file.data;
 
-    let url = ''
-
-    if (props.product.doorType === 'flatDoor') {
-        url = 'flat-door'
-    } else if (props.product.doorType === 'streetDoor') {
-        url = 'street-door'
-    } else if (props.product.doorType === 'techDoor') {
-        url = 'tech-door'
-    }
 
     let toPriceFormat = (e) => {
         e = e.toString()
@@ -46,7 +37,9 @@ const ProductCard = props => {
 
             <div className="door-card-footer">
                 <span>{toPriceFormat(props.product.price)} грн.</span>
-                <NavLink to={`/${url}/${props.product.doorName.replace(' ', '-')}`.toLowerCase()} className="to-cart"
+                {/*<NavLink to={`/doors/${props.product.doorType}/${props.product.doorName.replace(' ', '-')}`.toLowerCase()} className="to-cart"*/}
+                {/*         product={props.product.doorName}>Детальніше</NavLink>*/}
+                <NavLink to={`/doors/${props.product.id}`} className="to-cart"
                          product={props.product.doorName}>Детальніше</NavLink>
             </div>
 
