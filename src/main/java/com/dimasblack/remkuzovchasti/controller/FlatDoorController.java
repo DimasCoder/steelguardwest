@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/doors/")
+@RequestMapping("/doors/")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class FlatDoorController {
 
