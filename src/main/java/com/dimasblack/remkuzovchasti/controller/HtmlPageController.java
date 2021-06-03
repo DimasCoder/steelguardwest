@@ -35,7 +35,7 @@ public class HtmlPageController {
     @GetMapping("/delivery")
     public String delivery(){return "index.html";}
 
-    @GetMapping("/doors/filter/flatDoor")
+    @GetMapping("/doors/filter/*")
     public String flatDoor(){return "index.html";}
 
     @GetMapping("/doors/51")
