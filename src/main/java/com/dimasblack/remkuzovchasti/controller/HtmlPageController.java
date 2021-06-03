@@ -38,7 +38,7 @@ public class HtmlPageController {
     @GetMapping("/doors/filter/flatDoor")
     public String flatDoor(){return "index.html";}
 
-    @GetMapping("/doors/{id}")
+    @GetMapping("/doors/51")
     public String doorId(){return "index.html";}
 
     @RequestMapping(value = {"doors/*", "/doors/{id}", "/doors/filter/flatDoor"}, method = RequestMethod.GET)
