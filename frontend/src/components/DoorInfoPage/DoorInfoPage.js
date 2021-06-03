@@ -19,7 +19,7 @@ class DoorInfoPage extends Component {
     }
 
     findAllDoors() {
-        axios.get(`http://localhost:8080/doors/${this.props.match.params.id}`)
+        axios.get(`/doors/${this.props.match.params.id}`)
             .then(response => response.data)
             .then((data) => {
                 this.setState({door: data, image1 : data.file, isLoading: false})
