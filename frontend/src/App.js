@@ -159,7 +159,7 @@ class App extends Component {
                         <Route exact path="/doors/:id" component={DoorInfoPage}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         {console.log(filter)}
-                        <Route exact path={["/doors/filter/:filter", "/flatDoor"]} render={props => <FilteredCatalog {...props}/>}/>
+                        <Route exact path={["/:filter"]} render={props => <FilteredCatalog {...props}/>}/>
                         <Route exact path="/delivery" component={DeliveryPage}/>
                         <Route exact path="/payment" component={PaymentPage}/>
                         <Route exact path="/admin" component={Login}/>
