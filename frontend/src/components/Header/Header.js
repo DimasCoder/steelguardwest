@@ -24,7 +24,6 @@ class Header extends Component{
 
 
     render(){
-        console.log(this.props.role)
         const {cartItems} = this.props
     return(
         <header className="header">

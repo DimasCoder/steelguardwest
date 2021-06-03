@@ -92,6 +92,15 @@
     padding: 2px;
 }
 
+.select{
+    min-width: 250px;
+
+}
+
+.select select{
+    min-width: 100px!important;
+}
+
 .sort-container .select::before {
     content: "\2228";
     position: absolute;
@@ -107,4 +116,64 @@
     -webkit-transition: .25s all ease;
     -o-transition: .25s all ease;
     transition: .25s all ease;
+}
+
+@media all and (max-width: 1000px) {
+    .filter h4{
+        font-size: 14px;
+    }
+    .check-container label{
+        font-size: 12px;
+    }
+}
+
+@media all and (max-width: 700px) {
+    .filtered-catalog__inner{
+        flex-direction: column;
+    }
+
+    .filter{
+        width: 100%;
+    }
+
+    .filter__inner{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.8s ease-out;
+        max-height: 0px;
+        overflow: hidden;
+    }
+
+    #filter-checkbox{
+        display: none;
+    }
+
+    .price-slider{
+        display: flex;
+        width: 95%!important;
+        margin: 0 auto!important;
+        text-align: center;
+    }
+
+    .checkbox-filter{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .filter p{
+        padding: 0 30px;
+    }
+
+    .carousel-filter{
+        display: none;
+    }
+
+    .filtered-catalog{
+        width: 100%;
+    }
+
+    #filter-checkbox:checked ~ .filter__inner{
+        max-height: 620px;
+    }
 }

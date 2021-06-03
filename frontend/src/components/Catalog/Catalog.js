@@ -45,8 +45,6 @@ class Catalog extends Component {
 
 
     render() {
-        console.log("filter " + this.props.filter)
-        console.log("q " + this.props.q)
         const {products, title} = this.state;
         let filteredProducts = products.filter(
             (product) => {

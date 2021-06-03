@@ -13,7 +13,6 @@ const DoorCategory = props => {
             <span><FontAwesomeIcon icon={faCaretRight}/></span>
             </label>
             <ul className="dropdown-content">
-                {console.log("sclas " + props.subClass)}
                 {props.subClass.map((sClass) => (
                     <li><Link to={`/doors/${sClass.url}`} onClick={() => {props.setFilter(sClass.filter, sClass.url)}}>{sClass.subClass}</Link></li>
                 ) )}

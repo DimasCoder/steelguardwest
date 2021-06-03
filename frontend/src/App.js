@@ -46,7 +46,6 @@ class App extends Component {
     componentDidMount() {
         const user = AuthService.getCurrentUser();
         if (user) {
-            console.log(user)
             this.setState({
                 currentUser: user,
                 showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
@@ -69,7 +68,6 @@ class App extends Component {
         }
         this.setState({cartItems});
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
-        console.log(cartItems.length)
     }
 
     removeFromCart = (product) => {
@@ -158,7 +156,6 @@ class App extends Component {
                         {/*<Router exact path="/" component={MainSection}/>*/}
                         <Route exact path="/door/:id" component={DoorInfoPage}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
-                        {console.log(filter)}
                         <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props}/>}/>
                         <Route exact path="/delivery" component={DeliveryPage}/>
                         <Route exact path="/payment" component={PaymentPage}/>
