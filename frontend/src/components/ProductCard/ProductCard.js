@@ -39,7 +39,7 @@ const ProductCard = props => {
                 <span>{toPriceFormat(props.product.price)} грн.</span>
                 {/*<NavLink to={`/doors/${props.product.doorType}/${props.product.doorName.replace(' ', '-')}`.toLowerCase()} className="to-cart"*/}
                 {/*         product={props.product.doorName}>Детальніше</NavLink>*/}
-                <NavLink to={`/test/doors/${props.product.id}`} className="to-cart"
+                <NavLink to={`/door/${props.product.id}`} className="to-cart"
                          product={props.product.doorName}>Детальніше</NavLink>
             </div>
 
