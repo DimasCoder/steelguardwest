@@ -30,7 +30,7 @@ const FilteredCatalog = (props) => {
     })
 
     const findFilteredProducts = () => {
-        axios.get(`/api/doors/filter/${props.match.params.filter}`)
+        axios.get(`/api/doors/filter/flatDoor`)
             .then(response => response.data)
             .then((data) => {
                 setProducts(data)
