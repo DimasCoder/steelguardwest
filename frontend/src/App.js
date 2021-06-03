@@ -156,12 +156,12 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} setFilter={this.setFilter} addToCart={this.addToCart} q={q}/>}/>
                         {/*<Router exact path="/" component={MainSection}/>*/}
-                        <Route exact path="/doors/:id" component={DoorInfoPage}/>
+                        <Route exact path="/test/doors/:id" component={DoorInfoPage}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         {console.log(filter)}
                         <Route exact path={["/doors/filter/:filter"]} render={props => <FilteredCatalog {...props}/>}/>
                         <Route exact path="/delivery" component={DeliveryPage}/>
-                        <Route exact path="/payment" component={PaymentPage}/>
+                        <Route exact path="/payMent" component={PaymentPage}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/signup" component={Register}/>
                         <Route exact path="/register" component={Register}/>
