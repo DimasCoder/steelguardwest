@@ -32,8 +32,17 @@ public class HtmlPageController {
         return "index.html";
     }
 
+    @GetMapping("/delivery")
+    public String delivery(){return "index.html";}
+
+    @GetMapping("/doors/filter/flatDoor")
+    public String flatDoor(){return "index.html";}
+
+    @GetMapping("/doors/{id}")
+    public String doorId(){return "index.html";}
+
     @RequestMapping(value = {"doors/*", "/doors/{id}", "/doors/filter/flatDoor"}, method = RequestMethod.GET)
-    public String flatDoor(){
+    public String flatDoors(){
         return "index.html";
     }
 
