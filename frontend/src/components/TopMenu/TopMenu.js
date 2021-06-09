@@ -4,8 +4,8 @@ import Line from "../Line/Line";
 import DoorCategory from "../DoorCategory/DoorCategory";
 import axios from "axios";
 import Backdrop from "../Backdrop/Backdrop";
-import def1 from "../../assets/site-banner-antivzlom2-765x268.jpg"
-import def2 from "../../assets/site-banner-antivzlom3-765x268.jpg"
+import def1 from "../../assets/banner1.png"
+import def2 from "../../assets/banner2.png"
 import Loader from "../Loader/Loader";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -20,12 +20,12 @@ export default class TopMenu extends Component {
         this.state = {
             isLoading: true,
             brands: [],
-            streetDoor: [{subClass: "Преміум", filter: 30000, url: 'streetDoor'},
-                {subClass: "Стандарт", filter: 20000, url: 'streetDoor'},
-                {subClass: "Економ", filter: 10000, url: 'streetDoor'}],
-            flatDoor: [{subClass: "Преміум", filter: 30000, url: 'flatDoor'},
-                {subClass: "Стандарт", filter: 20000, url: 'flatDoor'},
-                {subClass: "Економ", filter: 10000, url: 'flatDoor'}],
+            streetDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: 'streetDoor'},
+                {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: 'streetDoor'},
+                {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: 'streetDoor'}],
+            flatDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: 'flatDoor'},
+                {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: 'flatDoor'},
+                {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: 'flatDoor'}],
             techDoor: [{subClass: "Технічні", filter: 'Forte+', url: 'techDoor'},
                 {subClass: "Протипожежні", filter: 'Maxima', url: 'fireDoor'}],
             interiorDoor: [{subClass: "TM «BRAMA» складська програма", filter: 'flatDoor', url: 'interiorDoor'}]
@@ -46,13 +46,40 @@ export default class TopMenu extends Component {
             });
     }
 
+    // playVideo(e){
+    //     console.log(e)
+    //     let video, image, btn;
+    //     video = document.getElementById("video" + e)
+    //     image = document.getElementById("image" + 1)
+    //     btn = document.getElementById("btn-close" + 1)
+    //     // console.log(video.outerHTML + " " + image.outerHTML + " " + btn.outerHTML)
+    //     console.log(video.style.display === "none")
+    //     if(video.style.display === "none"){
+    //         video.style.display = "flex"
+    //         // video.src += "&autoplay=1"
+    //         image.style.display = "none"
+    //         btn.style.display = "flex"
+    //     }
+    // }
+    //
+    // close(e){
+    //     let video, image, btn;
+    //     video = document.getElementById("video" + e)
+    //     image = document.getElementById("image" + e)
+    //     btn = document.getElementById("btn-close" + e)
+    //     console.log(video.outerHTML)
+    //     video.style.display = "none"
+    //     image.style.display = "flex"
+    //     btn.style.display = "none"
+    //     }
+
     render() {
         const {isLoading, brands, streetDoor, flatDoor, techDoor, interiorDoor} = this.state
         const settings = {
             dots: true,
             infinite: true,
-            fade: true,
             autoplay: true,
+            lazyLoad: true,
             speed: 1000,
             autoplaySpeed: 5000,
             slidesToShow: 1,
@@ -67,30 +94,60 @@ export default class TopMenu extends Component {
                             <h2>Каталог дверей</h2>
                             <Line/>
                             <ul className="notAdaptive">
-                                <DoorCategory text={"Складська програма"} subClass={streetDoor}
+                                <DoorCategory text={"Складська програма"} url="streetDoor" subClass={streetDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Двері на вулицю"} subClass={streetDoor}
+                                <DoorCategory text={"Двері на вулицю"} url="streetDoor" subClass={streetDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Двері в квартиру"} subClass={flatDoor}
+                                <DoorCategory text={"Двері в квартиру"} url="flatDoor" subClass={flatDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Технічні двері"} subClass={techDoor}
+                                <DoorCategory text={"Технічні двері"} url="techDoor" subClass={techDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Міжкімнатні двері"} subClass={interiorDoor}
+                                <DoorCategory text={"Міжкімнатні двері"} url="interiorDoor" subClass={interiorDoor}
                                               setFilter={this.props.setFilter}/>
                                 {/*<DoorCategory text={"Протипожежні двері"} setFilter={this.props.setFilter}/>*/}
                             </ul>
                         </div>
                         <div className="carousel">
+                            <div style={{width: '75%'}}>
+                            <Slider {...settings}>
+                                {/*<div className="carousel-video">*/}
+                                {/*    <iframe id="video1" width="563" height="268"*/}
+                                {/*            src="https://www.youtube.com/embed/tgbNymZ7vqY" rel="0"*/}
+                                {/*            enablejsapi="1" modestbranding="0" controls="0" frameBorder="0"*/}
+                                {/*            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"*/}
+                                {/*            style={{display: "none"}}*/}
+                                {/*            allowFullScreen></iframe>*/}
+                                {/*    <img id="image1" className="carousel-image" src={def1}  onClick={() => {this.playVideo(1)}}/>*/}
+                                {/*    <button id="btn-close1" className="btn-close" onClick={() => {this.close(1)}}>x</button>*/}
+                                {/*</div>*/}
+                                {/*<div className="carousel-video">*/}
+                                {/*    <iframe id="video2" width="563" height="268"*/}
+                                {/*            src="https://www.youtube.com/embed/NpU6YHCGZ_M" rel="0"*/}
+                                {/*            enablejsapi="1" modestbranding="0" controls="0" frameBorder="0"*/}
+                                {/*            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"*/}
+                                {/*            style={{display: "none"}}*/}
+                                {/*            allowFullScreen></iframe>*/}
+                                {/*    <img id="image2" className="carousel-image" src={def2}   onClick={() => {this.playVideo(2)}}/>*/}
+                                {/*    <button id="btn-close2" className="btn-close" onClick={() => {this.close(2)}}>x</button>*/}
+                                {/*</div>*/}
+                                <img className="carousel-image" src={def1}/>
+                                <img className="carousel-image" src={def2}/>
+
+                            </Slider>
+                            </div>
+
                             <div className="carousel-text">
                                 <article>Захисти свій дім</article>
                                 <p>вибирай сертифіковані зламостійкі вхідні двері</p>
                                 <NavLink exact to="/protected-door" className="protected-door-link">Детальніше</NavLink>
                             </div>
-                            <Slider {...settings}>
-                                <img className="carousel-image" src={def2}/>
-                                <img className="carousel-image" src={def1}/>
-                            </Slider>
                         </div>
+                        {/*<div className="carousel-test">*/}
+                        {/*    <Slider {...settings}>*/}
+                        {/*        <img className="carousel-image" src={def1}/>*/}
+                        {/*        <img className="carousel-image" src={def2}/>*/}
+                        {/*    </Slider>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

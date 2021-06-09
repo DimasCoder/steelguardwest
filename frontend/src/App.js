@@ -38,7 +38,7 @@ class App extends Component {
             shoppingCartOpen: false,
             q: '',
             cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
-            filter: undefined,
+            filter: [],
             typeFilter : null
         };
     }
@@ -119,9 +119,9 @@ class App extends Component {
         this.setState({q: e})
     }
 
-    setFilter = (e, type) => {
-        this.setState({filter : e})
-        this.setState({typeFilter : type})
+    setFilter = (f1, f2) => {
+        this.setState({filter: [f1, f2]})
+        console.log(this.filter)
     }
 
     render() {
@@ -154,9 +154,9 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} setFilter={this.setFilter} addToCart={this.addToCart} q={q}/>}/>
                         {/*<Router exact path="/" component={MainSection}/>*/}
-                        <Route exact path="/door/:id" component={DoorInfoPage}/>
+                        <Route exact path="/door/:id" render={(props) => <DoorInfoPage {...props}/>}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
-                        <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props}/>}/>
+                        <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props} filter={filter}/>}/>
                         <Route exact path="/delivery" component={DeliveryPage}/>
                         <Route exact path="/payment" component={PaymentPage}/>
                         <Route exact path="/admin" component={Login}/>

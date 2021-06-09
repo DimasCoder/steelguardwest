@@ -16,6 +16,10 @@
     cursor: pointer;
 }
 
+.door-category-text a{
+    text-decoration: none;
+}
+
 .door-category-container:hover span{
     color: #4bb0f5;
     transition: all 0.3s;

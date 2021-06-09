@@ -34,6 +34,13 @@
     text-align: center;
 }
 
+.filter .filter-label{
+    display: none;
+}
+
+#filter-checkbox{
+    display: none;
+}
 .check-container{
     display: flex;
     flex-direction: row;
@@ -136,6 +143,10 @@
         width: 100%;
     }
 
+    .filter .filter-label{
+        display: block;
+    }
+
     .filter__inner{
         display: flex;
         flex-direction: column;
@@ -149,12 +160,6 @@
         display: none;
     }
 
-    .price-slider{
-        display: flex;
-        width: 95%!important;
-        margin: 0 auto!important;
-        text-align: center;
-    }
 
     .checkbox-filter{
         display: flex;
@@ -163,6 +168,13 @@
 
     .filter p{
         padding: 0 30px;
+    }
+
+    .price-slider-container{
+        width: 90%;
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
     }
 
     .carousel-filter{
@@ -175,5 +187,24 @@
 
     #filter-checkbox:checked ~ .filter__inner{
         max-height: 620px;
+        overflow: no-content;
     }
+
+    .sort-container{
+        justify-content: center;
+    }
+
+
+
+    .filter-label{
+        width: 70px;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 400;
+        padding: 8px 70px;
+        background-color: #4bb0f5;
+        color: #FFFFFF;
+        margin: auto;
+    }
+
 }

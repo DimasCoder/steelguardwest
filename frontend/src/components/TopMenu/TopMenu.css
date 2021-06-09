@@ -27,14 +27,27 @@
 
 .carousel{
     width: 80%;
-    position: relative;
+    display: flex;
     padding: 0 2px;
 }
 
+.carousel-video{
+    display: flex!important;
+    flex-direction: row;
+}
+
+/*test*/
+
+.carousel-test{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+/*end*/
 .carousel-text{
     width: 171px;
     display: inline-block;
-    position: absolute;
     right: 80px;
     padding-right: 28px;
     z-index: 1;
@@ -59,6 +72,14 @@
     color: #959595;
     line-height: 18px;
     padding-top: 30px;
+}
+
+.carousel-video iframe{
+    display: none;
+}
+
+.btn-close{
+    display: none;
 }
 
 .protected-door-link{

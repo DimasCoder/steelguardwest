@@ -15,8 +15,7 @@ import {faPaperPlane} from "@fortawesome/free-regular-svg-icons";
 
 
 const FilteredCatalog = (props) => {
-
-    const [priceValue, setPriceValue] = useState([0, 35000]);
+    const [priceValue, setPriceValue] = useState(props.filter.length ? [props.filter[0], props.filter[1]] : [0, 35000]);
     const [resistance, setResistance] = useState([])
     const [series, setSeries] = useState([])
     const [products, setProducts] = useState([])
@@ -154,27 +153,27 @@ const FilteredCatalog = (props) => {
             <div className="filtered-catalog__inner">
                 <div className="filter">
                     <PageTitle title={"Фільтр"}/>
-                    <input type="checkbox" id="filter-checkbox"/>
-                    <label htmlFor="filter-checkbox" className="door-category-text">
-                        <p>Фільтр</p>
-                        <FontAwesomeIcon icon={faFilter}/>
-                    </label>
+                        <input type="checkbox" id="filter-checkbox"/>
+                        <label htmlFor="filter-checkbox" className="filter-label">
+                            Фільтри <FontAwesomeIcon icon={faFilter}/>
+                        </label>
                     <div className="filter__inner">
                         <div>
                             <h4>Ціна:</h4>
                             <Typography id="range-slider" gutterBottom>
                             </Typography>
                             <p>{priceValue[0]} грн. - {priceValue[1]} грн.</p>
+                            <div className="price-slider-container">
                             <SliderRange
                                 value={priceValue}
                                 onChange={rangeSelector}
                                 valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
-                                className="price-slider"
                                 min={0}
                                 max={35000}
                                 step={1}
                             />
+                            </div>
                         </div>
                         {/*    <h4>За призначенням: </h4>*/}
                         {/*<div className="check-container">*/}

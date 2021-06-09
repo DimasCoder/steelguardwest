@@ -63,8 +63,28 @@ public class FlatDoor {
 
     private String image;
 
+    private String image1;
+
+    private String video;
+
+    @Column(columnDefinition="TEXT")
+    private String doorConstruction;
+
+    @Column(columnDefinition="TEXT")
+    private String descBurglaryResistance;
+
+    @Column(columnDefinition="TEXT")
+    private String heatSoundIsolation;
+
+    @Column(columnDefinition="TEXT")
+    private String glazedWindow;
+
+    @Column(columnDefinition="TEXT")
+    private String design;
+
     @OneToOne(cascade = CascadeType.ALL)
     private FileEntity file;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    private FileEntity file1;
 }
