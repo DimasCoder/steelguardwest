@@ -35,8 +35,6 @@ public class HtmlPageController {
     @GetMapping("/delivery")
     public String delivery(){return "index.html";}
 
-    @GetMapping(value = {"/filter/{regex:\\w+}"})
-    public String stDr(){return "index.html";}
 
     @RequestMapping(value = {"/filter/techDoor", "/fireDoor"}, method = RequestMethod.GET)
     public String flatDoors(){
