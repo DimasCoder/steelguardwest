@@ -35,10 +35,10 @@ public class HtmlPageController {
     @GetMapping("/delivery")
     public String delivery(){return "index.html";}
 
-    @GetMapping(value = {"/{regex:\\w+}", "/**/{regex:\\w+}", "/**/**/{regex:\\w+}"})
+    @GetMapping(value = {"/filter/{regex:\\w+}"})
     public String stDr(){return "index.html";}
 
-    @RequestMapping(value = {"/techDoor", "/fireDoor"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/filter/techDoor", "/fireDoor"}, method = RequestMethod.GET)
     public String flatDoors(){
         return "index.html";
     }

@@ -16,12 +16,12 @@ const DoorCategory = props => {
             </label>
             <ul className="dropdown-content">
                 {props.subClass.map((sClass) => (
-                    <li><Link to={`/doors/${sClass.url}`} onClick={() => {props.setFilter(sClass.minPrice, sClass.maxPrice)}}>{sClass.subClass}</Link></li>
+                    <li><Link to={`/doors/${sClass.url}`} onClick={() => {props.setFilter(sClass.minPrice, sClass.maxPrice, sClass.filter)}}>{sClass.subClass}</Link></li>
                 ) )}
             </ul>
             <ul className="dropdown-content-adaptive">
                 {props.subClass.map((sClass) => (
-                    <li><Link to={`/doors/${sClass.url}`} onClick={() => {props.setFilter(sClass.minPrice, sClass.maxPrice)}}>{sClass.subClass}</Link></li>
+                    <li><Link to={`/doors/${sClass.url}`} onClick={() => {props.setFilter(sClass.minPrice, sClass.maxPrice, sClass.filter)}}>{sClass.subClass}</Link></li>
                 ) )}
             </ul>
         </li>

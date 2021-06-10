@@ -20,14 +20,15 @@ export default class TopMenu extends Component {
         this.state = {
             isLoading: true,
             brands: [],
+            warehouseDoor: [{subClass: "Складська програма", minPrice: 0, maxPrice: 35000, filter:true, url: 'skladska'}],
             streetDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: 'streetDoor'},
                 {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: 'streetDoor'},
                 {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: 'streetDoor'}],
             flatDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: 'flatDoor'},
                 {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: 'flatDoor'},
                 {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: 'flatDoor'}],
-            techDoor: [{subClass: "Технічні", filter: 'Forte+', url: 'techDoor'},
-                {subClass: "Протипожежні", filter: 'Maxima', url: 'fireDoor'}],
+            techDoor: [{subClass: "Технічні", minPrice: 0, maxPrice: 35000, url: 'techDoor'},
+                {subClass: "Протипожежні", minPrice: 0, maxPrice: 35000, url: 'fireDoor'}],
             interiorDoor: [{subClass: "TM «BRAMA» складська програма", filter: 'flatDoor', url: 'interiorDoor'}]
         };
     }
@@ -74,7 +75,7 @@ export default class TopMenu extends Component {
     //     }
 
     render() {
-        const {isLoading, brands, streetDoor, flatDoor, techDoor, interiorDoor} = this.state
+        const {isLoading, warehouseDoor, streetDoor, flatDoor, techDoor, interiorDoor} = this.state
         const settings = {
             dots: true,
             infinite: true,
@@ -95,7 +96,7 @@ export default class TopMenu extends Component {
                             <h2>Каталог дверей</h2>
                             <Line/>
                             <ul className="notAdaptive">
-                                <DoorCategory text={"Складська програма"} url="streetDoor" subClass={streetDoor}
+                                <DoorCategory text={"Складська програма"} url="streetDoor" subClass={warehouseDoor}
                                               setFilter={this.props.setFilter}/>
                                 <DoorCategory text={"Двері на вулицю"} url="streetDoor" subClass={streetDoor}
                                               setFilter={this.props.setFilter}/>

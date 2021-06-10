@@ -154,6 +154,19 @@
     transition: .25s all ease;
 }
 
+.filtered-catalog-bottom{
+    display: flex;
+    flex-direction: column;
+}
+
+.no-filter{
+    font-size: 20px;
+    font-weight: 400;
+    color: #707070;
+    text-align: center;
+    padding: 100px;
+}
+
 @media all and (max-width: 1000px) {
     .filter h4{
         font-size: 14px;

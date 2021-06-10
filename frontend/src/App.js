@@ -124,8 +124,8 @@ class App extends Component {
         this.setState({q: e})
     }
 
-    setFilter = (f1, f2) => {
-        this.setState({filter: [f1, f2]})
+    setFilter = (f1, f2, f3) => {
+        this.setState({filter: [f1, f2, f3]})
         console.log(this.filter)
     }
 

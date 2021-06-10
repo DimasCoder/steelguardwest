@@ -71,7 +71,7 @@ class ProductPanel extends Component {
     }
 
     findAllProducts() {
-        axios.get("http://localhost:8080/doors/all")
+        axios.get("http://localhost:8080/api/doors/all")
             .then(response => response.data)
             .then((data) => {
                 this.setState({products: data, isLoading: false})
@@ -102,14 +102,14 @@ class ProductPanel extends Component {
         data.append('series', this.state.series);
         data.append('burglaryResistance', this.state.burglaryResistance);
         data.append('file', this.state.file);
-        axios.post("/api/flatDoor",
+        axios.post("/api/doors/",
             data
         )
         //window.location.reload(true);
     }
 
     deleteProduct = (id) => {
-        axios.delete("api/flatDoor/" + id)
+        axios.delete("api/door/" + id)
             .then(respone => {
                 if (respone.data != null) {
                     this.setState({

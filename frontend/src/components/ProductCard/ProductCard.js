@@ -48,7 +48,7 @@ const ProductCard = props => {
                 alt="Auto"
                 className="door-logo"/>
             <div className="door-card-header">
-                <p>Код: {props.product.code}</p>
+                <p>Серія: {props.product.series}</p>
                 {available}
             </div>
             <h3>Двері {props.product.doorName}</h3>

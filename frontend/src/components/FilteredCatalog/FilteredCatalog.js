@@ -16,7 +16,7 @@ import Loader from "../Loader/Loader";
 
 
 const FilteredCatalog = (props) => {
-    const [priceValue, setPriceValue] = useState(props.filter.length ? [props.filter[0], props.filter[1]] : [0, 35000]);
+    const [priceValue, setPriceValue] = useState(props.filter.length > 1 ? [props.filter[0], props.filter[1]] : [0, 35000]);
     const [resistance, setResistance] = useState([])
     const [series, setSeries] = useState([])
     const [products, setProducts] = useState([])
@@ -36,13 +36,25 @@ const FilteredCatalog = (props) => {
     useEffect(() => {
         findFilteredProducts();
     })
+    // console.log(props.filter[2])
 
     const findFilteredProducts = () => {
-        axios.get(`/api/doors/filter/${props.match.params.filter}`)
-            .then(response => response.data)
-            .then((data) => {
-                setProducts(data);   setIsLoading(false)
-            });
+        if(props.filter[2] === true){
+            axios.get(`/api/doors/all`)
+                .then(response => response.data)
+                .then((data) => {
+                    setProducts(data);   setIsLoading(false)
+                });
+        }
+        else{
+            axios.get(`/api/doors/filter/${props.match.params.filter}`)
+                .then(response => response.data)
+                .then((data) => {
+                    setProducts(data);   setIsLoading(false)
+                });
+        }
+        console.log(products)
+
     }
 
     const rangeSelector = (event, newValue) => {
@@ -280,7 +292,7 @@ const FilteredCatalog = (props) => {
                             <Link exact to="/protected-door" className="protected-door-link">Детальніше</Link>
                         </div>
                     </div>
-                    <div>
+                    <div className="filtered-catalog-bottom">
                         <div className="sort-container">
 
                             <p>{setTitle}</p>
@@ -300,9 +312,10 @@ const FilteredCatalog = (props) => {
                                 </select>
                             </div>
                         </div>
-                        {sortDoors(filteredProducts).map((product) => (
+                        {filteredProducts.length !== 0 ?
+                            sortDoors(filteredProducts).map((product) => (
                             <ProductCard product={product}/>
-                        ))}
+                        )) : <p className="no-filter">Нічого не знайдено</p>}
                     </div>
                 </div>
             </div>
