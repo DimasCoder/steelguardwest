@@ -3,15 +3,16 @@ import './FilteredCatalog.css'
 import axios from "axios";
 import ProductCard from "../ProductCard/ProductCard";
 import PageTitle from "../PageTitle/PageTitle";
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import SliderRange from "@material-ui/core/Slider";
 import Slider from "react-slick";
-import def2 from "../../assets/site-banner-antivzlom3-765x268.jpg";
-import def1 from "../../assets/site-banner-antivzlom2-765x268.jpg";
+import def2 from "../../assets/banner1.png";
+import def1 from "../../assets/banner2.png";
 import {Typography} from "@material-ui/core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
 import {faPaperPlane} from "@fortawesome/free-regular-svg-icons";
+import Loader from "../Loader/Loader";
 
 
 const FilteredCatalog = (props) => {
@@ -20,6 +21,7 @@ const FilteredCatalog = (props) => {
     const [series, setSeries] = useState([])
     const [products, setProducts] = useState([])
     const [sort, setSort] = useState("nameAZ")
+    const [isLoading, setIsLoading] = useState(true)
 
 
     const setTitle = () => {
@@ -39,7 +41,7 @@ const FilteredCatalog = (props) => {
         axios.get(`/api/doors/filter/${props.match.params.filter}`)
             .then(response => response.data)
             .then((data) => {
-                setProducts(data)
+                setProducts(data);   setIsLoading(false)
             });
     }
 
@@ -128,6 +130,7 @@ const FilteredCatalog = (props) => {
     const settings = {
         dots: true,
         infinite: true,
+        lazyLoad: true,
         fade: true,
         autoplay: true,
         speed: 1000,
@@ -265,15 +268,17 @@ const FilteredCatalog = (props) => {
                 </div>
                 <div className="filtered-catalog">
                     <div className="carousel-filter">
-                        <div className="carousel-text">
-                            <article>Захисти свій дім</article>
-                            <p>вибирай сертифіковані зламостійкі вхідні двері</p>
-                            <NavLink exact to="/protected-door" className="protected-door-link">Детальніше</NavLink>
-                        </div>
+                        <div style={{width: '75%'}}>
                         <Slider {...settings}>
                             <img className="carousel-image" src={def2}/>
                             <img className="carousel-image" src={def1}/>
                         </Slider>
+                        </div>
+                        <div className="filter-carousel-text">
+                            <article>Захисти свій дім</article>
+                            <p>вибирай сертифіковані зламостійкі вхідні двері</p>
+                            <Link exact to="/protected-door" className="protected-door-link">Детальніше</Link>
+                        </div>
                     </div>
                     <div>
                         <div className="sort-container">

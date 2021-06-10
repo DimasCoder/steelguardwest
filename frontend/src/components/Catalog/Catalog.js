@@ -6,6 +6,7 @@ import axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import mercedes from "../../assets/mercedes1.png";
+import Loader from "../Loader/Loader";
 
 
 class Catalog extends Component {
@@ -14,7 +15,8 @@ class Catalog extends Component {
         this.state = {
             products: [],
             search: '',
-            title: 'Вхідні двері'
+            title: 'Вхідні двері',
+            isLoading: true
         }
     }
 
@@ -45,7 +47,7 @@ class Catalog extends Component {
 
 
     render() {
-        const {products, title} = this.state;
+        const {products, title, isLoading} = this.state;
         let filteredProducts = products.filter(
             (product) => {
                 if (this.props.q !== '' && this.props.q !== undefined)

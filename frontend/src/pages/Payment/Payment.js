@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Line from "../../components/Line/Line";
 
-class PaymentPage extends Component {
+class Payment extends Component {
     render() {
         return (
             <div className="container">
-                <div className="delivery__inner">
-                    <PageTitle title="ОПЛАТА"/>
+                <div className="page__inner">
+                    <PageTitle title="Оплата"/>
                     <Line/>
                     <p>Оплата придбаних товарів здійснюється відповідно до виставленого рахунку через касу банку, термінал або систему Приват24.</p>
                 </div>
@@ -16,4 +16,4 @@ class PaymentPage extends Component {
     }
 }
 
-export default PaymentPage;
+export default Payment;

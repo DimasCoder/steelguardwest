@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import './DeliveryPage.css'
+import './Delivery.css'
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Line from "../../components/Line/Line";
 
-class DeliveryPage extends Component {
+class Delivery extends Component {
     render() {
         return (
             <div className="container">
-                <div className="delivery__inner">
-                    <PageTitle title="ІНФОРМАЦІЯ ПРО ДОСТАВКУ ТА ВСТАНОВЛЕННЯ"/>
+                <div className="page__inner">
+                    <PageTitle title="Інформація про доставку та встановлення"/>
                     <Line/>
                     <p>Магазин дверей <b>SteelGuardWest</b> здійснює доставку і монтаж придбаних у нас дверей по м.Рівне та Рівненській області!</p>
                     <table>
@@ -38,4 +38,4 @@ class DeliveryPage extends Component {
     }
 }
 
-export default DeliveryPage;
+export default Delivery;

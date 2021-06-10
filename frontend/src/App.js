@@ -20,10 +20,15 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Checkout from "./components/Checkout/Checkout";
 import Navigation from "./components/Navigation/Navigation";
 import DoorInfoPage from "./components/DoorInfoPage/DoorInfoPage";
-import DeliveryPage from "./pages/DeliveryPage/DeliveryPage";
+import Delivery from "./pages/DeliveryPage/Delivery";
 import TopMenu from "./components/TopMenu/TopMenu";
-import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import Payment from "./pages/Payment/Payment";
 import FilteredCatalog from "./components/FilteredCatalog/FilteredCatalog";
+import Contact from "./pages/Contact/Contact";
+import HowToBuy from "./pages/HowToBuy/HowToBuy";
+import Partners from "./pages/Partners/Partners";
+import WhereToBuy from "./pages/WhereToBuy/WhereToBuy";
+import Footer from "./components/Footer/Footer";
 
 class App extends Component {
     constructor(props) {
@@ -139,6 +144,7 @@ class App extends Component {
         return (
             <div>
                 <Router>
+                    <div className="content-container">
                     <Navigation role={showAdminBoard}/>
                     <Header logOut={this.logOut}
                             currentUser={currentUser}
@@ -149,7 +155,6 @@ class App extends Component {
                             cartItems={this.state.cartItems}
                     />
                     <SideDrawer show={this.state.sideDrawerOpen}/>
-                    <ShoppingCart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} click={this.backdropClickHandler} show={this.state.shoppingCartOpen}/>
                     {backdrop}
                     <Switch>
                         <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} setFilter={this.setFilter} addToCart={this.addToCart} q={q}/>}/>
@@ -157,8 +162,12 @@ class App extends Component {
                         <Route exact path="/door/:id" render={(props) => <DoorInfoPage {...props}/>}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props} filter={filter}/>}/>
-                        <Route exact path="/delivery" component={DeliveryPage}/>
-                        <Route exact path="/payment" component={PaymentPage}/>
+                        <Route exact path="/delivery" component={Delivery}/>
+                        <Route exact path="/payment" component={Payment}/>
+                        <Route exact path="/contact" component={Contact}/>
+                        <Route exact path="/how-to-buy" component={HowToBuy}/>
+                        <Route exact path="/partners" component={Partners}/>
+                        <Route exact path="/where-to-buy" component={WhereToBuy}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/signup" component={Register}/>
                         <Route exact path="/register" component={Register}/>
@@ -166,6 +175,8 @@ class App extends Component {
                         <Route exact path="/profile" component={Profile}/>
                         <Route exact path="/admin-panel" render={() => <AdminPanel logOut={this.logOut} user={currentUser} />}/>
                     </Switch>
+                    </div>
+                    <Footer/>
                 </Router>
             </div>
         );

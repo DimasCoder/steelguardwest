@@ -52,7 +52,6 @@ const ProductCard = props => {
                 {available}
             </div>
             <h3>Двері {props.product.doorName}</h3>
-
             <div className="door-card-footer">
                 <span>{toPriceFormat(props.product.price)} грн.</span>
                 {/*<NavLink to={`/doors/${props.product.doorType}/${props.product.doorName.replace(' ', '-')}`.toLowerCase()} className="to-cart"*/}

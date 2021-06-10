@@ -6,6 +6,19 @@
   background-color:  #3282b8;
 }
 
+html, body, #root {
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  min-height: calc(100vh - 359px);
+}
+
 body{
   font-family: Arial, sans-serif;
   background-image: url("./assets/andgleBackground.png");
@@ -30,6 +43,15 @@ input:focus{
   width: 70%;
   margin: 0 auto;
 }
+
+.page__inner{
+  border: 1px solid #E6E6E6;
+  margin-top: 30px;
+  padding: 28px 18px;
+  background-color: #FFFFFF;
+}
+
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;

@@ -64,8 +64,37 @@
 
 .carousel-filter{
     width: 100%;
-    position: relative;
+    display: flex;
+    flex-direction: row;
     padding: 0 2px;
+}
+
+.filter-carousel-text{
+    width: 171px;
+    display: inline-block;
+    padding-right: 28px;
+    z-index: 1;
+    padding-top: 20px;
+}
+
+.filter-carousel-text article{
+    font-size: 24px!important;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    text-align: end;
+    color: #959595;
+    line-height: 25px;
+}
+
+.filter-carousel-text p{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    text-align: end;
+    color: #959595;
+    line-height: 18px;
+    padding-top: 30px;
 }
 
 .sort-container{
@@ -184,6 +213,8 @@
     .filtered-catalog{
         width: 100%;
     }
+
+
 
     #filter-checkbox:checked ~ .filter__inner{
         max-height: 620px;

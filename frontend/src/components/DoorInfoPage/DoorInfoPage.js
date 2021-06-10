@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCheckCircle} from '@fortawesome/free-regular-svg-icons'
 import {faChevronCircleRight, faChevronRight, faTruck} from '@fortawesome/free-solid-svg-icons'
 import Slider from "react-slick";
+import Loader from "../Loader/Loader";
 
 class DoorInfoPage extends Component {
     constructor(props) {
@@ -17,7 +18,8 @@ class DoorInfoPage extends Component {
             door: [],
             viewedDoors: [],
             viewedID: localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [],
-            image1: ''
+            image1: '',
+            isLoading: true
         }
     }
 
@@ -84,7 +86,7 @@ class DoorInfoPage extends Component {
     }
 
     render() {
-        let {door, viewedDoors, image1, viewedID} = this.state
+        let {door, viewedDoors, image1, viewedID, isLoading} = this.state
         let image = 'data:image/png;base64,';
         return (
             <div className="door-info-page">
@@ -188,7 +190,7 @@ class DoorInfoPage extends Component {
                             <p>Раніше ви переглядали:</p>
                             {viewedDoors.reverse().map((product) => (
                                 this.viewedDoors(product.id) ?
-                                    <PreviewedDoor product={product}/>
+                                    <ProductCard product={product}/>
                                     : null
                             ))}
                         </div>

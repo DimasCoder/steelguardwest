@@ -79,6 +79,7 @@ export default class TopMenu extends Component {
             dots: true,
             infinite: true,
             autoplay: true,
+            fade:true,
             lazyLoad: true,
             speed: 1000,
             autoplaySpeed: 5000,
