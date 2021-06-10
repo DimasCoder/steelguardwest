@@ -32,9 +32,9 @@ const ProductCard = props => {
                 alreadyViewed = true
             }
         });
-        if (!alreadyViewed && previouslyViewed.length < 5) {
+        if (!alreadyViewed && previouslyViewed.length < 3) {
             previouslyViewed = [...previouslyViewed, id]
-        } else if (!alreadyViewed && previouslyViewed.length === 5) {
+        } else if (!alreadyViewed && previouslyViewed.length === 3) {
             previouslyViewed.shift()
             previouslyViewed = [...previouslyViewed, id]
         }

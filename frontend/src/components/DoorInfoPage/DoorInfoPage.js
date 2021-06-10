@@ -20,7 +20,9 @@ class DoorInfoPage extends Component {
             viewedDoors: [],
             viewedID: localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [],
             image1: '',
-            isLoading: true
+            isLoading: true,
+            similarDoors: [],
+            similarDoors1: []
         }
     }
 
@@ -41,7 +43,7 @@ class DoorInfoPage extends Component {
         axios.get(`/api/doors/all`)
             .then(response => response.data)
             .then((data) => {
-                this.setState({viewedDoors: data, isLoading: false})
+                this.setState({viewedDoors: data, similarDoors : data, isLoading: false})
             });
     }
 
@@ -86,9 +88,36 @@ class DoorInfoPage extends Component {
         }
     }
 
+    similarDoors(){
+        this.state.similarDoors.map((similarDoor) => {
+            if(similarDoor.doorType === this.state.door.doorType){
+                this.state.similarDoors1.push(similarDoor)
+            }
+            console.log(this.state.similarDoors1)
+            let currentIndex = this.state.similarDoors1.length,  randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                // And swap it with the current element.
+                [this.state.similarDoors1[currentIndex], this.state.similarDoors1[randomIndex]] = [
+                    this.state.similarDoors1[randomIndex], this.state.similarDoors1[currentIndex]];
+            }
+            console.log(this.state.similarDoors1)
+            console.log(this.state.similarDoors1)
+
+        })
+        return this.state.similarDoors1.slice(0,4)
+    }
+
     render() {
-        let {door, viewedDoors, image1, viewedID, isLoading} = this.state
+        let {door, viewedDoors, similarDoors, image1, viewedID, isLoading} = this.state
         let image = 'data:image/png;base64,';
+        // similarDoors = similarDoors.slice(1,5)
         // console.log(!door.length)
         return (
             <div className="door-info-page">
@@ -138,14 +167,20 @@ class DoorInfoPage extends Component {
 
                                         {/*</div>*/}
                                         <input className="radio" id="one" name="group" type="radio" checked/>
+                                        {door.doorConstruction ?
                                         <input className="radio" id="two" name="group" type="radio"/>
+                                        : null
+                                        }
                                         <div className="tabs">
                                             <label className="tab" id="one-tab" htmlFor="one">Характеристикі &nbsp;
                                                 <FontAwesomeIcon
                                                     icon={faChevronRight}/></label>
-                                            <label className="tab" id="two-tab" htmlFor="two">Докладніше &nbsp;
+                                            {door.doorConstruction ?
+
+                                                <label className="tab" id="two-tab" htmlFor="two">Докладніше &nbsp;
                                                 <FontAwesomeIcon
                                                     icon={faChevronRight}/></label>
+                                                : null}
                                         </div>
                                         <div className="panels">
                                             <div className="panel" id="one-panel">
@@ -235,6 +270,12 @@ class DoorInfoPage extends Component {
                                                         enablejsapi="1" modestbranding="0" controls="0" frameBorder="0"
                                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
                                             </div>
+                                        </div>
+                                        <p className="similar-products-text">Схожі товари</p>
+                                        <div className="similar-products">
+                                            {this.similarDoors().map((product) => (
+                                                    <PreviewedDoor product={product}/>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

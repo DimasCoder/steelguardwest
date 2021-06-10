@@ -4,9 +4,11 @@ import Line from "../Line/Line";
 import ProductCard from '../ProductCard/ProductCard'
 import axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import {faMailBulk, faSearch} from "@fortawesome/free-solid-svg-icons";
 import mercedes from "../../assets/mercedes1.png";
 import Loader from "../Loader/Loader";
+import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
+import {NavLink} from "react-router-dom";
 
 
 class Catalog extends Component {
@@ -78,6 +80,14 @@ class Catalog extends Component {
                     <a href="/flatDoor">Комплектация входных металлических дверей ТМ STEELGUARD стала еще лучше!</a>
                     <p>Теперь и навсегда – бонус для покупателей входных дверей ТМ STEELGUARD- два замка Kale (Турция)- панели из влагостойкого МДФ Влагостойкий МДФЕсли вы выбираете входную дверь с МДФ панелями, обратите внимание на то, какой именно МДФ использует ...</p>
                     <Line/>
+                    <div className="subscribe-container">
+                        <FontAwesomeIcon className="subscribe-icon" icon={faEnvelope}/>
+                        <h4>Підпишіться на розсилку!</h4>
+                        <p>Залишайтеся в курсі останніх новин і спецпропозицій</p>
+                        <input type="email" placeholder="Email"/>
+                        <NavLink exact to="/novelty" className="novelty-link">Підписатися</NavLink>
+
+                    </div>
                 </div>
             </div>
         )

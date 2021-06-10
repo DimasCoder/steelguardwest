@@ -39,7 +39,7 @@ const PreviewedDoor = props => {
     }
 
     return (
-        <div className="door-card-container">
+        <a href={`/door/${props.product.id}`} className="door-card-container">
             <img
                 src={image}
                 alt="Auto"
@@ -58,7 +58,7 @@ const PreviewedDoor = props => {
                          product={props.product.doorName} onClick={() => {addToLocalStorage(props.product.id)}}>Детальніше</a>
             </div>
 
-        </div>
+        </a>
     )
 }
 export default PreviewedDoor;
