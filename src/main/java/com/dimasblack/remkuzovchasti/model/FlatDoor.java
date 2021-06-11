@@ -21,7 +21,7 @@ public class FlatDoor {
 
     private String doorType;
 
-    private boolean isAvailable;
+    private boolean available;
 
     private int price;
 

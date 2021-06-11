@@ -20,7 +20,7 @@ export default class TopMenu extends Component {
         this.state = {
             isLoading: true,
             brands: [],
-            warehouseDoor: [{subClass: "Складська програма", minPrice: 0, maxPrice: 35000, filter:true, url: 'skladska'}],
+            warehouseDoor: [{subClass: "Складська програма", minPrice: 0, maxPrice: 35000, filter:true, url: 'warehouse'}],
             streetDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: 'streetDoor'},
                 {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: 'streetDoor'},
                 {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: 'streetDoor'}],
@@ -96,7 +96,7 @@ export default class TopMenu extends Component {
                             <h2>Каталог дверей</h2>
                             <Line/>
                             <ul className="notAdaptive">
-                                <DoorCategory text={"Складська програма"} url="streetDoor" subClass={warehouseDoor}
+                                <DoorCategory text={"Складська програма"} url="warehouse" subClass={warehouseDoor}
                                               setFilter={this.props.setFilter}/>
                                 <DoorCategory text={"Двері на вулицю"} url="streetDoor" subClass={streetDoor}
                                               setFilter={this.props.setFilter}/>

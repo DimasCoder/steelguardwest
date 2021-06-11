@@ -29,6 +29,8 @@ import HowToBuy from "./pages/HowToBuy/HowToBuy";
 import Partners from "./pages/Partners/Partners";
 import WhereToBuy from "./pages/WhereToBuy/WhereToBuy";
 import Footer from "./components/Footer/Footer";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import ProtectedDoor from "./pages/ProtectedDoor/ProtectedDoor";
 
 class App extends Component {
     constructor(props) {
@@ -168,6 +170,8 @@ class App extends Component {
                         <Route exact path="/how-to-buy" component={HowToBuy}/>
                         <Route exact path="/partners" component={Partners}/>
                         <Route exact path="/where-to-buy" component={WhereToBuy}/>
+                        <Route exact path="/about-us" component={AboutUs}/>
+                        <Route exact path="/protected-door" component={ProtectedDoor}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/signup" component={Register}/>
                         <Route exact path="/register" component={Register}/>

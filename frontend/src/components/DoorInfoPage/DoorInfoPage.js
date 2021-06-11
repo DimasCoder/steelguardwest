@@ -90,7 +90,7 @@ class DoorInfoPage extends Component {
 
     similarDoors(){
         this.state.similarDoors.map((similarDoor) => {
-            if(similarDoor.doorType === this.state.door.doorType){
+            if(similarDoor.doorType === this.state.door.doorType && similarDoor.id !== this.state.door.id){
                 this.state.similarDoors1.push(similarDoor)
             }
             console.log(this.state.similarDoors1)

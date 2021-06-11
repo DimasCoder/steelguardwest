@@ -39,20 +39,11 @@ const FilteredCatalog = (props) => {
     // console.log(props.filter[2])
 
     const findFilteredProducts = () => {
-        if(props.filter[2] === true){
-            axios.get(`/api/doors/all`)
-                .then(response => response.data)
-                .then((data) => {
-                    setProducts(data);   setIsLoading(false)
-                });
-        }
-        else{
             axios.get(`/api/doors/filter/${props.match.params.filter}`)
                 .then(response => response.data)
                 .then((data) => {
                     setProducts(data);   setIsLoading(false)
                 });
-        }
         console.log(products)
 
     }
@@ -186,7 +177,7 @@ const FilteredCatalog = (props) => {
                                 aria-labelledby="range-slider"
                                 min={0}
                                 max={35000}
-                                step={1}
+                                step={50}
                             />
                             </div>
                         </div>
@@ -295,7 +286,7 @@ const FilteredCatalog = (props) => {
                     <div className="filtered-catalog-bottom">
                         <div className="sort-container">
 
-                            <p>{setTitle}</p>
+                            <p>Знайдено {filteredProducts.length} дверей</p>
 
                             <div className="select">
                                 <label>Сортування: </label>

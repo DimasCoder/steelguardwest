@@ -5,9 +5,32 @@ import {faHome, faGift, faMapMarkerAlt, faAd, faPercent, faUserTag} from '@forta
 import {NavLink} from "react-router-dom";
 import {faAddressCard, faBookmark, faIdBadge, faMoneyBillAlt, faPaperPlane} from "@fortawesome/free-regular-svg-icons";
 import {faFacebookF, faInstagram, faYoutube} from "@fortawesome/free-brands-svg-icons";
+import axios from "axios";
 
 class Footer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: ''
+        }
+        this.inputChange = this.inputChange.bind(this);
+    }
+
+    subscribeEmail = () => {
+        axios.post("api/emails/", {
+            email : this.state.email
+        })
+    }
+
+    inputChange(e) {
+        const { name, value } = e.target;
+
+        this.setState({ [name]: value })
+
+    }
+
     render() {
+        const {email} = this.state;
         return (
             <footer className="footer">
                 <div className="footer-top">
@@ -71,8 +94,10 @@ class Footer extends Component {
                             <div className="footer-bottom-item">
                                 <h6>Підписатися на розсилку</h6>
                                 <div className="footer-subscribe">
-                                    <input type="email" placeholder="Email"/>
-                                    <NavLink exact to="/novelty" className="novelty-link">Підписатися</NavLink>
+                                    <input name="email" value={email} onChange={this.inputChange} type="email" placeholder="Email"/>
+                                    <button type="button" className="novelty-link" onClick={this.subscribeEmail}><a
+                                        href="/">Підписатися</a></button>
+                                    {/*<NavLink exact to="/novelty" className="novelty-link">Підписатися</NavLink>*/}
                                 </div>
                             </div>
                             <div className="footer-bottom-item">

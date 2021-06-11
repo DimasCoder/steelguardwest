@@ -117,7 +117,7 @@
 }
 
 .sort-container label{
-    font-size: 14px;
+    font-size: 16px;
     line-height: 14px;
     font-weight: 400;
     color: #707070;
@@ -172,7 +172,7 @@
         font-size: 14px;
     }
     .check-container label{
-        font-size: 12px;
+        font-size: 17px;
     }
 }
 
@@ -235,7 +235,12 @@
     }
 
     .sort-container{
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sort-container p{
+        margin-bottom: 10px;
     }
 
 
