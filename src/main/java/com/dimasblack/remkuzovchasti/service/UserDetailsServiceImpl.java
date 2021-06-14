@@ -1,6 +1,5 @@
 package com.dimasblack.remkuzovchasti.service;
 
-import com.dimasblack.remkuzovchasti.model.Product;
 import com.dimasblack.remkuzovchasti.model.User;
 import com.dimasblack.remkuzovchasti.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.dimasblack.remkuzovchasti.controller;
 
-import com.dimasblack.remkuzovchasti.model.AutoModel;
 import com.dimasblack.remkuzovchasti.model.User;
 import com.dimasblack.remkuzovchasti.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

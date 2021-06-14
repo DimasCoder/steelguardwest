@@ -1,27 +1,17 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Backdrop from "./components/Backdrop/Backdrop";
 import Header from "./components/Header/Header";
 import SideDrawer from "./components/SideDraw/SideDrawer";
-import Catalog from "./components/Catalog/Catalog";
 import MainSection from "./components/MainSection/MainSection";
-import AutoPage from "./components/AutoPage/AutoPage";
 import Home from "./components/Auth/home.component";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
-import Profile from "./components/Auth/profile.component";
-import BoardModerator from "./components/Auth/board-moderator.component";
-import BoardUser from "./components/Auth/board-user.component";
-import BoardAdmin from "./components/Auth/board-admin.component";
 import AuthService from './services/auth.service'
 import AdminPanel from "./components/AdminPanel/AdminPanel";
-import SearchSection from "./components/SearchSection/SearchSection";
-import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import Checkout from "./components/Checkout/Checkout";
 import Navigation from "./components/Navigation/Navigation";
 import DoorInfoPage from "./components/DoorInfoPage/DoorInfoPage";
 import Delivery from "./pages/DeliveryPage/Delivery";
-import TopMenu from "./components/TopMenu/TopMenu";
 import Payment from "./pages/Payment/Payment";
 import FilteredCatalog from "./components/FilteredCatalog/FilteredCatalog";
 import Contact from "./pages/Contact/Contact";
@@ -160,7 +150,6 @@ class App extends Component {
                     {backdrop}
                     <Switch>
                         <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} setFilter={this.setFilter} addToCart={this.addToCart} q={q}/>}/>
-                        {/*<Router exact path="/" component={MainSection}/>*/}
                         <Route exact path="/door/:id" render={(props) => <DoorInfoPage {...props}/>}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props} filter={filter}/>}/>
@@ -174,9 +163,6 @@ class App extends Component {
                         <Route exact path="/protected-door" component={ProtectedDoor}/>
                         <Route exact path="/admin" component={Login}/>
                         <Route exact path="/signup" component={Register}/>
-                        <Route exact path="/register" component={Register}/>
-                        <Route exact path="/checkout" render={() => <Checkout cartItems={this.state.cartItems} removeFromCart={this.removeFromCart}/>}/>
-                        <Route exact path="/profile" component={Profile}/>
                         <Route exact path="/admin-panel" render={() => <AdminPanel logOut={this.logOut} user={currentUser} />}/>
                     </Switch>
                     </div>

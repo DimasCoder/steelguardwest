@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import './DoorInfoPage.css'
 import axios from "axios";
-import Line from "../Line/Line";
-import ProductCard from "../ProductCard/ProductCard";
 import PreviewedDoor from "../PreviewedDoor/PreviewedDoor";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCheckCircle} from '@fortawesome/free-regular-svg-icons'
-import {faChevronCircleRight, faChevronRight, faTruck} from '@fortawesome/free-solid-svg-icons'
-import Slider from "react-slick";
+import {faChevronRight, faTruck} from '@fortawesome/free-solid-svg-icons'
 import Loader from "../Loader/Loader";
 import logo from "../../assets/logo.png";
 
@@ -93,7 +90,6 @@ class DoorInfoPage extends Component {
             if(similarDoor.doorType === this.state.door.doorType && similarDoor.id !== this.state.door.id){
                 this.state.similarDoors1.push(similarDoor)
             }
-            console.log(this.state.similarDoors1)
             let currentIndex = this.state.similarDoors1.length,  randomIndex;
 
             // While there remain elements to shuffle...
@@ -107,9 +103,6 @@ class DoorInfoPage extends Component {
                 [this.state.similarDoors1[currentIndex], this.state.similarDoors1[randomIndex]] = [
                     this.state.similarDoors1[randomIndex], this.state.similarDoors1[currentIndex]];
             }
-            console.log(this.state.similarDoors1)
-            console.log(this.state.similarDoors1)
-
         })
         return this.state.similarDoors1.slice(0,4)
     }
@@ -124,7 +117,6 @@ class DoorInfoPage extends Component {
                 {!isLoading ? (
                 <div className="container">
                     <div className="door-info-page__inner">
-                        {console.log(door.doorName)}
                         {door.doorName !== undefined ? (
                                 <div className="door-info-left">
                                     <div className="door-info-top">

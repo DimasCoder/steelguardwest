@@ -4,9 +4,6 @@ import Line from "../Line/Line";
 import ProductCard from '../ProductCard/ProductCard'
 import axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMailBulk, faSearch} from "@fortawesome/free-solid-svg-icons";
-import mercedes from "../../assets/mercedes1.png";
-import Loader from "../Loader/Loader";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import {NavLink} from "react-router-dom";
 
@@ -18,8 +15,10 @@ class Catalog extends Component {
             products: [],
             search: '',
             title: 'Вхідні двері',
-            isLoading: true
+            isLoading: true,
+            email: ''
         }
+        this.inputChange = this.inputChange.bind(this);
     }
 
     componentDidMount() {
@@ -47,9 +46,22 @@ class Catalog extends Component {
             return 'Всі двері'
     }
 
+    subscribeEmail = () => {
+        axios.post("api/emails/", {
+            email : this.state.email
+        })
+    }
+
+    inputChange(e) {
+        const { name, value } = e.target;
+
+        this.setState({ [name]: value })
+
+    }
+
 
     render() {
-        const {products, title, isLoading} = this.state;
+        const {products, email} = this.state;
         let filteredProducts = products.filter(
             (product) => {
                 if (this.props.q !== '' && this.props.q !== undefined)
@@ -84,8 +96,9 @@ class Catalog extends Component {
                         <FontAwesomeIcon className="subscribe-icon" icon={faEnvelope}/>
                         <h4>Підпишіться на розсилку!</h4>
                         <p>Залишайтеся в курсі останніх новин і спецпропозицій</p>
-                        <input type="email" placeholder="Email"/>
-                        <NavLink exact to="/novelty" className="novelty-link">Підписатися</NavLink>
+                        <input name="email" value={email} onChange={this.inputChange} type="email" placeholder="Email"/>
+                        <button type="button" className="subscribe-button" onClick={this.subscribeEmail}><a
+                            href="/">Підписатися</a></button>
 
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 package com.dimasblack.remkuzovchasti.service;
 
 import com.dimasblack.remkuzovchasti.model.FileEntity;
-import com.dimasblack.remkuzovchasti.repo.AutoBrandRepo;
 import com.dimasblack.remkuzovchasti.repo.FileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +16,6 @@ public class FileService {
     @Autowired
     private FileRepo fileRepo;
 
-    @Autowired
-    private AutoBrandRepo autoBrandRepo;
-
 
     public FileEntity save(MultipartFile file, String brandName) throws IOException {
         FileEntity fileEntity = new FileEntity();
@@ -27,7 +23,6 @@ public class FileService {
         fileEntity.setContentType(file.getContentType());
         fileEntity.setData(file.getBytes());
         fileEntity.setSize(file.getSize());
-        fileEntity.setAutoBrand(autoBrandRepo.getAutoBrandByBrandName(brandName));
         return fileRepo.save(fileEntity);
     }
 

@@ -1,8 +1,5 @@
 import React, {useState} from 'react'
 import './ProductCard.css'
-import logo from '../../assets/rem-komplect.jpg'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 
 const ProductCard = props => {

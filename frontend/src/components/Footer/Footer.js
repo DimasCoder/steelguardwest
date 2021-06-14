@@ -95,7 +95,7 @@ class Footer extends Component {
                                 <h6>Підписатися на розсилку</h6>
                                 <div className="footer-subscribe">
                                     <input name="email" value={email} onChange={this.inputChange} type="email" placeholder="Email"/>
-                                    <button type="button" className="novelty-link" onClick={this.subscribeEmail}><a
+                                    <button type="button" className="subscribe-button" onClick={this.subscribeEmail}><a
                                         href="/">Підписатися</a></button>
                                     {/*<NavLink exact to="/novelty" className="novelty-link">Підписатися</NavLink>*/}
                                 </div>

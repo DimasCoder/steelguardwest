@@ -21,9 +21,6 @@ public class FileEntity {
     @Lob
     private byte[] data;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private AutoBrand autoBrand;
-
     public String getId() {
         return id;
     }
@@ -64,11 +61,4 @@ public class FileEntity {
         this.data = data;
     }
 
-    public AutoBrand getAutoBrand() {
-        return autoBrand;
-    }
-
-    public void setAutoBrand(AutoBrand autoBrand) {
-        this.autoBrand = autoBrand;
-    }
 }

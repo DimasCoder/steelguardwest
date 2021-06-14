@@ -2,7 +2,6 @@ import React from 'react'
 import "./MainSection.css"
 import Catalog from "../Catalog/Catalog";
 import TopMenu from "../TopMenu/TopMenu";
-import SearchSection from "../SearchSection/SearchSection";
 
 const MainSection = props => {
     let handleChange = (e) =>{

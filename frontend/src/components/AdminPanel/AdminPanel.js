@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
 import './AdminPanel.css'
 import AuthService from "../../services/auth.service";
-import axios from "axios";
 import {Redirect} from "react-router-dom";
 import Line from "../Line/Line";
-import DoorCategory from "../DoorCategory/DoorCategory";
-import Loader from "../Loader/Loader";
 import AdminLink from "./AdminLink/AdminLink";
-import AdminData from "./AdminData/AdminData";
 import ProductPanel from "./Product/ProductPanel";
-import BrandPanel from "./Brand/BrandPanel";
-import ModelPanel from "./Model/ModelPanel";
+import SendMail from "./SendMail/SendMail";
 
 class AdminPanel extends Component {
     constructor(props) {
@@ -32,7 +27,6 @@ class AdminPanel extends Component {
             image: "https://image.flaticon.com/icons/png/512/37/37543.png",
             isLoading: true
         }
-        console.log(this.props.currentUser)
         this.showBrand = this.showBrand.bind(this);
         this.showModel = this.showModel.bind(this);
         this.showProduct = this.showProduct.bind(this);
@@ -78,7 +72,6 @@ class AdminPanel extends Component {
             models,
             image
         } = this.state
-        console.log(showBrands)
         return (
             <div className="container">
                 {(this.state.userReady) ?
@@ -95,19 +88,15 @@ class AdminPanel extends Component {
                                     </a>
                                 </div>
                                 <Line/>
-                                <AdminLink name="Марки" click={this.showBrand}/>
-                                <AdminLink name="Моделі" click={this.showModel}/>
-                                <AdminLink name="Товари" click={this.showProduct}/>
+                                <AdminLink name="Емейл" click={this.showBrand}/>
+                                <AdminLink name="Двері" click={this.showProduct}/>
                             </div>
                         </div>
                         <div className="admin-content">
                             <div className="admin__inner-panel">
                                 {showBrands ? (
-                                        <BrandPanel/>
+                                        <SendMail/>
                                     )
-                                    : showModels ? (
-                                            <ModelPanel/>
-                                        )
                                         : showProducts ? (
                                                 <ProductPanel/>
                                             )

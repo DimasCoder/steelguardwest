@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import './ProductPanel.css'
-import AuthService from "../../../services/auth.service";
-import AdminData from "../AdminData/AdminData";
 
 class ProductPanel extends Component {
     constructor(props) {
@@ -109,7 +107,7 @@ class ProductPanel extends Component {
     }
 
     deleteProduct = (id) => {
-        axios.delete("api/door/" + id)
+        axios.delete("/api/door/" + id)
             .then(respone => {
                 if (respone.data != null) {
                     this.setState({
@@ -335,25 +333,24 @@ class ProductPanel extends Component {
                         <th>Зображення</th>
                         <th>Назва</th>
                         <th>Ціна</th>
-                        <th>Код</th>
+                        <th>Тип</th>
                         <th>Наявність</th>
-                        <th>Продано</th>
+                        <th>Серія</th>
                         <th>Видалити</th>
                     </tr>
                     {products.map((product, index) => (
                         <tr key={index}>
-                            {console.log(product)}
                             <td>{product.id}</td>
                             <td><img
                                 className="data-image"
                                 src={`data:image/png;base64,${product.file.data}`}
                                 alt="Admin data"
                             /></td>
-                            <td>{product.productName}</td>
+                            <td>{product.doorName}</td>
                             <td>{product.price}</td>
-                            <td>{product.code}</td>
+                            <td>{product.doorType}</td>
                             <td>{product.available ? "Наявно" : "Відсутньо"}</td>
-                            <td>{product.countOfSold}</td>
+                            <td>{product.series}</td>
                             <td><input type="button" value="X"
                                        onClick={this.deleteProduct.bind(this, product.id)}
                                        className="btn-cancel"/>

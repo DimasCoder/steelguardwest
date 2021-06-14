@@ -61,6 +61,10 @@ public class FlatDoor {
 
     private String burglaryResistance;
 
+    private String size;
+
+    private String note;
+
     private String image;
 
     private String image1;
