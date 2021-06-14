@@ -89,7 +89,7 @@ class Footer extends Component {
                             <div className="footer-bottom-item">
                                 <p>© 2021 Steel Guard West.
                                     <br/>
-                                    Всі права захищені.</p>
+                                    Всі права захищені</p>
                             </div>
                             <div className="footer-bottom-item">
                                 <h6>Підписатися на розсилку</h6>

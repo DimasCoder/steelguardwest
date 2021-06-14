@@ -62,9 +62,6 @@ class AdminPanel extends Component {
         this.setState({showBrands: false, showModels: false, showProducts: true})
     }
 
-
-
-
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect}/>
