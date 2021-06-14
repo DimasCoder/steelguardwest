@@ -1,11 +1,8 @@
 package com.dimasblack.remkuzovchasti.service;
 
-import com.dimasblack.remkuzovchasti.model.AutoModel;
 import com.dimasblack.remkuzovchasti.model.FileEntity;
 import com.dimasblack.remkuzovchasti.model.FlatDoor;
-import com.dimasblack.remkuzovchasti.model.Product;
 import com.dimasblack.remkuzovchasti.repo.FlatDoorRepo;
-import com.dimasblack.remkuzovchasti.repo.ProductRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -28,6 +25,10 @@ public class FlatDoorService {
 
     public Iterable<FlatDoor> findFlatDoor(String doorType){
         return flatDoorRepo.getFlatDoorByDoorType(doorType);
+    }
+
+    public Iterable<FlatDoor> findWarehouseDoors(){
+        return flatDoorRepo.getFlatDoorsByAvailableTrue();
     }
 
     public FlatDoor createDoor(String doorName,
