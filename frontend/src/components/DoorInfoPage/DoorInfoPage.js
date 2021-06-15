@@ -17,6 +17,7 @@ class DoorInfoPage extends Component {
             viewedDoors: [],
             viewedID: localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [],
             image1: '',
+            image2: '',
             isLoading: true,
             similarDoors: [],
             similarDoors1: []
@@ -108,10 +109,9 @@ class DoorInfoPage extends Component {
     }
 
     render() {
-        let {door, viewedDoors, similarDoors, image1, viewedID, isLoading} = this.state
+        let {door, viewedDoors, similarDoors, image1, image2, viewedID, isLoading} = this.state
         let image = 'data:image/png;base64,';
-        // similarDoors = similarDoors.slice(1,5)
-        // console.log(!door.length)
+
         return (
             <div className="door-info-page">
                 {!isLoading ? (
@@ -129,35 +129,13 @@ class DoorInfoPage extends Component {
                                             <h2>Двері {door.doorName}</h2>
                                             {this.availability()}
                                             <p>Серія: {door.series}</p>
-                                            {/*<p>Код товару: {door.code}</p>*/}
                                             <p>Категорія: {this.tranlsateDoor(door.doorType)}</p>
-                                            <p>Розмір: 880х2050 / 960х2050</p>
-                                            {/*<label>Відкривання:</label>*/}
-                                            {/*<div className="select">*/}
-                                            {/*    <select value={123} onChange={this.handleChange}*/}
-                                            {/*            name="doorType">*/}
-                                            {/*        <option value={'wareHouse'}>Праве</option>*/}
-                                            {/*        <option value={'streetDoor'}>Ліве</option>*/}
-                                            {/*    </select>*/}
-                                            {/*</div>*/}
+                                            <p>Розмір: {door.size}</p>
                                             <label>Ціна: </label>
-                                            {/*<span>{door1.price.toString()} ГРН.</span>*/}
                                             <span>{this.toPriceFormat(door.price)} ГРН.</span>
                                         </div>
                                     </div>
                                     <div className="door-info-bottom">
-                                        {/*<div>*/}
-                                        {/*    <button className="tab-button active-button">Характеристикі &nbsp;<FontAwesomeIcon*/}
-                                        {/*        icon={faChevronRight}/></button>*/}
-                                        {/*    <button className="tab-button">Докладніше &nbsp;<FontAwesomeIcon*/}
-                                        {/*        icon={faChevronRight}/></button>*/}
-                                        {/*</div>*/}
-                                        {/*<div id="chars" className="tab-content">*/}
-
-                                        {/*</div>*/}
-                                        {/*<div id="desc-chars" className="tab-content">*/}
-
-                                        {/*</div>*/}
                                         <input className="radio" id="one" name="group" type="radio" checked/>
                                         {door.doorConstruction ?
                                         <input className="radio" id="two" name="group" type="radio"/>
@@ -241,10 +219,6 @@ class DoorInfoPage extends Component {
                                                         <td>Накладка на поріг з нерж. сталі</td>
                                                         <td>Присутня</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Система захисту</td>
-                                                        <td>{door.burglaryResistance}</td>
-                                                    </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -261,6 +235,9 @@ class DoorInfoPage extends Component {
                                                 <iframe width="660" height="370" src={door.video} rel="0"
                                                         enablejsapi="1" modestbranding="0" controls="0" frameBorder="0"
                                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
+                                                <img
+                                                    className="resistance-image"
+                                                    src={image + image2.data}/>
                                             </div>
                                         </div>
                                         <p className="similar-products-text">Схожі товари</p>

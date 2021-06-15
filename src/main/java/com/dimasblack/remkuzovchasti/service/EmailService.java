@@ -16,7 +16,14 @@ public class EmailService {
     }
 
     public Email createEmail(Email email){
-        return emailRepo.save(email);
+        Iterable<Email> emails = emailRepo.findAll();
+        boolean alreadyInDb = false;
+        for(Email m: emails){
+            if(email.getEmail().equals(m.getEmail())){
+                alreadyInDb = true;
+                break;
+            }
+        }
+        return !alreadyInDb ? emailRepo.save(email) : null;
     }
-
 }

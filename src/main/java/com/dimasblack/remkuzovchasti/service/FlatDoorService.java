@@ -34,7 +34,6 @@ public class FlatDoorService {
     public FlatDoor createDoor(String doorName,
                                   String doorType,
                                   int price,
-                                  String code,
                                   int count,
                                   String deviator,
                                   double canvasMetal,
@@ -51,8 +50,17 @@ public class FlatDoorService {
                                   String additionalLock,
                                   String doorSill,
                                   String series,
-                                  String burglaryResistance,
-                                  MultipartFile file) throws IOException {
+                                  String size,
+                                  String note,
+                                  String stiffeners,
+                                  String video,
+                                  String doorConstruction,
+                                  String descBurglaryResistance,
+                                  String heatSoundIsolation,
+                                  String glazedWindow,
+                                  String design,
+                                  MultipartFile file,
+                                  MultipartFile file1) throws IOException {
         FlatDoor door = new FlatDoor();
         if(flatDoorRepo.getDoorByDoorName(doorName) == null ) {
             door.setDoorName(doorName);
@@ -79,7 +87,15 @@ public class FlatDoorService {
         door.setAdditionalLock(additionalLock.length() > 0 ? additionalLock : null);
         door.setDoorSill(Boolean.parseBoolean(doorSill));
         door.setSeries(series);
-        door.setBurglaryResistance(burglaryResistance);
+        door.setSize(size.length() > 0 ? size : null);
+        door.setNote(note.length() > 0 ? note : null);
+        door.setStiffeners(stiffeners.length() > 0 ? stiffeners : null);
+        door.setVideo(video.length() > 0 ? video : null);
+        door.setDoorConstruction(doorConstruction.length() > 0 ? doorConstruction : null);
+        door.setDescBurglaryResistance(descBurglaryResistance.length() > 0 ? descBurglaryResistance : null);
+        door.setHeatSoundIsolation(heatSoundIsolation.length() > 0 ? heatSoundIsolation : null);
+        door.setGlazedWindow(glazedWindow.length() > 0 ? glazedWindow : null);
+        door.setDesign(design.length() > 0 ? design : null);
 
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd MMMM HH:mm");
@@ -92,6 +108,13 @@ public class FlatDoorService {
         fileEntity.setData(file.getBytes());
         fileEntity.setSize(file.getSize());
         door.setFile(fileEntity);
+
+        FileEntity fileEntity1 = new FileEntity();
+        fileEntity1.setName(StringUtils.cleanPath(file1.getOriginalFilename()));
+        fileEntity1.setContentType(file1.getContentType());
+        fileEntity1.setData(file1.getBytes());
+        fileEntity1.setSize(file1.getSize());
+        door.setFile1(fileEntity1);
         return flatDoorRepo.save(door);
     }
 

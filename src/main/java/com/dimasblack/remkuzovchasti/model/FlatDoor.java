@@ -65,6 +65,8 @@ public class FlatDoor {
 
     private String note;
 
+    private String stiffeners;
+
     private String image;
 
     private String image1;

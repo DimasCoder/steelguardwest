@@ -24,7 +24,7 @@
 
 .door-card-container h3{
     font-size: 16px;
-    line-height: 16px;
+    line-height: 20px;
     font-weight: 400;
     color: #5b5b5b;
     margin: 0;
@@ -44,7 +44,7 @@
 .door-card-footer{
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .availability{

@@ -69,25 +69,6 @@ textarea:focus{
 }
 
 
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  outline: 0;
-  box-shadow: none;
-  border: 0;
-  background: none;
-  background-image: none;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
-
-
-
 @media all and (max-width: 1366px){
   .container{
     width: 80%;

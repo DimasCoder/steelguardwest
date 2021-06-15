@@ -286,6 +286,11 @@
     margin-top: 20px;
 }
 
+.resistance-image{
+    width: 40%;
+    margin-top: 15px;
+}
+
 .similar-products{
     display: flex;
     flex-direction: row;

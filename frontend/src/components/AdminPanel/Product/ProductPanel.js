@@ -7,7 +7,7 @@ class ProductPanel extends Component {
         super(props);
         this.state = {
             doorName: '',
-            doorType: '',
+            doorType: 'flatDoor',
             price: null,
             code: '',
             count: '',
@@ -18,16 +18,26 @@ class ProductPanel extends Component {
             frameThickness: 0,
             canvasFrameFilling: '',
             externalInternalFinishing: '',
-            nightValve: '',
+            nightValve: 'false',
             hinges: 0,
             antiRemovableLedgers: 0,
             sealant: 0,
             mainLock: '',
             additionalLock: '',
-            doorSill: '',
-            series: '',
+            doorSill: 'false',
+            series: 'Forza',
             burglaryResistance: '',
+            size: '',
+            note: 'order',
+            stiffeners: '',
+            video: '',
             file: '',
+            file1: '',
+            doorConstruction: '',
+            descBurglaryResistance: '',
+            heatSoundIsolation: '',
+            glazedWindow: '',
+            design: '',
             image: "https://image.flaticon.com/icons/png/512/37/37543.png",
             isLoading: true,
             products: [],
@@ -59,6 +69,21 @@ class ProductPanel extends Component {
         e.preventDefault();
         this.setState({
             file: e.target.files[0]
+        });
+
+    };
+
+    onFileChangeHandlerAdditional = (e) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                this.setState({image: reader.result})
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+        e.preventDefault();
+        this.setState({
+            file1: e.target.files[0]
         });
 
     };
@@ -99,7 +124,17 @@ class ProductPanel extends Component {
         data.append('doorSill', this.state.doorSill);
         data.append('series', this.state.series);
         data.append('burglaryResistance', this.state.burglaryResistance);
+        data.append('size', this.state.size);
+        data.append('note', this.state.note);
+        data.append('stiffeners', this.state.stiffeners);
+        data.append('video', this.state.video);
         data.append('file', this.state.file);
+        data.append('file1', this.state.file);
+        data.append('doorConstruction', this.state.doorConstruction);
+        data.append('descBurglaryResistance', this.state.descBurglaryResistance);
+        data.append('heatSoundIsolation', this.state.heatSoundIsolation);
+        data.append('glazedWindow', this.state.glazedWindow);
+        data.append('design', this.state.design);
         axios.post("/api/doors/",
             data
         )
@@ -107,7 +142,7 @@ class ProductPanel extends Component {
     }
 
     deleteProduct = (id) => {
-        axios.delete("/api/door/" + id)
+        axios.delete("/api/doors/" + id)
             .then(respone => {
                 if (respone.data != null) {
                     this.setState({
@@ -123,7 +158,9 @@ class ProductPanel extends Component {
             deviator, canvasMetal, frameMetal, canvasThickness,
             frameThickness, canvasFrameFilling, externalInternalFinishing,
             nightValve, hinges, antiRemovableLedgers, sealant,
-            mainLock, additionalLock, doorSill, image, series, burglaryResistance,doorType
+            mainLock, additionalLock, doorSill, image, series, burglaryResistance,doorType,size,note,
+            stiffeners,video,file1,doorConstruction,descBurglaryResistance,
+            heatSoundIsolation, glazedWindow, design
         } = this.state;
         let img = 'data:image/png;base64,';
         return (
@@ -268,21 +305,24 @@ class ProductPanel extends Component {
                                         name="series">
                                     <option value={'Forza'}>Forza</option>
                                     <option value={'Alta'}>Alta</option>
-                                    <option value={'Vella'}>Vella</option>
+                                    <option value={'Vela'}>Vela</option>
                                     <option value={'Maxima'}>Maxima</option>
                                     <option value={'Devi-U'}>Devi-U</option>
                                     <option value={'Forte+'}>Forte+</option>
                                     <option value={'Antifrost-10'}>Antifrost-10</option>
                                     <option value={'Tech'}>Tech</option>
+                                    <option value={'Fuomo'}>Fuomo</option>
+                                    <option value={'Etero'}>Etero</option>
+                                    <option value={'Tech'}>Tech</option>
                                 </select>
                             </div>
                             <div className="add-brand-group">
-                                <label>Клас зламостійкості</label>
-                                <select value={burglaryResistance} onChange={this.handleChange}
-                                        name="burglaryResistance">
-                                    <option value={'RC-2'}>RC-2</option>
-                                    <option value={'RC-3'}>RC-3</option>
-                                    <option value={'RC-4'}>RC-4</option>
+                                <label>Примітка</label>
+                                <select value={note} onChange={this.handleChange}
+                                        name="note">
+                                    <option value={'order'}>Під замовлення</option>
+                                    <option value={'sale'}>Розпродаж</option>
+                                    <option value={'discount'}>Уцінені</option>
                                 </select>
                             </div>
 
@@ -290,7 +330,6 @@ class ProductPanel extends Component {
                                 <label>Тип дверей</label>
                                 <select value={doorType} onChange={this.handleChange}
                                         name="doorType">
-                                    <option value={'wareHouse'}>Складська програма</option>
                                     <option value={'streetDoor'}>Вуличні</option>
                                     <option value={'flatDoor'}>Квартирні</option>
                                     <option value={'techDoor'}>Технічні</option>
@@ -310,9 +349,85 @@ class ProductPanel extends Component {
                                        onChange={this.inputChange} placeholder="Кількість на складі"/>
                             </div>
                             <div className="add-brand-group">
-                                <label className="choose-image" htmlFor="file">Вибрати фото</label>
+                                <label>Розмір</label>
+                                <input className="review-form-input" required={true} type="input"
+                                       value={size}
+                                       name="size"
+                                       onChange={this.inputChange} placeholder="Розмір"/>
+                            </div>
+                            <div className="add-brand-group">
+                                <label>Ребра жорсткості</label>
+                                <input className="review-form-input" required={true} type="input"
+                                       value={stiffeners}
+                                       name="stiffeners"
+                                       onChange={this.inputChange} placeholder="Ребра жорсткості"/>
+                            </div>
+
+                            <div className="add-brand-group">
+                                <label>Силка на відео</label>
+                                <input className="review-form-input" required={true} type="input"
+                                       value={video}
+                                       name="video"
+                                       onChange={this.inputChange} placeholder="Силка на відео"/>
+                            </div>
+                        </div>
+                        <div className="row-group">
+                            <div className="add-brand-group">
+                                <label>Конструкція дверей</label>
+                                <textarea className="review-form-input" required={true} type="input"
+                                       value={doorConstruction}
+                                       name="doorConstruction"
+                                       onChange={this.inputChange} placeholder="Конструкція дверей"/>
+                            </div>
+                            <div className="add-brand-group">
+                                <label>Взломостійкість</label>
+                                <textarea className="review-form-input" required={true} type="input"
+                                          value={descBurglaryResistance}
+                                          name="descBurglaryResistance"
+                                          onChange={this.inputChange} placeholder="Взломостійкість"/>
+                            </div>
+                        </div>
+                        <div className="row-group">
+                            <div className="add-brand-group">
+                                <label>Тепло-шумо ізоляція</label>
+                                <textarea className="review-form-input" required={true} type="input"
+                                          value={heatSoundIsolation}
+                                          name="heatSoundIsolation"
+                                          onChange={this.inputChange} placeholder="Тепло-шумо ізоляція"/>
+                            </div>
+                            <div className="add-brand-group">
+                                <label>Дизайн</label>
+                                <textarea className="review-form-input" required={true} type="input"
+                                          value={design}
+                                          name="design"
+                                          onChange={this.inputChange} placeholder="Дизайн"/>
+                            </div>
+                        </div>
+                        <div className="row-group">
+                            <div className="add-brand-group">
+                                <label>Стеклопакет</label>
+                                <textarea className="review-form-input" required={true} type="input"
+                                          value={glazedWindow}
+                                          name="glazedWindow"
+                                          onChange={this.inputChange} placeholder="Стеклопакет"/>
+                            </div>
+                        </div>
+                        <div className="row-group">
+                            <div className="add-brand-group">
+                                <label className="choose-image" htmlFor="file">Вибрати основне фото</label>
                                 <input type="file" name="file" id="file" hidden
                                        onChange={this.onFileChangeHandler}/>
+                            </div>
+                            <div className="add-brand-group">
+                                <img
+                                    className="add-brand-image"
+                                    src={image}
+                                />
+                            </div>
+                            <div className="add-brand-group">
+                                <label className="choose-image" htmlFor="file1">Вибрати допоміжне фото</label>
+                                <input type="file" name="file1" id="file" hidden
+                                       onChange={this.onFileChangeHandlerAdditional}/>
                             </div>
                             <div className="add-brand-group">
                                 <img
