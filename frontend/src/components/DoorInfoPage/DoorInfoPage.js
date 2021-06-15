@@ -33,7 +33,7 @@ class DoorInfoPage extends Component {
         axios.get(`/api/doors/${this.props.match.params.id}`)
             .then(response => response.data)
             .then((data) => {
-                this.setState({door: data, image1: data.file, isLoading: false})
+                this.setState({door: data, image1: data.file})
             });
     }
 
@@ -235,9 +235,9 @@ class DoorInfoPage extends Component {
                                                 <iframe width="660" height="370" src={door.video} rel="0"
                                                         enablejsapi="1" modestbranding="0" controls="0" frameBorder="0"
                                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
-                                                <img
-                                                    className="resistance-image"
-                                                    src={image + image2.data}/>
+                                                {/*<img*/}
+                                                {/*    className="resistance-image"*/}
+                                                {/*    src={image + image2.data}/>*/}
                                             </div>
                                         </div>
                                         <p className="similar-products-text">Схожі товари</p>

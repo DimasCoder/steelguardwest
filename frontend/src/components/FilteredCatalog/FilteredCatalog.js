@@ -11,6 +11,7 @@ import def1 from "../../assets/banner2.png";
 import {Typography} from "@material-ui/core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
+import Loader from "../Loader/Loader";
 
 
 const FilteredCatalog = (props) => {
@@ -152,6 +153,7 @@ const FilteredCatalog = (props) => {
 
     return (
         <div className="container">
+            {!isLoading ?
             <div className="filtered-catalog__inner">
                 <div className="filter">
                     <PageTitle title={"Фільтр"}/>
@@ -299,13 +301,16 @@ const FilteredCatalog = (props) => {
                                 </select>
                             </div>
                         </div>
+                        <div className="filtered-doors">
                         {filteredProducts.length !== 0 ?
                             sortDoors(filteredProducts).map((product) => (
                             <ProductCard product={product}/>
                         )) : <p className="no-filter">Нічого не знайдено</p>}
+                        </div>
                     </div>
                 </div>
             </div>
+            :<Loader/>}
         </div>
     );
 }

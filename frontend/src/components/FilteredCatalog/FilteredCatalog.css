@@ -159,6 +159,12 @@
     flex-direction: column;
 }
 
+.filtered-doors{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .no-filter{
     font-size: 20px;
     font-weight: 400;

@@ -7,9 +7,9 @@ const ProductCard = props => {
     let [previouslyViewed, setPreviouslyViewed] = useState(localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [])
     let available;
     if (avalaibility) {
-        available = <span className="span-available">В наявності</span>
+        available = <span className="span-available">На складі</span>
     } else {
-        available = <span className="span-unavailable">Нема в наявності</span>
+        available = <span className="span-unavailable">Привеземо</span>
     }
 
     let image = 'data:image/png;base64,' + props.product.file.data;

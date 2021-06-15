@@ -6,6 +6,7 @@ import axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import {NavLink} from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 
 class Catalog extends Component {
@@ -48,20 +49,20 @@ class Catalog extends Component {
 
     subscribeEmail = () => {
         axios.post("api/emails/", {
-            email : this.state.email
+            email: this.state.email
         })
     }
 
     inputChange(e) {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
 
-        this.setState({ [name]: value })
+        this.setState({[name]: value})
 
     }
 
 
     render() {
-        const {products, email} = this.state;
+        const {products, email, isLoading} = this.state;
         let filteredProducts = products.filter(
             (product) => {
                 if (this.props.q !== '' && this.props.q !== undefined)
@@ -77,31 +78,38 @@ class Catalog extends Component {
         )
         return (
             <div className="catalog-container">
-                <div className="catalog">
-                    <h2>{this.setTitle()}</h2>
-                    <div className="catalog-doors">
-                        {filteredProducts.map((product, index) => (
-                            <ProductCard cartItems={this.props.cartItems} addToCart={this.props.addToCart}
-                                         product={product}/>
-                        ))}
-                    </div>
-                </div>
-                <div className="additional-info">
-                    <h3>Акції</h3>
-                    <Line/>
-                    <a href="/flatDoor">Комплектация входных металлических дверей ТМ STEELGUARD стала еще лучше!</a>
-                    <p>Теперь и навсегда – бонус для покупателей входных дверей ТМ STEELGUARD- два замка Kale (Турция)- панели из влагостойкого МДФ Влагостойкий МДФЕсли вы выбираете входную дверь с МДФ панелями, обратите внимание на то, какой именно МДФ использует ...</p>
-                    <Line/>
-                    <div className="subscribe-container">
-                        <FontAwesomeIcon className="subscribe-icon" icon={faEnvelope}/>
-                        <h4>Підпишіться на розсилку!</h4>
-                        <p>Залишайтеся в курсі останніх новин і спецпропозицій</p>
-                        <input name="email" value={email} onChange={this.inputChange} type="email" placeholder="Email"/>
-                        <button type="button" className="subscribe-button" onClick={this.subscribeEmail}><a
-                            href="/">Підписатися</a></button>
+                {!isLoading ?
+                    <div className="catalog-container__inner">
+                        <div className="catalog">
+                            <h2>{this.setTitle()}</h2>
+                            <div className="catalog-doors">
+                                {filteredProducts.map((product, index) => (
+                                    <ProductCard cartItems={this.props.cartItems} addToCart={this.props.addToCart}
+                                                 product={product}/>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="additional-info">
+                            <h3>Акції</h3>
+                            <Line/>
+                            <a href="/flatDoor">Комплектація вхідних металевих дверей ТМ STEELGUARD стала ще краще!</a>
+                            <p>Тепер і назавжди - бонус для покупців вхідних дверей ТМ STEELGUARD- два замки Kale
+                                (Туреччина) - панелі з вологостійкого МДФ Вологостійкий МДФЕслі ви вибираєте вхідні
+                                двері з МДФ панелями, зверніть увагу на те, який саме МДФ використовує ...</p>
+                            <Line/>
+                            <div className="subscribe-container">
+                                <FontAwesomeIcon className="subscribe-icon" icon={faEnvelope}/>
+                                <h4>Підпишіться на розсилку!</h4>
+                                <p>Залишайтеся в курсі останніх новин і спецпропозицій</p>
+                                <input name="email" value={email} onChange={this.inputChange} type="email"
+                                       placeholder="Email"/>
+                                <button type="button" className="subscribe-button" onClick={this.subscribeEmail}><a
+                                    href="/">Підписатися</a></button>
 
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    : <Loader/>}
             </div>
         )
     }
