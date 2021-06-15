@@ -323,6 +323,7 @@ class ProductPanel extends Component {
                                     <option value={'order'}>Під замовлення</option>
                                     <option value={'sale'}>Розпродаж</option>
                                     <option value={'discount'}>Уцінені</option>
+                                    <option value={'none'}>Нічого</option>
                                 </select>
                             </div>
 
