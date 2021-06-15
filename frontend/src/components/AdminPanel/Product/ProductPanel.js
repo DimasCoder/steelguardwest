@@ -231,10 +231,11 @@ class ProductPanel extends Component {
                         <div className="row-group">
                             <div className="add-brand-group">
                                 <label>Запов. полот. і рами</label>
-                                <input className="review-form-input" required={true} type="input"
-                                       value={canvasFrameFilling}
-                                       name="canvasFrameFilling"
-                                       onChange={this.inputChange} placeholder="Заповнення полотна і рами"/>
+                                <select value={canvasFrameFilling} onChange={this.handleChange}
+                                        name="canvasFrameFilling">
+                                    <option value={'Мінеральна вата'}>Мінеральна вата</option>
+                                    <option value={'Пінополістирол'}>Пінополістирол</option>
+                                </select>
                             </div>
                             <div className="add-brand-group">
                                 <label>Зовн./внутр. обробка</label>

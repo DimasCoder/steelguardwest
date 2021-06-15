@@ -4,7 +4,7 @@
         parameters = {
                 @Parameter(name="prefer_sequence_per_entity", value="true"),
                 @Parameter(name="optimizer", value="hilo"),
-                @Parameter(name="increment_size", value="50")})
+                @Parameter(name="increment_size", value="1")})
 package com.dimasblack.remkuzovchasti.model;
 
 import org.hibernate.annotations.GenericGenerator;
