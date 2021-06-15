@@ -50,6 +50,7 @@ public class FlatDoorService {
                                   String additionalLock,
                                   String doorSill,
                                   String series,
+                                  String burglaryResistance,
                                   String size,
                                   String note,
                                   String stiffeners,
@@ -87,6 +88,7 @@ public class FlatDoorService {
         door.setAdditionalLock(additionalLock.length() > 0 ? additionalLock : null);
         door.setDoorSill(Boolean.parseBoolean(doorSill));
         door.setSeries(series);
+        door.setBurglaryResistance(burglaryResistance);
         door.setSize(size.length() > 0 ? size : null);
         door.setNote(note.length() > 0 ? note : null);
         door.setStiffeners(stiffeners.length() > 0 ? stiffeners : null);

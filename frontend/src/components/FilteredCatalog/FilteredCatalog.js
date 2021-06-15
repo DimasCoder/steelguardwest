@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './FilteredCatalog.css'
 import axios from "axios";
 import ProductCard from "../ProductCard/ProductCard";
@@ -11,8 +11,6 @@ import def1 from "../../assets/banner2.png";
 import {Typography} from "@material-ui/core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
-import {faPaperPlane} from "@fortawesome/free-regular-svg-icons";
-import Loader from "../Loader/Loader";
 
 
 const FilteredCatalog = (props) => {
@@ -44,8 +42,6 @@ const FilteredCatalog = (props) => {
                 .then((data) => {
                     setProducts(data);   setIsLoading(false)
                 });
-        console.log(products)
-
     }
 
     const rangeSelector = (event, newValue) => {
@@ -292,8 +288,8 @@ const FilteredCatalog = (props) => {
                                 <label>Сортування: </label>
                                 <select value={sort} onChange={handleChange}
                                         name="sort">
-                                    <option value={'ratingUp'}>Рейтинг (за зростанням)</option>
-                                    <option value={'ratingDown'}>Рейтинг (за спаданням)</option>
+                                    {/*<option value={'ratingUp'}>Рейтинг (за зростанням)</option>*/}
+                                    {/*<option value={'ratingDown'}>Рейтинг (за спаданням)</option>*/}
                                     <option value={'nameAZ'}>Назва (А -> Я)</option>
                                     <option value={'nameZA'}>Назва (Я -> А)</option>
                                     <option value={'priceUp'}>Ціна (за зростанням)</option>

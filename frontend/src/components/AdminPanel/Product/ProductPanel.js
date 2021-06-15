@@ -373,6 +373,17 @@ class ProductPanel extends Component {
                         </div>
                         <div className="row-group">
                             <div className="add-brand-group">
+                                <label>Клас зламостійкості</label>
+                                <select value={burglaryResistance} onChange={this.handleChange}
+                                        name="burglaryResistance">
+                                    <option value={'RC-2'}>RC-2</option>
+                                    <option value={'RC-3'}>RC-3</option>
+                                    <option value={'RC-4'}>RC-4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="row-group">
+                            <div className="add-brand-group">
                                 <label>Конструкція дверей</label>
                                 <textarea className="review-form-input" required={true} type="input"
                                        value={doorConstruction}

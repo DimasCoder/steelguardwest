@@ -57,6 +57,7 @@ public class FlatDoorController {
                                @RequestParam("additionalLock") String additionalLock,
                                @RequestParam("doorSill") String doorSill,
                                @RequestParam("series") String series,
+                               @RequestParam("burglaryResistance") String burglaryResistance,
                                @RequestParam("size") String size,
                                @RequestParam("note") String note,
                                @RequestParam("stiffeners") String stiffeners,
@@ -71,7 +72,8 @@ public class FlatDoorController {
         return flatDoorService.createDoor(doorName, doorType, price, count,
                 deviator, canvasMetal, frameMetal, canvasThickness, frameThickness,
                 canvasFrameFilling, externalInternalFinishing, nightValve, hinges,
-                antiRemovableLedgers, sealant, mainLock, additionalLock, doorSill, series, size,
+                antiRemovableLedgers, sealant, mainLock, additionalLock, doorSill, series,
+                burglaryResistance, size,
                 note, stiffeners, video, doorConstruction, descBurglaryResistance,
                 heatSoundIsolation, glazedWindow, design,file,file1);
     }
