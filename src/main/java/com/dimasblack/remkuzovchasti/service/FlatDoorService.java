@@ -60,8 +60,7 @@ public class FlatDoorService {
                                   String heatSoundIsolation,
                                   String glazedWindow,
                                   String design,
-                                  MultipartFile file,
-                                  MultipartFile file1) throws IOException {
+                                  MultipartFile file) throws IOException {
         FlatDoor door = new FlatDoor();
         if(flatDoorRepo.getDoorByDoorName(doorName) == null ) {
             door.setDoorName(doorName);
@@ -111,12 +110,6 @@ public class FlatDoorService {
         fileEntity.setSize(file.getSize());
         door.setFile(fileEntity);
 
-        FileEntity fileEntity1 = new FileEntity();
-        fileEntity1.setName(StringUtils.cleanPath(file1.getOriginalFilename()));
-        fileEntity1.setContentType(file1.getContentType());
-        fileEntity1.setData(file1.getBytes());
-        fileEntity1.setSize(file1.getSize());
-        door.setFile1(fileEntity1);
         return flatDoorRepo.save(door);
     }
 

@@ -73,21 +73,6 @@ class ProductPanel extends Component {
 
     };
 
-    onFileChangeHandlerAdditional = (e) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                this.setState({image: reader.result})
-            }
-        }
-        reader.readAsDataURL(e.target.files[0])
-        e.preventDefault();
-        this.setState({
-            file1: e.target.files[0]
-        });
-
-    };
-
     handleChange(e) {
         const {name, value} = e.target;
         this.setState({[name]: value})
@@ -129,7 +114,6 @@ class ProductPanel extends Component {
         data.append('stiffeners', this.state.stiffeners);
         data.append('video', this.state.video);
         data.append('file', this.state.file);
-        data.append('file1', this.state.file);
         data.append('doorConstruction', this.state.doorConstruction);
         data.append('descBurglaryResistance', this.state.descBurglaryResistance);
         data.append('heatSoundIsolation', this.state.heatSoundIsolation);
@@ -430,17 +414,6 @@ class ProductPanel extends Component {
                                 <label className="choose-image" htmlFor="file">Вибрати основне фото</label>
                                 <input type="file" name="file" id="file" hidden
                                        onChange={this.onFileChangeHandler}/>
-                            </div>
-                            <div className="add-brand-group">
-                                <img
-                                    className="add-brand-image"
-                                    src={image}
-                                />
-                            </div>
-                            <div className="add-brand-group">
-                                <label className="choose-image" htmlFor="file1">Вибрати допоміжне фото</label>
-                                <input type="file" name="file1" id="file" hidden
-                                       onChange={this.onFileChangeHandlerAdditional}/>
                             </div>
                             <div className="add-brand-group">
                                 <img

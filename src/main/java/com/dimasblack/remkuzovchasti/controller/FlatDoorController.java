@@ -67,15 +67,14 @@ public class FlatDoorController {
                                @RequestParam("heatSoundIsolation") String heatSoundIsolation,
                                @RequestParam("glazedWindow") String glazedWindow,
                                @RequestParam("design") String design,
-                               @RequestParam("file") MultipartFile file,
-                               @RequestParam("file1") MultipartFile file1) throws IOException {
+                               @RequestParam("file") MultipartFile file) throws IOException {
         return flatDoorService.createDoor(doorName, doorType, price, count,
                 deviator, canvasMetal, frameMetal, canvasThickness, frameThickness,
                 canvasFrameFilling, externalInternalFinishing, nightValve, hinges,
                 antiRemovableLedgers, sealant, mainLock, additionalLock, doorSill, series,
                 burglaryResistance, size,
                 note, stiffeners, video, doorConstruction, descBurglaryResistance,
-                heatSoundIsolation, glazedWindow, design,file,file1);
+                heatSoundIsolation, glazedWindow, design,file);
     }
 
     @PutMapping("{id}")

@@ -6,8 +6,8 @@ import PageTitle from "../PageTitle/PageTitle";
 import {Link} from "react-router-dom";
 import SliderRange from "@material-ui/core/Slider";
 import Slider from "react-slick";
-import def2 from "../../assets/banner1.png";
-import def1 from "../../assets/banner2.png";
+import def2 from "../../assets/banner1.jpg";
+import def1 from "../../assets/banner2.jpg";
 import {Typography} from "@material-ui/core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
