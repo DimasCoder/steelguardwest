@@ -298,6 +298,7 @@ class ProductPanel extends Component {
                                     <option value={'Tech'}>Tech</option>
                                     <option value={'Fuomo'}>Fuomo</option>
                                     <option value={'Etero'}>Etero</option>
+                                    <option value={'Resiste'}>Resiste</option>
                                     <option value={'Tech'}>Tech</option>
                                 </select>
                             </div>
