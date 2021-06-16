@@ -69,8 +69,6 @@ public class FlatDoor {
 
     private String image;
 
-    private String image1;
-
     private String video;
 
     @Column(columnDefinition="TEXT")
@@ -91,6 +89,4 @@ public class FlatDoor {
     @OneToOne(cascade = CascadeType.ALL)
     private FileEntity file;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private FileEntity file1;
 }
