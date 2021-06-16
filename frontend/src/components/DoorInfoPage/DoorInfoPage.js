@@ -86,6 +86,7 @@ class DoorInfoPage extends Component {
         }
     }
 
+
     similarDoors(){
         this.state.similarDoors.map((similarDoor) => {
             if(similarDoor.doorType === this.state.door.doorType && similarDoor.id !== this.state.door.id){
@@ -114,6 +115,7 @@ class DoorInfoPage extends Component {
 
         return (
             <div className="door-info-page">
+                {console.log(door)}
                 {!isLoading ? (
                 <div className="container">
                     <div className="door-info-page__inner">
