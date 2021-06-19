@@ -95,14 +95,11 @@ class DoorInfoPage extends Component {
             }
             let currentIndex = this.state.similarDoors1.length,  randomIndex;
 
-            // While there remain elements to shuffle...
             while (0 !== currentIndex) {
 
-                // Pick a remaining element...
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex--;
 
-                // And swap it with the current element.
                 [this.state.similarDoors1[currentIndex], this.state.similarDoors1[randomIndex]] = [
                     this.state.similarDoors1[randomIndex], this.state.similarDoors1[currentIndex]];
             }
@@ -111,12 +108,11 @@ class DoorInfoPage extends Component {
     }
 
     render() {
-        let {door, viewedDoors, similarDoors, image1, image2, viewedProducts, isLoading} = this.state
+        let {door, image1,viewedProducts, isLoading} = this.state
         let image = 'data:image/png;base64,';
 
         return (
             <div className="door-info-page">
-                {console.log(door)}
                 {!isLoading ? (
                 <div className="container">
                     <div className="door-info-page__inner">
