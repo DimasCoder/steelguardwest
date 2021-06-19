@@ -36,6 +36,10 @@ public class FlatDoorController {
         return flatDoorService.findWarehouseDoors();
     }
 
+    @GetMapping("/doorType/{doorType}")
+    public Iterable<FlatDoor> similarDoors(@PathVariable("doorType") String doorType) {
+        return flatDoorService.findFlatDoor(doorType);
+    }
 
     @PostMapping
     public FlatDoor createDoor(@RequestParam("doorName") String doorName,

@@ -7,6 +7,11 @@ import Rcmaxima from "../../assets/RC2-Maxima.jpg"
 import MetaTags from "react-meta-tags";
 
 class ProtectedDoor extends Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+
     render() {
         return (
             <div className="container">

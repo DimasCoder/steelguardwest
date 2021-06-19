@@ -34,6 +34,7 @@ const FilteredCatalog = (props) => {
 
     useEffect(() => {
         findFilteredProducts();
+        window.scrollTo(0, 0)
     })
     // console.log(props.filter[2])
 

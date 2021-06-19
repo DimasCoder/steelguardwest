@@ -15,7 +15,7 @@ class DoorInfoPage extends Component {
             doors: [],
             door: [],
             viewedDoors: [],
-            viewedID: localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [],
+            viewedProducts: localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [],
             image1: '',
             image2: '',
             isLoading: true,
@@ -27,6 +27,7 @@ class DoorInfoPage extends Component {
     componentDidMount() {
         this.findDoorById();
         this.findAllDoors();
+        window.scrollTo(0, 0)
     }
 
     findDoorById() {
@@ -41,7 +42,7 @@ class DoorInfoPage extends Component {
         axios.get(`/api/doors/all`)
             .then(response => response.data)
             .then((data) => {
-                this.setState({viewedDoors: data, similarDoors : data, isLoading: false})
+                this.setState({similarDoors : data, isLoading: false})
             });
     }
 
@@ -110,7 +111,7 @@ class DoorInfoPage extends Component {
     }
 
     render() {
-        let {door, viewedDoors, similarDoors, image1, image2, viewedID, isLoading} = this.state
+        let {door, viewedDoors, similarDoors, image1, image2, viewedProducts, isLoading} = this.state
         let image = 'data:image/png;base64,';
 
         return (
@@ -265,10 +266,8 @@ class DoorInfoPage extends Component {
                             </div>}
                         <div className="previously-viewed">
                             <p>Раніше ви переглядали:</p>
-                            {viewedDoors.reverse().map((product) => (
-                                this.viewedDoors(product.id) ?
+                            {viewedProducts.reverse().map((product) => (
                                     <PreviewedDoor product={product}/>
-                                    : null
                             ))}
                         </div>
                     </div>

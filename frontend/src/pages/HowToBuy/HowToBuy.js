@@ -6,6 +6,11 @@ import {Link, NavLink} from "react-router-dom";
 import MetaTags from "react-meta-tags";
 
 class HowToBuy extends Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+
     render() {
         return (
             <div className="container">

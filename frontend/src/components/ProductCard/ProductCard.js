@@ -21,19 +21,19 @@ const ProductCard = props => {
         return e
     }
 
-    const addToLocalStorage = (id) => {
+    const addToLocalStorage = (product) => {
         previouslyViewed = previouslyViewed.slice()
         let alreadyViewed = false;
         previouslyViewed.forEach((item) => {
-            if (item === id) {
+            if (item.id === product.id) {
                 alreadyViewed = true
             }
         });
         if (!alreadyViewed && previouslyViewed.length < 3) {
-            previouslyViewed = [...previouslyViewed, id]
+            previouslyViewed = [...previouslyViewed, product]
         } else if (!alreadyViewed && previouslyViewed.length === 3) {
             previouslyViewed.shift()
-            previouslyViewed = [...previouslyViewed, id]
+            previouslyViewed = [...previouslyViewed, product]
         }
         localStorage.setItem("previouslyViewed", JSON.stringify(previouslyViewed));
     }
@@ -54,7 +54,7 @@ const ProductCard = props => {
                 {/*<NavLink to={`/doors/${props.product.doorType}/${props.product.doorName.replace(' ', '-')}`.toLowerCase()} className="to-cart"*/}
                 {/*         product={props.product.doorName}>Детальніше</NavLink>*/}
                 <Link to={`/door/${props.product.id}`} className="to-cart"
-                         product={props.product.doorName} onClick={() => {addToLocalStorage(props.product.id)}}>Детальніше</Link>
+                         product={props.product.doorType} onClick={() => {addToLocalStorage(props.product)}}>Детальніше</Link>
             </div>
 
         </Link>

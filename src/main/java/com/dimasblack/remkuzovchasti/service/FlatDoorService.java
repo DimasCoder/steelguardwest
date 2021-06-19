@@ -12,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class FlatDoorService {
@@ -29,6 +31,13 @@ public class FlatDoorService {
 
     public Iterable<FlatDoor> findWarehouseDoors(){
         return flatDoorRepo.getFlatDoorsByAvailableTrue();
+    }
+
+    public Iterable<FlatDoor> findSimilarDoors(String doorType){
+        List<FlatDoor> allDoors = (List<FlatDoor>) flatDoorRepo.getFlatDoorByDoorType(doorType);
+        Collections.shuffle(allDoors);
+        Iterable<FlatDoor> similarDoors = allDoors.subList(4, allDoors.size());
+        return similarDoors;
     }
 
     public FlatDoor createDoor(String doorName,
