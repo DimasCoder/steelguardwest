@@ -7,6 +7,7 @@ import {faCheckCircle} from '@fortawesome/free-regular-svg-icons'
 import {faChevronRight, faTruck} from '@fortawesome/free-solid-svg-icons'
 import Loader from "../Loader/Loader";
 import logo from "../../assets/logo.png";
+import ProductCard from "../ProductCard/ProductCard";
 
 class DoorInfoPage extends Component {
     constructor(props) {
@@ -108,7 +109,7 @@ class DoorInfoPage extends Component {
     }
 
     render() {
-        let {door, image1,viewedProducts, isLoading} = this.state
+        let {door, image1,viewedProducts, similarDoors, isLoading} = this.state
         let image = 'data:image/png;base64,';
 
         return (
@@ -241,8 +242,9 @@ class DoorInfoPage extends Component {
                                         </div>
                                         <p className="similar-products-text">Схожі товари</p>
                                         <div className="similar-products">
+                                            {console.log(similarDoors)}
                                             {this.similarDoors().map((product) => (
-                                                    <PreviewedDoor product={product}/>
+                                                    <ProductCard product={product}/>
                                             ))}
                                         </div>
                                     </div>
