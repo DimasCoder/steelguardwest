@@ -30,6 +30,7 @@ class DoorInfoPage extends Component {
         this.findDoorById();
         this.findAllDoors();
         window.scrollTo(0, 0)
+        this.similarDoors();
     }
 
     findDoorById() {
@@ -106,8 +107,9 @@ class DoorInfoPage extends Component {
                     this.state.similarDoors1[randomIndex], this.state.similarDoors1[currentIndex]];
             }
         })
+        let width = window.innerWidth;
 
-        return this.state.similarDoors1.slice(0,4)
+        return width > 750 ? this.state.similarDoors1.slice(0,4) : this.state.similarDoors1.slice(0,1)
     }
 
     render() {

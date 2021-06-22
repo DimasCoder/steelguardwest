@@ -32,11 +32,14 @@ const FilteredCatalog = (props) => {
             return 'Всі двері'
     }
 
-    useEffect(() => {
-        findFilteredProducts();
+    useState(() => {
         window.scrollTo(0, 0)
     })
-    // console.log(props.filter[2])
+
+    useEffect(() => {
+        findFilteredProducts();
+    })
+
 
     const findFilteredProducts = () => {
             axios.get(`/api/doors/filter/${props.match.params.filter}`)

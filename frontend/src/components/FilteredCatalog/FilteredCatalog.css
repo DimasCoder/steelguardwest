@@ -163,14 +163,16 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .no-filter{
+    width: 100%;
     font-size: 20px;
     font-weight: 400;
     color: #707070;
     text-align: center;
-    padding: 100px;
+    padding: 100px 0;
 }
 
 @media all and (max-width: 1000px) {
