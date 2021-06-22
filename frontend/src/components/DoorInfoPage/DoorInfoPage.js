@@ -23,6 +23,7 @@ class DoorInfoPage extends Component {
             similarDoors: [],
             similarDoors1: []
         }
+        this.similarDoors = this.similarDoors.bind(this)
     }
 
     componentDidMount() {
@@ -105,6 +106,7 @@ class DoorInfoPage extends Component {
                     this.state.similarDoors1[randomIndex], this.state.similarDoors1[currentIndex]];
             }
         })
+
         return this.state.similarDoors1.slice(0,4)
     }
 
@@ -131,7 +133,7 @@ class DoorInfoPage extends Component {
                                             <p>Серія: {door.series}</p>
                                             <p>Категорія: {this.tranlsateDoor(door.doorType)}</p>
                                             <p>Розмір: {door.size}</p>
-                                            <label>Ціна: </label>
+                                            <label>Ціна: {door.note === "order" ? "Під замовлення" : this.toPriceFormat(door.price)} </label>
                                             <span>{this.toPriceFormat(door.price)} ГРН.</span>
                                         </div>
                                     </div>
@@ -242,9 +244,8 @@ class DoorInfoPage extends Component {
                                         </div>
                                         <p className="similar-products-text">Схожі товари</p>
                                         <div className="similar-products">
-                                            {console.log(similarDoors)}
                                             {this.similarDoors().map((product) => (
-                                                    <ProductCard product={product}/>
+                                                    <PreviewedDoor product={product}/>
                                             ))}
                                         </div>
                                     </div>
