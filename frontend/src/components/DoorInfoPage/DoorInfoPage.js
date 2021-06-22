@@ -4,7 +4,7 @@ import axios from "axios";
 import PreviewedDoor from "../PreviewedDoor/PreviewedDoor";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCheckCircle} from '@fortawesome/free-regular-svg-icons'
-import {faChevronRight, faTruck} from '@fortawesome/free-solid-svg-icons'
+import {faChevronRight, faTruck, faTag, faPercent} from '@fortawesome/free-solid-svg-icons'
 import Loader from "../Loader/Loader";
 import logo from "../../assets/logo.png";
 import ProductCard from "../ProductCard/ProductCard";
@@ -75,16 +75,31 @@ class DoorInfoPage extends Component {
     }
 
     availability() {
-        if (this.state.door.available) {
+        if (!this.state.door.available && this.state.door.note === "order"){
+            return (
+                <div className="availability-container unavailable">
+                    <FontAwesomeIcon icon={faTruck}/> <span>Під замовлення</span>
+                </div>
+            )
+        }
+        else if (!this.state.door.available && this.state.door.note === "sale"){
+            return (
+                <div className="availability-container unavailable">
+                    <FontAwesomeIcon icon={faTag}/> <span>Розпродаж</span>
+                </div>
+            )
+        }
+        else if (!this.state.door.available && this.state.door.note === "discount"){
+            return (
+                <div className="availability-container unavailable">
+                    <FontAwesomeIcon icon={faPercent}/> <span>Уцінка</span>
+                </div>
+            )
+        }
+        else if (this.state.door.available) {
             return (
                 <div className="availability-container available">
                     <FontAwesomeIcon icon={faCheckCircle}/> <span>На складі</span>
-                </div>
-            )
-        } else {
-            return (
-                <div className="availability-container unavailable">
-                    <FontAwesomeIcon icon={faTruck}/> <span>Привеземо</span>
                 </div>
             )
         }
@@ -135,8 +150,8 @@ class DoorInfoPage extends Component {
                                             <p>Серія: {door.series}</p>
                                             <p>Категорія: {this.tranlsateDoor(door.doorType)}</p>
                                             <p>Розмір: {door.size}</p>
-                                            <label>Ціна: {door.note === "order" ? "Під замовлення" : this.toPriceFormat(door.price)} </label>
-                                            <span>{this.toPriceFormat(door.price)} ГРН.</span>
+                                            <label>Ціна:</label>
+                                            <span>{door.note === "order" ? "Під замовлення" : this.toPriceFormat(door.price) + " ГРН."} </span>
                                         </div>
                                     </div>
                                     <div className="door-info-bottom">

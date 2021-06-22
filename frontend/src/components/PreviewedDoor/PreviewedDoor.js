@@ -4,12 +4,17 @@ import {Link, NavLink} from "react-router-dom";
 
 const PreviewedDoor = props => {
     let avalaibility = props.product.available
+    let note = props.product.note
     let [previouslyViewed, setPreviouslyViewed] = useState(localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [])
     let available;
-    if (avalaibility) {
-        available = <span className="span-available">В наявності</span>
-    } else {
-        available = <span className="span-unavailable">Нема в наявності</span>
+    if (!avalaibility && note === "order") {
+        available = <span className="span-unavailable">Під замовлення</span>
+    } else if(!avalaibility && note === "sale") {
+        available = <span className="span-unavailable">Розпродаж</span>
+    }else if(!avalaibility && note === "discount") {
+        available = <span className="span-unavailable">Уцінка</span>
+    }else if(avalaibility) {
+        available = <span className="span-available">На складі</span>
     }
 
     let image = 'data:image/png;base64,' + props.product.file.data;

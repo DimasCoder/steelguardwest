@@ -121,16 +121,6 @@ const FilteredCatalog = (props) => {
         }
     }
 
-    const changeResistance = (e) => {
-        if (resistance.includes(e.target.value)) {
-            setResistance(resistance.filter(function (ele) {
-                return ele !== e.target.value
-            }))
-        } else {
-            setResistance([...resistance, e.target.value])
-        }
-    }
-
     const settings = {
         dots: true,
         infinite: true,
@@ -145,11 +135,7 @@ const FilteredCatalog = (props) => {
     };
 
     const filteredProducts = products.filter((product) => {
-        if (resistance.length > 0 && series.length > 0) {
-            return product.price < priceValue[1] && product.price > priceValue[0] && (resistance.includes(product.burglaryResistance) && series.includes(product.series));
-        } else if (resistance.length > 0) {
-            return product.price < priceValue[1] && product.price > priceValue[0] && resistance.includes(product.burglaryResistance);
-        } else if (series.length > 0) {
+        if (series.length > 0) {
             return product.price < priceValue[1] && product.price > priceValue[0] && series.includes(product.series);
         } else
             return product.price < priceValue[1] && product.price > priceValue[0]
@@ -245,27 +231,6 @@ const FilteredCatalog = (props) => {
                                     <input type="checkbox" id="tech" name="tech" value="Tech" onChange={changeSeries}
                                            checked={series.includes("Tech")}/>
                                     <label htmlFor="tech">Tech</label>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>За класом зламостійкості: </h4>
-                                <div className="check-container">
-                                    <input type="checkbox" id="RC-4" name="RC-4" value="RC-4"
-                                           onChange={changeResistance}
-                                           checked={resistance.includes("RC-4")}/>
-                                    <label htmlFor="RC-4">4 клас зламостійкості RC-4</label>
-                                </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="RC-3" name="RC-3" value="RC-3"
-                                           onChange={changeResistance}
-                                           checked={resistance.includes("RC-3")}/>
-                                    <label htmlFor="RC-3">3 клас зламостійкості RC-3</label>
-                                </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="RC-2" name="RC-2" value="RC-2"
-                                           onChange={changeResistance}
-                                           checked={resistance.includes("RC-2")}/>
-                                    <label htmlFor="RC-2">2 клас зламостійкості RC-2</label>
                                 </div>
                             </div>
                         </div>

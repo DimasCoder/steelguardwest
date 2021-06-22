@@ -71,6 +71,8 @@ public class FlatDoor {
 
     private String video;
 
+    private String additionalImage;
+
     @Column(columnDefinition="TEXT")
     private String doorConstruction;
 
