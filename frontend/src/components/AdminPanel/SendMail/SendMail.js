@@ -24,7 +24,7 @@ class SendMail extends Component {
         let data = new FormData();
         data.append('subject', this.state.subject);
         data.append('text', this.state.text);
-        axios.post("/api/emails/send", data)
+        axios.post("http://localhost:8080/api/emails/send", data)
     }
 
     render() {

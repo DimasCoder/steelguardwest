@@ -126,10 +126,30 @@
 
 @media all and (max-width: 420px){
     .door-card-container{
-        width: 155px;
+        width: 140px;
+    }
+
+    .door-card-container h3{
+        font-size: 12px;
+    }
+
+    .door-logo{
+        height: 160px;
+    }
+
+    .door-card-header p{
+        font-size: 11px;
+    }
+
+    .span-available, .span-unavailable{
+        font-size: 11px;
     }
 
     .doorPrev-card-footer span{
-        font-size: 14px;
+        font-size: 12px;
+    }
+
+    .to-cart{
+        font-size: 11px;
     }
 }

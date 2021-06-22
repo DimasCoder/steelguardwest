@@ -16,7 +16,7 @@ html, body, #root {
 }
 
 .content-container {
-  min-height: calc(100vh - 359px);
+  min-height: calc(100vh - 350px);
 }
 
 body{
