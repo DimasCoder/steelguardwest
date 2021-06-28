@@ -27,36 +27,18 @@ function Catalog(props){
             const fetchData = async () => {
                 let product = await axios(
                     "/api/doors/all",
-                    setIsLoading(false)
             );
                 let interior = await axios(
                     "/api/interiorDoors/all",
                 );
                 setProducts(product.data);
-                setInterior(interior.data)
+                setInterior(interior.data);
+                setIsLoading(false)
             };
 
             fetchData();
         }, []);
 
-
-    const findAllProducts = () => {
-        axios.get("/api/doors/all")
-            .then(response => response.data)
-            .then((data) => {
-                setProducts(data);
-                setIsLoading(false);
-            });
-    }
-
-    const findInteriorDoors = () => {
-        axios.get("/api/doors/all")
-            .then(response => response.data)
-            .then((data) => {
-                setProducts([...products, data]);
-                setIsLoading(false);
-            });
-    }
 
     const inputSearch = (e) => {
         this.setState({search: e.target.value})
@@ -161,7 +143,7 @@ function Catalog(props){
                             {filteredProducts.map((product, index) => (
                                 <ProductCard product={product}/>
                             ))}
-                            {series.length < 1 ?
+                            {series.length < 1 && props.q === '' ?
                                 interior.map((product, index) => (<InteriorCard product={product}/>)
 
                                 ) : null}
