@@ -45,7 +45,7 @@ const FilteredCatalog = (props) => {
 
     const findFilteredProducts = () => {
         if (props.match.params.filter === "interiorDoors") {
-            axios.get(`http://localhost:8080/api/interiorDoors/all`)
+            axios.get(`/api/interiorDoors/all`)
                 .then(response => response.data)
                 .then((data) => {
                     setProducts(data);
