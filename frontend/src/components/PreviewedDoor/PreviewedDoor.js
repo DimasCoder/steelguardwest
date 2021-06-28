@@ -60,7 +60,7 @@ const PreviewedDoor = props => {
             </div>
             {props.product.doorName !== undefined ?
                 <h3>Двері {props.product.doorName}</h3>
-                : <h3>Двері Korfad {props.product.model} {props.product.color}</h3>
+                : <h3>Міжкімнатні двері Brama {props.product.model} {props.product.color}</h3>
 
             }
 
