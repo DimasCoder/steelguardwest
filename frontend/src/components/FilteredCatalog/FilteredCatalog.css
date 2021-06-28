@@ -197,7 +197,7 @@
         display: block;
     }
 
-    .filter__inner{
+    .filtered-catalog__inner .filter__inner{
         display: flex;
         flex-direction: column;
         justify-content: space-between;

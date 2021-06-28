@@ -28,6 +28,12 @@
     flex-direction: column;
 }
 
+.catalog-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .catalog-doors{
     display: flex;
     flex-direction: row;
@@ -97,6 +103,26 @@
     text-align: center;
 }
 
+.catalog-top .filter-label{
+    display: none;
+}
+
+.catalog-top .filter__inner{
+    display: flex;
+}
+
+.checkbox-filter-catalog{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto 0;
+}
+
+.checkbox-filter-catalog .check-container label{
+    margin: auto 0 auto 3px;
+
+}
 
 .subscribe-container p{
     font-size: 12px;
@@ -118,6 +144,67 @@
 
 .subscribe-button a{
     color: #FFFFFF;
+
+}
+
+@media all and (max-width: 999px){
+    .catalog-top .filter__inner{
+        width: 75%;
+    }
+
+    .checkbox-filter-catalog .check-container label{
+        font-size: 12px!important;
+    }
+}
+
+@media all and (max-width: 900px) {
+
+    .catalog-top .filter__inner{
+        display: block;
+        width: 75%;
+    }
+
+    #filter-checkbox:checked ~ .checkbox-filter-catalog{
+        max-height: 620px;
+        overflow: no-content;
+    }
+
+    .catalog-top .filter-label{
+        display: flex;
+        width: 70px;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 400;
+        padding: 8px 40px;
+        background-color: #4bb0f5;
+        color: #FFFFFF;
+        margin: auto 0 auto auto;
+
+    }
+
+    .catalog-top .filter__inner{
+        width: 50%;
+        min-width: 150px;
+    }
+
+    .checkbox-filter-catalog{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        transition: all 0.8s ease-out;
+        max-height: 0px;
+        overflow: hidden;
+    }
+
+    .check-container{
+        width: 70px;
+    }
+
+    #filter-checkbox{
+        display: none;
+    }
 
 }
 

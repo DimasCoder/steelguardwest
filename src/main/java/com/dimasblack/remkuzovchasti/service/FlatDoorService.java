@@ -22,6 +22,7 @@ public class FlatDoorService {
     FlatDoorRepo flatDoorRepo;
 
     public Iterable<FlatDoor> findAllDoors(){
+
         return flatDoorRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 

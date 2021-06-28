@@ -12,12 +12,14 @@ import {Typography} from "@material-ui/core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
 import Loader from "../Loader/Loader";
+import PreviewedDoor from "../PreviewedDoor/PreviewedDoor";
 
 
 const FilteredCatalog = (props) => {
     const [priceValue, setPriceValue] = useState(props.filter.length > 1 ? [props.filter[0], props.filter[1]] : [0, 35000]);
     const [resistance, setResistance] = useState([])
     const [series, setSeries] = useState([])
+    const [models, setModels] = useState([])
     const [products, setProducts] = useState([])
     const [sort, setSort] = useState("nameAZ")
     const [isLoading, setIsLoading] = useState(true)
@@ -42,11 +44,21 @@ const FilteredCatalog = (props) => {
 
 
     const findFilteredProducts = () => {
+        if (props.match.params.filter === "interiorDoors") {
+            axios.get(`http://localhost:8080/api/interiorDoors/all`)
+                .then(response => response.data)
+                .then((data) => {
+                    setProducts(data);
+                    setIsLoading(false)
+                });
+        } else if (props.match.params.filter !== "interiorDoors") {
             axios.get(`/api/doors/filter/${props.match.params.filter}`)
                 .then(response => response.data)
                 .then((data) => {
-                    setProducts(data);   setIsLoading(false)
+                    setProducts(data);
+                    setIsLoading(false)
                 });
+        }
     }
 
     const rangeSelector = (event, newValue) => {
@@ -121,6 +133,16 @@ const FilteredCatalog = (props) => {
         }
     }
 
+    const changeModel = (e) => {
+        if (models.includes(e.target.value)) {
+            setModels(series.filter(function (ele) {
+                return ele !== e.target.value
+            }))
+        } else {
+            setModels([...models, e.target.value])
+        }
+    }
+
     const settings = {
         dots: true,
         infinite: true,
@@ -134,152 +156,238 @@ const FilteredCatalog = (props) => {
         arrows: true,
     };
 
-    const filteredProducts = products.filter((product) => {
-        if (series.length > 0) {
-            return product.price < priceValue[1] && product.price > priceValue[0] && series.includes(product.series);
-        } else
-            return product.price < priceValue[1] && product.price > priceValue[0]
-    })
+
+    if (props.match.params.filter !== "interiorDoors") {
+        var filteredProducts = products.filter((product) => {
+            if (series.length > 0) {
+                return product.price < priceValue[1] && product.price > priceValue[0] && series.includes(product.series);
+            } else
+                return product.price < priceValue[1] && product.price > priceValue[0]
+        })
+    } else {
+        var filteredProducts = products.filter((product) => {
+            if (models.length > 0) {
+                return product.priceCommon < priceValue[1] && product.priceCommon > priceValue[0] && models.includes(product.model);
+            } else
+                return product.priceCommon < priceValue[1] && product.priceCommon > priceValue[0]
+        })
+    }
+
 
     return (
         <div className="container">
             {!isLoading ?
-            <div className="filtered-catalog__inner">
-                <div className="filter">
-                    <PageTitle title={"Фільтр"}/>
+                <div className="filtered-catalog__inner">
+                    <div className="filter">
+                        <PageTitle title={"Фільтр"}/>
                         <input type="checkbox" id="filter-checkbox"/>
                         <label htmlFor="filter-checkbox" className="filter-label">
                             Фільтри <FontAwesomeIcon icon={faFilter}/>
                         </label>
-                    <div className="filter__inner">
-                        <div>
-                            <h4>Ціна:</h4>
-                            <Typography id="range-slider" gutterBottom>
-                            </Typography>
-                            <p>{priceValue[0]} грн. - {priceValue[1]} грн.</p>
-                            <div className="price-slider-container">
-                            <SliderRange
-                                value={priceValue}
-                                onChange={rangeSelector}
-                                valueLabelDisplay="auto"
-                                aria-labelledby="range-slider"
-                                min={0}
-                                max={35000}
-                                step={50}
-                            />
-                            </div>
-                        </div>
-                        {/*    <h4>За призначенням: </h4>*/}
-                        {/*<div className="check-container">*/}
-                        {/*    <input type="checkbox" id="street" name="streetDoor" checked/>*/}
-                        {/*    <label htmlFor="street">Двері на вулицю</label>*/}
-                        {/*</div>*/}
-                        {/*<div className="check-container">*/}
-                        {/*    <input type="checkbox" id="flat" name="flatDoor"/>*/}
-                        {/*    <label htmlFor="flat">Двері в квартиру</label>*/}
-                        {/*</div>*/}
-                        {/*<div className="check-container">*/}
-                        {/*    <input type="checkbox" id="techD" name="techDoor"/>*/}
-                        {/*    <label htmlFor="techD">Технічні двері</label>*/}
-                        {/*</div>*/}
-                        {/*<div className="check-container">*/}
-                        {/*    <input type="checkbox" id="fire" name="fireDoor"/>*/}
-                        {/*    <label htmlFor="fire">Протипожежні двері</label>*/}
-                        {/*</div>*/}
-                        <div className="checkbox-filter">
+                        <div className="filter__inner">
                             <div>
-                                <h4>За серією: </h4>
-                                <div className="check-container">
-                                    <input type="checkbox" id="forza" name="forza" value="Forza" onChange={changeSeries}
-                                           checked={series.includes("Forza")}/>
-                                    <label htmlFor="forza">Forza</label>
+                                <h4>Ціна:</h4>
+                                <Typography id="range-slider" gutterBottom>
+                                </Typography>
+                                <p>{priceValue[0]} грн. - {priceValue[1]} грн.</p>
+                                <div className="price-slider-container">
+                                    <SliderRange
+                                        value={priceValue}
+                                        onChange={rangeSelector}
+                                        valueLabelDisplay="auto"
+                                        aria-labelledby="range-slider"
+                                        min={0}
+                                        max={35000}
+                                        step={50}
+                                    />
                                 </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="alta" name="alta" value="Alta" onChange={changeSeries}
-                                           checked={series.includes("Alta")}/>
-                                    <label htmlFor="alta">Alta</label>
+                            </div>
+                            <div className="checkbox-filter">
+                                {props.match.params.filter !== "interiorDoors" ? (
+                                        <div>
+                                            <h4>За серією: </h4>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="forza" name="forza" value="Forza"
+                                                       onChange={changeSeries}
+                                                       checked={series.includes("Forza")}/>
+                                                <label htmlFor="forza">Forza</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="alta" name="alta" value="Alta"
+                                                       onChange={changeSeries}
+                                                       checked={series.includes("Alta")}/>
+                                                <label htmlFor="alta">Alta</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="vela" name="vela" value="Vela"
+                                                       onChange={changeSeries}
+                                                       checked={series.includes("Vela")}/>
+                                                <label htmlFor="vela">Vela</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="maxima" name="maxima" value="Maxima"
+                                                       onChange={changeSeries}
+                                                       checked={series.includes("Maxima")}/>
+                                                <label htmlFor="maxima">Maxima</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="devi-u" name="devi-u" value="Devi-U"
+                                                       onChange={changeSeries}
+                                                       checked={series.includes("Devi-U")}/>
+                                                <label htmlFor="devi-u">Devi-U</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="forte+" name="forte+" value="Forte+"
+                                                       onChange={changeSeries}
+                                                       checked={series.includes("Forte+")}/>
+                                                <label htmlFor="forte+">Forte+</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="antifrost-10" name="antifrost-10"
+                                                       value="Antifrost-10"
+                                                       onChange={changeSeries} checked={series.includes("Antifrost-10")}/>
+                                                <label htmlFor="antifrost-10">Antifrost-10</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="tech" name="tech" value="Tech"
+                                                       onChange={changeSeries}
+                                                       checked={series.includes("Tech")}/>
+                                                <label htmlFor="tech">Tech</label>
+                                            </div>
+                                        </div>)
+                                    : (
+                                        <div>
+                                            <h4>За номером моделі: </h4>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="21" name="21" value="2,1"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("2,1")}/>
+                                                <label htmlFor="21">2.1</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="71" name="71" value="7,1"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("7,1")}/>
+                                                <label htmlFor="71">7.1</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="72" name="72" value="7,2"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("7,2")}/>
+                                                <label htmlFor="72">7.2</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="73" name="73" value="7,3"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("7,3")}/>
+                                                <label htmlFor="73">7.3</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="74" name="74" value="7,4"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("7,4")}/>
+                                                <label htmlFor="74">7.4</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="75" name="75" value="7,5"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("7,5")}/>
+                                                <label htmlFor="75">7.5</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="1829" name="1829" value="18,29"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("18,29")}/>
+                                                <label htmlFor="1829">18.29</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="1831" name="1831" value="18,31"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("18,31")}/>
+                                                <label htmlFor="1831">18.31</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="1850" name="1850" value="18,50"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("18,50")}/>
+                                                <label htmlFor="1850">18.50</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="192" name="192" value="19,2"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("19,2")}/>
+                                                <label htmlFor="192">19.2</label>
+                                            </div>
+
+                                            <div className="check-container">
+                                                <input type="checkbox" id="193" name="193" value="19,3"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("19,3")}/>
+                                                <label htmlFor="193">19.3</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="195" name="195" value="19,5"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("19,5")}/>
+                                                <label htmlFor="195">19.5</label>
+                                            </div>
+                                            <div className="check-container">
+                                                <input type="checkbox" id="1932" name="1932" value="19,32"
+                                                       onChange={changeModel}
+                                                       checked={models.includes("19,32")}/>
+                                                <label htmlFor="1932">19.32</label>
+                                            </div>
+                                        </div>)
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="filtered-catalog">
+                        <div className="carousel-filter">
+                            <div style={{width: '75%'}}>
+                                <Slider {...settings}>
+                                    <img className="carousel-image" src={def2}/>
+                                    <img className="carousel-image" src={def1}/>
+                                </Slider>
+                            </div>
+                            <div className="filter-carousel-text">
+                                <article>Захисти свій дім</article>
+                                <p>вибирай сертифіковані зламостійкі вхідні двері</p>
+                                <Link exact to="/protected-door" className="protected-door-link">Детальніше</Link>
+                            </div>
+                        </div>
+                        <div className="filtered-catalog-bottom">
+                            <div className="sort-container">
+
+                                <p>Знайдено {filteredProducts.length} дверей</p>
+
+                                <div className="select">
+                                    <label>Сортування: </label>
+                                    <select value={sort} onChange={handleChange}
+                                            name="sort">
+                                        {/*<option value={'ratingUp'}>Рейтинг (за зростанням)</option>*/}
+                                        {/*<option value={'ratingDown'}>Рейтинг (за спаданням)</option>*/}
+                                        <option value={'nameAZ'}>Назва (А -> Я)</option>
+                                        <option value={'nameZA'}>Назва (Я -> А)</option>
+                                        <option value={'priceUp'}>Ціна (за зростанням)</option>
+                                        <option value={'priceDown'}>Ціна (за спаданням)</option>
+                                        <option value={'modelAZ'}>Модель (А -> Я)</option>
+                                        <option value={'modelZA'}>Модель (Я -> А)</option>
+                                    </select>
                                 </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="vella" name="vella" value="Vella" onChange={changeSeries}
-                                           checked={series.includes("Vella")}/>
-                                    <label htmlFor="vella">Vella</label>
-                                </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="maxima" name="maxima" value="Maxima"
-                                           onChange={changeSeries}
-                                           checked={series.includes("Maxima")}/>
-                                    <label htmlFor="maxima">Maxima</label>
-                                </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="devi-u" name="devi-u" value="Devi-U"
-                                           onChange={changeSeries}
-                                           checked={series.includes("Devi-U")}/>
-                                    <label htmlFor="devi-u">Devi-U</label>
-                                </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="forte+" name="forte+" value="Forte+"
-                                           onChange={changeSeries}
-                                           checked={series.includes("Forte+")}/>
-                                    <label htmlFor="forte+">Forte+</label>
-                                </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="antifrost-10" name="antifrost-10" value="Antifrost-10"
-                                           onChange={changeSeries} checked={series.includes("Antifrost-10")}/>
-                                    <label htmlFor="antifrost-10">Antifrost-10</label>
-                                </div>
-                                <div className="check-container">
-                                    <input type="checkbox" id="tech" name="tech" value="Tech" onChange={changeSeries}
-                                           checked={series.includes("Tech")}/>
-                                    <label htmlFor="tech">Tech</label>
-                                </div>
+                            </div>
+                            <div className="filtered-doors">
+                                {filteredProducts.length !== 0 ?
+                                    sortDoors(filteredProducts).map((product) => (
+                                        <PreviewedDoor product={product}/>
+                                    )) : <p className="no-filter">Нічого не знайдено</p>}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="filtered-catalog">
-                    <div className="carousel-filter">
-                        <div style={{width: '75%'}}>
-                        <Slider {...settings}>
-                            <img className="carousel-image" src={def2}/>
-                            <img className="carousel-image" src={def1}/>
-                        </Slider>
-                        </div>
-                        <div className="filter-carousel-text">
-                            <article>Захисти свій дім</article>
-                            <p>вибирай сертифіковані зламостійкі вхідні двері</p>
-                            <Link exact to="/protected-door" className="protected-door-link">Детальніше</Link>
-                        </div>
-                    </div>
-                    <div className="filtered-catalog-bottom">
-                        <div className="sort-container">
-
-                            <p>Знайдено {filteredProducts.length} дверей</p>
-
-                            <div className="select">
-                                <label>Сортування: </label>
-                                <select value={sort} onChange={handleChange}
-                                        name="sort">
-                                    {/*<option value={'ratingUp'}>Рейтинг (за зростанням)</option>*/}
-                                    {/*<option value={'ratingDown'}>Рейтинг (за спаданням)</option>*/}
-                                    <option value={'nameAZ'}>Назва (А -> Я)</option>
-                                    <option value={'nameZA'}>Назва (Я -> А)</option>
-                                    <option value={'priceUp'}>Ціна (за зростанням)</option>
-                                    <option value={'priceDown'}>Ціна (за спаданням)</option>
-                                    <option value={'modelAZ'}>Модель (А -> Я)</option>
-                                    <option value={'modelZA'}>Модель (Я -> А)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="filtered-doors">
-                        {filteredProducts.length !== 0 ?
-                            sortDoors(filteredProducts).map((product) => (
-                            <ProductCard product={product}/>
-                        )) : <p className="no-filter">Нічого не знайдено</p>}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            :<Loader/>}
+                : <Loader/>}
         </div>
     );
 }

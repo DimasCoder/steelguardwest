@@ -16,32 +16,19 @@ export default class TopMenu extends Component {
         this.state = {
             isLoading: true,
             brands: [],
-            warehouseDoor: [{subClass: "Складська програма", minPrice: 0, maxPrice: 35000, filter:true, url: 'warehouse'}],
-            streetDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: 'streetDoor'},
-                {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: 'streetDoor'},
-                {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: 'streetDoor'}],
-            flatDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: 'flatDoor'},
-                {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: 'flatDoor'},
-                {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: 'flatDoor'}],
-            techDoor: [{subClass: "Технічні", minPrice: 0, maxPrice: 35000, url: 'techDoor'},
-                {subClass: "Протипожежні", minPrice: 0, maxPrice: 35000, url: 'fireDoor'}],
-            interiorDoor: [{subClass: "TM «BRAMA» складська програма", filter: 'flatDoor', url: 'interiorDoor'}]
+            warehouseDoor: [{subClass: "Складська програма", minPrice: 0, maxPrice: 35000, filter:true, url: '/doors/warehouse'}],
+            streetDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: '/doors/streetDoor'},
+                {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: '/doors/streetDoor'},
+                {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: '/doors/streetDoor'}],
+            flatDoor: [{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: '/doors/flatDoor'},
+                {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: '/doors/flatDoor'},
+                {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: '/doors/flatDoor'}],
+            techDoor: [{subClass: "Технічні", minPrice: 0, maxPrice: 35000, url: '/doors/techDoor'},
+                {subClass: "Протипожежні", minPrice: 0, maxPrice: 35000, url: '/doors/fireDoor'}],
+            interiorDoor: [{subClass: "TM «BRAMA» складська програма", minPrice: 0, maxPrice: 35000, url: '/doors/interiorDoors'}]
         };
     }
 
-
-    componentDidMount() {
-        this.findAllBrands();
-    }
-
-    findAllBrands() {
-        axios.get("/api/brand/all")
-            .then(response => response.data)
-            .then((data) => {
-                this.setState({brands: data, isLoading: false})
-
-            });
-    }
     render() {
         const {isLoading, warehouseDoor, streetDoor, flatDoor, techDoor, interiorDoor} = this.state
         const settings = {
@@ -64,15 +51,15 @@ export default class TopMenu extends Component {
                             <h2>Каталог дверей</h2>
                             <Line/>
                             <ul className="notAdaptive">
-                                <DoorCategory text={"Складська програма"} url="warehouse" subClass={warehouseDoor}
+                                <DoorCategory text={"Складська програма"} url="/doors/warehouse" subClass={warehouseDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Двері на вулицю"} url="streetDoor" subClass={streetDoor}
+                                <DoorCategory text={"Двері на вулицю"} url="/doors/streetDoor" subClass={streetDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Двері в квартиру"} url="flatDoor" subClass={flatDoor}
+                                <DoorCategory text={"Двері в квартиру"} url="/doors/flatDoor" subClass={flatDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Технічні двері"} url="techDoor" subClass={techDoor}
+                                <DoorCategory text={"Технічні двері"} url="/doors/techDoor" subClass={techDoor}
                                               setFilter={this.props.setFilter}/>
-                                <DoorCategory text={"Міжкімнатні двері"} url="interiorDoor" subClass={interiorDoor}
+                                <DoorCategory text={"Міжкімнатні двері"} url="/doors/interiorDoors" subClass={interiorDoor}
                                               setFilter={this.props.setFilter}/>
                                 {/*<DoorCategory text={"Протипожежні двері"} setFilter={this.props.setFilter}/>*/}
                             </ul>

@@ -6,7 +6,7 @@ const PreviewedDoor = props => {
     let avalaibility = props.product.available
     let note = props.product.note
     let [previouslyViewed, setPreviouslyViewed] = useState(localStorage.getItem("previouslyViewed") ? JSON.parse(localStorage.getItem("previouslyViewed")) : [])
-    let available;
+    let available, url;
     if (!avalaibility && note === "order") {
         available = <span className="span-unavailable">Під замовлення</span>
     } else if(!avalaibility && note === "sale") {
@@ -17,11 +17,16 @@ const PreviewedDoor = props => {
         available = <span className="span-available">На складі</span>
     }
 
+    if(props.product.model === undefined)
+        url = "door"
+    else
+        url = "interiorDoor"
+
     let image = 'data:image/png;base64,' + props.product.file.data;
 
 
     let toPriceFormat = (e) => {
-        e = e.toString()
+        e = "" + e
         e = e.substring(0,e.length - 3) + ' ' + e.substring(e.length - 3)
         return e
     }
@@ -44,7 +49,7 @@ const PreviewedDoor = props => {
     }
 
     return (
-        <a href={`/door/${props.product.id}`} className="door-card-container">
+        <a href={`/${url}/${props.product.id}`} className="door-card-container">
             <img
                 src={image}
                 alt="Auto"
@@ -53,14 +58,25 @@ const PreviewedDoor = props => {
                 <p>Серія: {props.product.series}</p>
                 {available}
             </div>
-            <h3>Двері {props.product.doorName}</h3>
+            {props.product.doorName !== undefined ?
+                <h3>Двері {props.product.doorName}</h3>
+                : <h3>Двері Korfad {props.product.model} {props.product.color}</h3>
+
+            }
 
             <div className="doorPrev-card-footer">
-                <span>{toPriceFormat(props.product.price)} грн.</span>
-                {/*<NavLink to={`/doors/${props.product.doorType}/${props.product.doorName.replace(' ', '-')}`.toLowerCase()} className="to-cart"*/}
-                {/*         product={props.product.doorName}>Детальніше</NavLink>*/}
-                <a href={`/door/${props.product.id}`} className="to-cart"
-                         product={props.product.doorName} onClick={() => {addToLocalStorage(props.product)}}>Детальніше</a>
+                {props.product.price !== undefined ?
+                    <span>{toPriceFormat(props.product.price)} грн.</span>
+                    : <span>{toPriceFormat(props.product.priceCommon)} грн.</span>
+                }
+                {props.product.model === undefined ?
+                    <a href={`/door/${props.product.id}`} className="to-cart"
+                       product={props.product.doorName} onClick={() => {addToLocalStorage(props.product)}}>Детальніше</a>
+                    :
+                    <a href={`/interiorDoor/${props.product.id}`} className="to-cart"
+                       product={props.product.doorName} onClick={() => {addToLocalStorage(props.product)}}>Детальніше</a>
+                }
+
             </div>
 
         </a>

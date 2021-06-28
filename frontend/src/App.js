@@ -21,6 +21,7 @@ import WhereToBuy from "./pages/WhereToBuy/WhereToBuy";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ProtectedDoor from "./pages/ProtectedDoor/ProtectedDoor";
+import DoorInteriorPage from "./components/DoorInteriorPage/DoorInteriorPage";
 
 class App extends Component {
     constructor(props) {
@@ -118,7 +119,6 @@ class App extends Component {
 
     setFilter = (f1, f2, f3) => {
         this.setState({filter: [f1, f2, f3]})
-        console.log(this.filter)
     }
 
     render() {
@@ -151,6 +151,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} setFilter={this.setFilter} addToCart={this.addToCart} q={q}/>}/>
                         <Route exact path="/door/:id" render={(props) => <DoorInfoPage {...props}/>}/>
+                        <Route exact path="/interiorDoor/:id" render={(props) => <DoorInteriorPage {...props}/>}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props} filter={filter}/>}/>
                         <Route exact path="/delivery" component={Delivery}/>

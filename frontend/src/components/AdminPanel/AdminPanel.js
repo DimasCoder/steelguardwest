@@ -6,6 +6,7 @@ import Line from "../Line/Line";
 import AdminLink from "./AdminLink/AdminLink";
 import ProductPanel from "./Product/ProductPanel";
 import SendMail from "./SendMail/SendMail";
+import InteriorPanel from "./InteriorPanel/InteriorPanel";
 
 class AdminPanel extends Component {
     constructor(props) {
@@ -22,13 +23,13 @@ class AdminPanel extends Component {
             userReady: false,
             currentUser: {username: ""},
             showBrands: true,
-            showModels: false,
+            showInterior: false,
             showProducts: false,
             image: "https://image.flaticon.com/icons/png/512/37/37543.png",
             isLoading: true
         }
         this.showBrand = this.showBrand.bind(this);
-        this.showModel = this.showModel.bind(this);
+        this.showInterior = this.showInterior.bind(this);
         this.showProduct = this.showProduct.bind(this);
     }
 
@@ -47,8 +48,8 @@ class AdminPanel extends Component {
         this.setState({showBrands: true, showModels: false, showProducts: false})
     }
 
-    showModel() {
-        this.setState({showBrands: false, showModels: true, showProducts: false})
+    showInterior() {
+        this.setState({showBrands: false, showInterior: true, showProducts: false})
     }
 
 
@@ -65,7 +66,7 @@ class AdminPanel extends Component {
             brandID,
             isLoading,
             showBrands,
-            showModels,
+            showInterior,
             showProducts,
             brand,
             brands,
@@ -90,6 +91,7 @@ class AdminPanel extends Component {
                                 <Line/>
                                 <AdminLink name="Емейл" click={this.showBrand}/>
                                 <AdminLink name="Двері" click={this.showProduct}/>
+                                <AdminLink name="Міжкімнатні двері" click={this.showInterior}/>
                             </div>
                         </div>
                         <div className="admin-content">
@@ -100,7 +102,11 @@ class AdminPanel extends Component {
                                         : showProducts ? (
                                                 <ProductPanel/>
                                             )
-                                            : null
+                                            : showInterior ? (
+                                                <InteriorPanel/>
+                                            )
+                                                : null
+
                                 }
                             </div>
                         </div>
