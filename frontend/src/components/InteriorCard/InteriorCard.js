@@ -50,7 +50,7 @@ const InteriorCard = props => {
                 <p>Модель: {props.product.model}</p>
                 {available}
             </div>
-            <h3>Міжкімнатні двері Korfad {props.product.model} {props.product.color}</h3>
+            <h3>Міжкімнатні двері Brama {props.product.model} {props.product.color}</h3>
             <div className="door-card-footer">
                 <span>{toPriceFormat(props.product.priceCommon)} грн.</span>
                 <Link to={`/interiorDoor/${props.product.id}`} className="to-cart"
