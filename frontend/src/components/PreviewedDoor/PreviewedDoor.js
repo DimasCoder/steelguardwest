@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import './PreviewedDoor.css'
-import {Link, NavLink} from "react-router-dom";
 
 const PreviewedDoor = props => {
     let avalaibility = props.product.available
@@ -49,7 +48,7 @@ const PreviewedDoor = props => {
     }
 
     return (
-        <a href={`/${url}/${props.product.id}`} className="door-card-container">
+        <a href={`/${url}/${props.product.id}`} className="prev-door-card-container">
             <img
                 src={image}
                 alt="Auto"

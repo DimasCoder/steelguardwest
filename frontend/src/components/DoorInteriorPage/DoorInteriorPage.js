@@ -132,7 +132,7 @@ class DoorInteriorPage extends Component {
                                                 src={image + image1.data}/>
                                         </div>
                                         <div className="interior-door-main-info">
-                                            <h2>Міжкімнатні двері Korfad {door.model}</h2>
+                                            <h2>Міжкімнатні двері Brama {door.model}</h2>
                                             {this.availability()}
                                             <p>Модель: {door.model}</p>
                                             <p>Розмір: 60, 70, 80, 90</p>

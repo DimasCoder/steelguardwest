@@ -125,7 +125,7 @@
 
 @media all and (max-width: 420px){
     .door-card-container{
-        width: 155px;
+        width: 155px!important;
     }
 
     .door-card-footer span{

@@ -1,4 +1,4 @@
-.door-card-container{
+.prev-door-card-container{
     width: 186px;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     text-decoration: none;
 }
 
-.door-card-container:hover{
+.prev-door-card-container:hover{
     transform: scale(1.05);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -23,7 +23,7 @@
     padding: 1px;
 }
 
-.door-card-container h3{
+.prev-door-card-container h3{
     font-size: 16px;
     line-height: 20px;
     font-weight: 400;
@@ -107,15 +107,15 @@
 }
 
 @media all and (max-width: 450px) {
-    .door-card-container {
+    .prev-door-card-container {
         margin: 10px auto;
     }
 
-    .door-card-container{
+    .prev-door-card-container{
         width: 170px;
     }
 
-    .door-card-container h3{
+    .prev-door-card-container h3{
         font-size: 14px;
     }
 
@@ -125,11 +125,11 @@
 }
 
 @media all and (max-width: 420px){
-    .door-card-container{
+    .prev-door-card-container{
         width: 140px;
     }
 
-    .door-card-container h3{
+    .prev-door-card-container h3{
         font-size: 12px;
     }
 
