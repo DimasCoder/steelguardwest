@@ -111,7 +111,7 @@ class DoorInteriorPage extends Component {
         })
         let width = window.innerWidth;
 
-        return width > 750 ? this.state.similarDoors1.slice(0,4) : this.state.similarDoors1.slice(0,1)
+        return width > 750 ? this.state.similarDoors1.slice(0,4) : this.state.similarDoors1.slice(0,2)
     }
 
     render() {
