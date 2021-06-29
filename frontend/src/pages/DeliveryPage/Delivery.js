@@ -15,8 +15,9 @@ class Delivery extends Component {
             <div className="container">
                 <MetaTags>
                     <title>SteelGuardWest - доставка</title>
-                    <meta id="meta-description" name="description" content="SteelGuardWest - інтернет магазин Українського виробника вхідних броньованих, металевих дверей SteelGuardWest." />
-                    <meta id="og-title" property="og:title" content="SteelGuardWest | Доставка" />
+                    <meta id="meta-description" name="description"
+                          content="SteelGuardWest - інтернет магазин Українського виробника вхідних броньованих, металевих дверей SteelGuardWest."/>
+                    <meta id="og-title" property="og:title" content="SteelGuardWest | Доставка"/>
                 </MetaTags>
                 <div className="page__inner">
                     <PageTitle title="Інформація про доставку та встановлення"/>

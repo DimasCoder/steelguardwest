@@ -47,7 +47,7 @@ const ProductCard = props => {
         <Link to={`/door/${props.product.id}`} className="door-card-container">
             <img
                 src={image}
-                alt="Auto"
+                alt={"Двері " + props.product.doorName}
                 className="door-logo"/>
             <div className="door-card-header">
                 <p>Серія: {props.product.series}</p>

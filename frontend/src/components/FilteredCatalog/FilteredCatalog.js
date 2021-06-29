@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './FilteredCatalog.css'
 import axios from "axios";
-import ProductCard from "../ProductCard/ProductCard";
 import PageTitle from "../PageTitle/PageTitle";
 import {Link} from "react-router-dom";
 import SliderRange from "@material-ui/core/Slider";
@@ -23,16 +22,6 @@ const FilteredCatalog = (props) => {
     const [products, setProducts] = useState([])
     const [sort, setSort] = useState("nameAZ")
     const [isLoading, setIsLoading] = useState(true)
-
-
-    const setTitle = () => {
-        if (props.typeFilter === 'flatDoor')
-            return 'Двері в квартиру'
-        else if (this.props.typeFilter === 'streetDoor')
-            return 'Двері на вулицю'
-        else
-            return 'Всі двері'
-    }
 
     useState(() => {
         window.scrollTo(0, 0)

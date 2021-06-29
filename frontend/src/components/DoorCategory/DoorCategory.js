@@ -10,19 +10,23 @@ const DoorCategory = props => {
             <input type="checkbox" id={props.text}/>
             <label for={props.text} className="door-category-text">
                 <Link to={`${props.url}`}>
-                <p>{props.text}</p>
+                    <p>{props.text}</p>
                 </Link>
                 <span><FontAwesomeIcon icon={faCaretRight}/></span>
             </label>
             <ul className="dropdown-content">
                 {props.subClass.map((sClass) => (
-                    <li><Link to={`${sClass.url}`} onClick={() => {props.setFilter(sClass.minPrice, sClass.maxPrice, sClass.filter)}}>{sClass.subClass}</Link></li>
-                ) )}
+                    <li><Link to={`${sClass.url}`} onClick={() => {
+                        props.setFilter(sClass.minPrice, sClass.maxPrice, sClass.filter)
+                    }}>{sClass.subClass}</Link></li>
+                ))}
             </ul>
             <ul className="dropdown-content-adaptive">
                 {props.subClass.map((sClass) => (
-                    <li><Link to={`${sClass.url}`} onClick={() => {props.setFilter(sClass.minPrice, sClass.maxPrice, sClass.filter)}}>{sClass.subClass}</Link></li>
-                ) )}
+                    <li><Link to={`${sClass.url}`} onClick={() => {
+                        props.setFilter(sClass.minPrice, sClass.maxPrice, sClass.filter)
+                    }}>{sClass.subClass}</Link></li>
+                ))}
             </ul>
         </li>
     )

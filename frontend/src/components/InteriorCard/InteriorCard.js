@@ -44,7 +44,7 @@ const InteriorCard = props => {
         <Link to={`/interiorDoor/${props.product.id}`} className="door-card-container">
             <img
                 src={image}
-                alt="Auto"
+                alt={"Міжкімнатні двері BRAMA " + props.product.model}
                 className="door-logo"/>
             <div className="door-card-header">
                 <p>Модель: {props.product.model}</p>

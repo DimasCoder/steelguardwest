@@ -7,6 +7,7 @@ import {faCheckCircle} from '@fortawesome/free-regular-svg-icons'
 import {faChevronRight, faTruck, faTag, faPercent} from '@fortawesome/free-solid-svg-icons'
 import Loader from "../Loader/Loader";
 import logo from "../../assets/logo.png";
+import MetaTags from "react-meta-tags";
 
 class DoorInteriorPage extends Component {
     constructor(props) {
@@ -120,6 +121,11 @@ class DoorInteriorPage extends Component {
 
         return (
             <div className="door-info-page">
+                <MetaTags>
+                    <title>Міжкімнатні двері BRAMA {door.model} {door.color}  купити в магазині SteelGuardWest</title>
+                    <meta id="meta-description" name="description" content="SteelGuardWest - інтернет магазин Українського виробника вхідних броньованих, металевих дверей SteelGuardWest." />
+                    <meta id="og-title" property="og:title" content="SteelGuardWest | Двері" />
+                </MetaTags>
                 {!isLoading ? (
                 <div className="container">
                     <div className="door-info-page__inner">
@@ -129,10 +135,12 @@ class DoorInteriorPage extends Component {
                                         <div className="door-image-container">
                                             <img
                                                 className="door-image"
-                                                src={image + image1.data}/>
+                                                src={image + image1.data}
+                                                alt={"Міжкімнатні двері BRAMA " + door.model + " " + door.color}
+                                            />
                                         </div>
                                         <div className="interior-door-main-info">
-                                            <h2>Міжкімнатні двері Brama {door.model}</h2>
+                                            <h1>Міжкімнатні двері Brama {door.model}</h1>
                                             {this.availability()}
                                             <p>Модель: {door.model}</p>
                                             <p>Розмір: 60, 70, 80, 90</p>

@@ -1,11 +1,10 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Catalog.css"
 import Line from "../Line/Line";
 import ProductCard from '../ProductCard/ProductCard'
 import axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
-import {NavLink} from "react-router-dom";
 import Loader from "../Loader/Loader";
 import {faFilter} from "@fortawesome/free-solid-svg-icons";
 import InteriorCard from "../InteriorCard/InteriorCard";
@@ -81,7 +80,7 @@ function Catalog(props){
                 <div className="catalog-container__inner">
                     <div className="catalog">
                         <div className="catalog-top">
-                            <h2>Всі двері</h2>
+                            <h1>Всі двері</h1>
                             <div className="filter__inner">
                                 <input type="checkbox" id="filter-checkbox"/>
                                 <label htmlFor="filter-checkbox" className="filter-label">

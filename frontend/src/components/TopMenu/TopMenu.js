@@ -67,8 +67,8 @@ export default class TopMenu extends Component {
                         <div className="carousel">
                             <div style={{width: '75%'}}>
                             <Slider {...settings}>
-                                <img className="carousel-image" src={def1}/>
-                                <img className="carousel-image" src={def2}/>
+                                <img className="carousel-image" src={def1} alt={"Захисти свій дім Steelguard"}/>
+                                <img className="carousel-image" src={def2} alt={"Зламостійкі двері Steelguard"}/>
 
                             </Slider>
                             </div>
