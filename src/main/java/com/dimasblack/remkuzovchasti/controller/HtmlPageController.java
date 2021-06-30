@@ -38,6 +38,9 @@ public class HtmlPageController {
     @GetMapping("/where-to-buy")
     public String whereToBuy(){return "index.html";}
 
+    @GetMapping("/about-us")
+    public String aboutUs(){return "index.html";}
+
 
     @RequestMapping(value = {"/filter/techDoor", "/fireDoor"}, method = RequestMethod.GET)
     public String flatDoors(){

@@ -43,9 +43,6 @@ const SideDrawer = props => {
                     <NavLink exact to="/how-to-buy" className="side-drawer__navigation-link">
                         <FontAwesomeIcon icon={faCreditCard}/> Як купити
                     </NavLink>
-                    <NavLink exact to="/partners" className="side-drawer__navigation-link">
-                        <FontAwesomeIcon icon={faIdBadge}/> Наші партнери
-                    </NavLink>
                     <NavLink exact to="/where-to-buy" className="side-drawer__navigation-link">
                         <FontAwesomeIcon icon={faMapMarkerAlt} /> Де купити
                     </NavLink>

@@ -16,7 +16,6 @@ import Payment from "./pages/Payment/Payment";
 import FilteredCatalog from "./components/FilteredCatalog/FilteredCatalog";
 import Contact from "./pages/Contact/Contact";
 import HowToBuy from "./pages/HowToBuy/HowToBuy";
-import Partners from "./pages/Partners/Partners";
 import WhereToBuy from "./pages/WhereToBuy/WhereToBuy";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
@@ -158,7 +157,6 @@ class App extends Component {
                         <Route exact path="/payment" component={Payment}/>
                         <Route exact path="/contact" component={Contact}/>
                         <Route exact path="/how-to-buy" component={HowToBuy}/>
-                        <Route exact path="/partners" component={Partners}/>
                         <Route exact path="/where-to-buy" component={WhereToBuy}/>
                         <Route exact path="/about-us" component={AboutUs}/>
                         <Route exact path="/protected-door" component={ProtectedDoor}/>

@@ -34,9 +34,6 @@ class Navigation extends Component {
                             <NavLink exact to="/how-to-buy" className="navigation-link">
                                 <FontAwesomeIcon icon={faCreditCard} /> Як купити
                             </NavLink>
-                            <NavLink exact to="/partners" className="navigation-link">
-                                <FontAwesomeIcon icon={faIdBadge} /> Наші партнери
-                            </NavLink>
                             <NavLink exact to="/where-to-buy" className="navigation-link">
                                 <FontAwesomeIcon icon={faMapMarkerAlt} /> Де купити
                             </NavLink>

@@ -1,0 +1,28 @@
+.contact-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-main-partners{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.contact-main-partners h2{
+    font-size: 24px;
+    line-height: 22px;
+    font-weight: 600;
+    color: #515151;
+}
+
+.contact-row .contact-info{
+    margin-top: 30px;
+}
+
+.contact-data{
+    width: 100%;
+}
