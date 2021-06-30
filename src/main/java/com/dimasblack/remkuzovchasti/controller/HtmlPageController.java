@@ -35,6 +35,9 @@ public class HtmlPageController {
     @GetMapping("/delivery")
     public String delivery(){return "index.html";}
 
+    @GetMapping("/where-to-buy")
+    public String whereToBuy(){return "index.html";}
+
 
     @RequestMapping(value = {"/filter/techDoor", "/fireDoor"}, method = RequestMethod.GET)
     public String flatDoors(){
