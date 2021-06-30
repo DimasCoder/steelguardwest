@@ -70,7 +70,7 @@ class Header extends Component{
                     {/*</div>*/}
                     <div className="header-info">
                         <div className="time-table">
-                            <span>ПН-ПТ - 10:00 - 18:00</span>
+                            <span>ПН-ПТ - 10:00 - 17:00</span>
                             <span>СБ - вихідний</span>
                             <span>НД - вихідний</span>
                         </div>

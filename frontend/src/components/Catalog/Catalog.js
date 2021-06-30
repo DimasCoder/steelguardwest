@@ -64,6 +64,7 @@ function Catalog(props){
         }
     }
 
+    console.log(props.q)
     let filteredProducts = products.filter(
         (product) => {
             if (series.length > 0) {

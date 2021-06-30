@@ -32,7 +32,7 @@ class Contact extends Component {
                             <p>(096)-838-10-53 Наявність та логістика</p>
                             <p>(097)-845-51-59 Регіональний менеджер</p>
                             <h4>Email:</h4>
-                            <p>example@gmail.com</p>
+                            <p>steelguardwest@gmail.com</p>
                         </div>
                         <div className="contact-map">
                             <iframe

@@ -152,11 +152,11 @@ class DoorInteriorPage extends Component {
                                                     <td>{this.toPriceFormat(door.priceCommon) + " ГРН."}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Ціна блоку, коробка стандарт</td>
+                                                    <td>Ціна блоку, коробка СТАНДАРТ 80мм</td>
                                                     <td>{this.toPriceFormat(door.priceStandard) + " ГРН."}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Ціна блоку, коробка профі</td>
+                                                    <td>Ціна блоку, коробка PROFI 80-100мм</td>
                                                     <td>{this.toPriceFormat(door.priceProfi) + " ГРН."}</td>
                                                 </tr>
                                                 </tbody>
@@ -172,7 +172,6 @@ class DoorInteriorPage extends Component {
                                         </div>
                                         <div className="panels">
                                             <div className="panel" id="one-panel">
-                                                <h5 className="panel-title">Характеристики</h5>
                                                 <table className="char-table">
                                                     <tbody>
                                                     <tr>
@@ -182,6 +181,27 @@ class DoorInteriorPage extends Component {
                                                     <tr>
                                                         <td>Покриття</td>
                                                         <td>{door.coating}</td>
+                                                    </tr>
+                                                    {door.coating === "Ламіновані" ?
+                                                        <>
+                                                        <tr>
+                                                            <td>Замок та петлі</td>
+                                                            <td>Так</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Фабрична врізка замка, петель</td>
+                                                            <td>Так</td>
+                                                        </tr>
+                                                        </>:
+                                                        <tr>
+                                                            <td>Додаткова послуга врізка магнітного замка</td>
+                                                            <td>Так</td>
+                                                        </tr>
+
+                                                    }
+                                                    <tr>
+                                                        <td>Двері з четвертю</td>
+                                                        <td>{door.coating === "Ламіновані" ? "Так" : "Ні"}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
