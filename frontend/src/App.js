@@ -145,7 +145,7 @@ class App extends Component {
                             search={this.inputSearch}
                             cartItems={this.state.cartItems}
                     />
-                    <SideDrawer show={this.state.sideDrawerOpen}/>
+                    <SideDrawer show={this.state.sideDrawerOpen} click={this.backdropClickHandler}/>
                     {backdrop}
                     <Switch>
                         <Route exact path="/" render={() => <MainSection cartItems={this.state.cartItems} setFilter={this.setFilter} addToCart={this.addToCart} q={q}/>}/>

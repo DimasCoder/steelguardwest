@@ -1,17 +1,10 @@
-import React from 'react';
-import {Link} from "react-scroll";
+import React, {useEffect} from 'react';
 import './SideDrawer.css'
 import logo from "../../assets/logo.png";
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-    faAddressCard,
-    faComments,
-    faCreditCard, faIdBadge,
-    faMoneyBillAlt,
-    faPaperPlane
-} from "@fortawesome/free-regular-svg-icons";
-import {faCaretDown, faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
+import {faAddressCard, faCreditCard, faMoneyBillAlt, faPaperPlane} from "@fortawesome/free-regular-svg-icons";
+import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF, faInstagram, faYoutube} from "@fortawesome/free-brands-svg-icons";
 
 const SideDrawer = props => {
@@ -19,6 +12,7 @@ const SideDrawer = props => {
     if (props.show) {
         drawerClasses = 'side-drawer open';
     }
+
     return (
         <div className={drawerClasses}>
             <div className="side-drawer__inner">
@@ -31,22 +25,22 @@ const SideDrawer = props => {
                 </div>
 
                 <nav className="side-drawer__navigation">
-                    <NavLink exact to="/delivery" className="side-drawer__navigation-link">
+                    <NavLink exact to="/delivery" className="side-drawer__navigation-link" onClick={props.click}>
                         <FontAwesomeIcon icon={faPaperPlane}/> Доставка
                     </NavLink>
-                    <NavLink exact to="/payment" className="side-drawer__navigation-link">
+                    <NavLink exact to="/payment" className="side-drawer__navigation-link" onClick={props.click}>
                         <FontAwesomeIcon icon={faMoneyBillAlt}/> Оплата
                     </NavLink>
-                    <NavLink exact to="/contact" className="side-drawer__navigation-link">
+                    <NavLink exact to="/contact" className="side-drawer__navigation-link" onClick={props.click}>
                         <FontAwesomeIcon icon={faAddressCard}/> Контакти
                     </NavLink>
-                    <NavLink exact to="/how-to-buy" className="side-drawer__navigation-link">
+                    <NavLink exact to="/how-to-buy" className="side-drawer__navigation-link" onClick={props.click}>
                         <FontAwesomeIcon icon={faCreditCard}/> Як купити
                     </NavLink>
-                    <NavLink exact to="/where-to-buy" className="side-drawer__navigation-link">
+                    <NavLink exact to="/where-to-buy" className="side-drawer__navigation-link" onClick={props.click}>
                         <FontAwesomeIcon icon={faMapMarkerAlt} /> Де купити
                     </NavLink>
-                    <NavLink exact to="/novelty" className="novelty-link">Новини</NavLink>
+                    <NavLink exact to="/novelty" className="novelty-link" onClick={props.click}>Новини</NavLink>
                 </nav>
                 <div className="side-drawer__contact">
                     <a className="contact-phone" href="tel:0673824812">(067)-382-48-12 <span>Керівник представництва</span></a>
