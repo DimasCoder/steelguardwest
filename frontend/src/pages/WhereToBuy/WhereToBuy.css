@@ -17,12 +17,43 @@
     line-height: 22px;
     font-weight: 600;
     color: #515151;
+    margin: 20px 0;
 }
 
 .contact-row .contact-info{
     margin-top: 30px;
 }
 
+.contact-row{
+    margin: 30px 0;
+}
+
+
 .contact-data{
     width: 100%;
+}
+
+.contact-info{
+    align-items: center;
+}
+
+.contact-info h4{
+    text-align: center;
+}
+
+.contact-row .contact-info:not(:last-child){
+    border-right: 1px solid #838383;
+
+}
+
+@media all and (max-width: 700px) {
+    .contact-row{
+        flex-direction: column;
+    }
+    .contact-row .contact-info:not(:last-child){
+        border-right: none;
+        border-bottom: 1px solid #838383;
+
+    }
+
 }

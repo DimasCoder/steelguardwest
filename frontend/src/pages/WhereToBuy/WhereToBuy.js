@@ -168,6 +168,154 @@ class WhereToBuy extends Component {
                         </div>
                         <div className="contact-data">
                             <h2>Львівська область</h2>
+                            <div className="contact-row">
+                                <div className="contact-info">
+                                    <h3>Броди</h3>
+                                    <h4>Макс+</h4>
+                                    <p>вул. Франка 38</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(063)-711-13-00</p>
+                                    <p>(093)-711-13-00</p>
+                                    <h4>Email:</h4>
+                                    <p>maks_plus@ukr.net</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Броди</h3>
+                                    <h4>Візит</h4>
+                                    <p>вул. Чупринки 6а</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(068)-185-96-64</p>
+                                    <h4>Email:</h4>
+                                    <p>adima2014@ukr.net</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Золочів</h3>
+                                    <h4>Елегант</h4>
+                                    <p>вул. Героїв УПА 8</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(067)-672-90-23</p>
+                                    <h4>Email:</h4>
+                                    <p>office@elegant.in.ua</p>
+                                    <h4>Веб-сайт:</h4>
+                                    <p>www.elegant.in.ua</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Золочів</h3>
+                                    <h4>Елегант</h4>
+                                    <p>вул. Л.Українки 14</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(067)-675-54-58</p>
+                                    <h4>Email:</h4>
+                                    <p>office.elegant2@gmail.com</p>
+                                    <h4>Веб-сайт:</h4>
+                                    <p>www.elegant.in.ua</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Буськ</h3>
+                                    <h4>Елегант</h4>
+                                    <p>вул. Петрушевича 1</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(097)-407-53-30</p>
+                                    <h4>Email:</h4>
+                                    <p>office@elegant.in.ua</p>
+                                    <h4>Веб-сайт:</h4>
+                                    <p>www.elegant.in.ua</p>
+                                </div>
+                            </div>
+                            <div className="contact-row">
+                                <div className="contact-info">
+                                    <h3>Червоноград</h3>
+                                    <h4>Перфект</h4>
+                                    <p>вул. Сокальська 3</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(063)-608-46-31</p>
+                                    <p>(096)-722-67-97</p>
+                                    <h4>Email:</h4>
+                                    <p>cvir.ludmila@gmail.com</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Червоноград</h3>
+                                    <h4>Перфект</h4>
+                                    <p>вул. Шевченка 14а</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(073)-777-15-25</p>
+                                    <p>(067)-777-15-26</p>
+                                    <h4>Email:</h4>
+                                    <p>vekachervonograd@gmail.com</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Червоноград</h3>
+                                    <h4>Добрий тесля</h4>
+                                    <p>вул. Шептицького 1</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(098)-251-36-36</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Стрий</h3>
+                                    <h4>Ковальський</h4>
+                                    <p>вул. Зеньковецької 75/2</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(096)-115-91-15</p>
+                                    <h4>Email:</h4>
+                                    <p>kovalskyivs@gmail.com</p>
+                                    <h4>Веб-сайт:</h4>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Трускавець</h3>
+                                    <h4>Комора</h4>
+                                    <p>вул. Довженка 5</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(098)-127-51-73</p>
+                                    <h4>Email:</h4>
+                                    <p>viknoof@ukr.net</p>
+                                </div>
+                            </div>
+                            <div className="contact-row">
+                                <div className="contact-info">
+                                    <h3>Трускавець</h3>
+                                    <h4>ВДС</h4>
+                                    <p>вул. Стебницька 80</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(067)-274-36-56</p>
+                                    <h4>Email:</h4>
+                                    <p>vovh@ukr.net</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Червоноград</h3>
+                                    <h4>Статус</h4>
+                                    <p>вул. Хмельницького 61</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(097)-803-83-55</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Червоноград</h3>
+                                    <h4>Перфект</h4>
+                                    <p>вул. Стуса 19</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(093)-670-94-44</p>
+                                    <p>(068)-500-94-96</p>
+                                    <h4>Email:</h4>
+                                    <p>cvir.andriy@gmail.com</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Львів</h3>
+                                    <h4>Двері</h4>
+                                    <p>вул. Городоцька 207</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(067)-371-29-04</p>
+                                    <h4>Email:</h4>
+                                    <p>2470607@gmail.com</p>
+                                </div>
+                                <div className="contact-info">
+                                    <h3>Львів</h3>
+                                    <h4>Центр дверей</h4>
+                                    <p>вул. Чуваська 29</p>
+                                    <h4>Телефони:</h4>
+                                    <p>(097)-994-82-13</p>
+                                    <h4>Email:</h4>
+                                    <p>lvivdveri@gmail.com</p>
+                                </div>
+                            </div>
                         </div>
                         <div className="contact-data">
                             <h2>Волинська область</h2>
