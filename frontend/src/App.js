@@ -152,7 +152,7 @@ class App extends Component {
                         <Route exact path="/door/:id" render={(props) => <DoorInfoPage {...props}/>}/>
                         <Route exact path="/interiorDoor/:id" render={(props) => <DoorInteriorPage {...props}/>}/>
                         <Route exact path={["/", "/home"]} component={Home}/>
-                        <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props} filter={filter}/>}/>
+                        <Route exact path={["/doors/:filter"]} render={props => <FilteredCatalog {...props} filter={filter} setFilter={this.setFilter}/>}/>
                         <Route exact path="/delivery" component={Delivery}/>
                         <Route exact path="/payment" component={Payment}/>
                         <Route exact path="/contact" component={Contact}/>

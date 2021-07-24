@@ -346,7 +346,7 @@ class WhereToBuy extends Component {
                                     <p>(095)-140-20-20</p>
                                 </div>
                                 <div className="contact-info">
-                                    <h3>Славута</h3>
+                                    <h3>Луцьк</h3>
                                     <h4>Файні двері</h4>
                                     <p>вул. Шопена 13</p>
                                     <h4>Телефони:</h4>
@@ -407,15 +407,6 @@ class WhereToBuy extends Component {
                                 <div className="contact-info">
                                     <h3>Нетішин</h3>
                                     <h4>АРА</h4>
-                                </div>
-                                <div className="contact-info">
-                                    <h3>Славута</h3>
-                                    <h4>Акцент + </h4>
-                                    <p>Миру 20/1</p>
-                                    <h4>Телефони:</h4>
-                                    <p>(098)-483-69-87</p>
-                                    <h4>Email:</h4>
-                                    <p>petrova-2020@ukr.net</p>
                                 </div>
                                 <div className="contact-info">
                                     <h3>Шепетівка</h3>

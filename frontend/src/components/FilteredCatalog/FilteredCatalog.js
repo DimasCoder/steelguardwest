@@ -12,6 +12,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFilter} from '@fortawesome/free-solid-svg-icons'
 import Loader from "../Loader/Loader";
 import PreviewedDoor from "../PreviewedDoor/PreviewedDoor";
+import Line from "../Line/Line";
+import DoorCategory from "../DoorCategory/DoorCategory";
 
 
 const FilteredCatalog = (props) => {
@@ -22,6 +24,16 @@ const FilteredCatalog = (props) => {
     const [products, setProducts] = useState([])
     const [sort, setSort] = useState("nameAZ")
     const [isLoading, setIsLoading] = useState(true)
+    const [streetDoor, setStreetDoor] = useState([{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: '/doors/streetDoor'},
+        {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: '/doors/streetDoor'},
+        {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: '/doors/streetDoor'}])
+    const [warehouseDoor, setWarehouseDoor] = useState([{subClass: "Складська програма", minPrice: 0, maxPrice: 35000, filter:true, url: '/doors/warehouse'}])
+    const [flatDoor, setFlatDoor] = useState([{subClass: "Преміум", minPrice: 22700, maxPrice: 35000, url: '/doors/flatDoor'},
+        {subClass: "Стандарт", minPrice: 11200, maxPrice: 22700, url: '/doors/flatDoor'},
+        {subClass: "Економ", minPrice: 0, maxPrice: 11200, url: '/doors/flatDoor'}])
+    const [techDoor, setTechDoor] = useState([{subClass: "Технічні", minPrice: 0, maxPrice: 35000, url: '/doors/techDoor'},
+        {subClass: "Протипожежні", minPrice: 0, maxPrice: 35000, url: '/doors/fireDoor'}])
+    const [interiorDoor, setInteriorDoor] = useState([{subClass: "TM «BRAMA» складська програма", minPrice: 0, maxPrice: 35000, url: '/doors/interiorDoors'}])
 
     useState(() => {
         window.scrollTo(0, 0)
@@ -167,7 +179,25 @@ const FilteredCatalog = (props) => {
         <div className="container">
             {!isLoading ?
                 <div className="filtered-catalog__inner">
+
                     <div className="filter">
+                        {/*<div className="door-categories-filter">*/}
+                        {/*    <h2>Каталог дверей</h2>*/}
+                        {/*    <Line/>*/}
+                        {/*    <ul className="notAdaptive">*/}
+                        {/*        <DoorCategory text={"Складська програма"} url="/doors/warehouse" subClass={warehouseDoor}*/}
+                        {/*                      setFilter={props.setFilter}/>*/}
+                        {/*        <DoorCategory text={"Двері на вулицю"} url="/doors/streetDoor" subClass={streetDoor}*/}
+                        {/*                      setFilter={props.setFilter}/>*/}
+                        {/*        <DoorCategory text={"Двері в квартиру"} url="/doors/flatDoor" subClass={flatDoor}*/}
+                        {/*                      setFilter={props.setFilter}/>*/}
+                        {/*        <DoorCategory text={"Технічні двері"} url="/doors/techDoor" subClass={techDoor}*/}
+                        {/*                      setFilter={props.setFilter}/>*/}
+                        {/*        <DoorCategory text={"Міжкімнатні двері"} url="/doors/interiorDoors" subClass={interiorDoor}*/}
+                        {/*                      setFilter={props.setFilter}/>*/}
+                        {/*        /!*<DoorCategory text={"Протипожежні двері"} setFilter={this.props.setFilter}/>*!/*/}
+                        {/*    </ul>*/}
+                        {/*</div>*/}
                         <PageTitle title={"Фільтр"}/>
                         <input type="checkbox" id="filter-checkbox"/>
                         <label htmlFor="filter-checkbox" className="filter-label">
